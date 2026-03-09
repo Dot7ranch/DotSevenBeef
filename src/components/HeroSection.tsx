@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Download } from "lucide-react";
 import heroImage from "@/assets/hero-beef.jpg";
 
 const HeroSection = () => {
@@ -8,6 +8,14 @@ const HeroSection = () => {
       {/* Background */}
       <div className="absolute inset-0">
         <img src={heroImage} alt="Premium ranch-raised beef steaks" className="w-full h-full object-cover" />
+        <a
+          href={heroImage}
+          download="dot-seven-ranch-hero.jpg"
+          className="absolute top-4 right-4 z-20 inline-flex items-center justify-center w-10 h-10 rounded-full bg-charcoal/60 text-primary-foreground hover:bg-charcoal/80 transition-colors"
+          title="Download image"
+        >
+          <Download size={18} />
+        </a>
         <div className="absolute inset-0 bg-gradient-to-r from-charcoal/90 via-charcoal/70 to-charcoal/40" />
       </div>
 
