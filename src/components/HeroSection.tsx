@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Download } from "lucide-react";
 import heroImage from "@/assets/hero-beef.jpg";
 
 const HeroSection = () => {
