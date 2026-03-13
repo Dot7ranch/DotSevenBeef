@@ -31,8 +31,8 @@ const HeroSection = () => {
               transition={{ delay: 0.4 }}
               className="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-primary-foreground leading-[1.1] mb-6"
             >
-              Ranch to Table.{" "}
-              <span className="italic text-barn-red">Unmatched</span> Quality.
+              Better Beef. Raised by Ranchers.{" "}
+              <span className="italic text-barn-red">Shipped Straight</span> to Your Door.
             </motion.h1>
 
             <motion.p
