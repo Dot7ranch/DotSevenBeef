@@ -1,11 +1,17 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import cowImage from "@/assets/dot-seven-cow.png";
+import heroSteak from "@/assets/hero-steak.jpg";
 
 const HeroSection = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-charcoal">
-      {/* Content */}
+      {/* Background Image */}
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: `url(${heroSteak})` }}
+      />
+      <div className="absolute inset-0 bg-charcoal/70" />
       <div className="relative z-10 max-w-7xl mx-auto section-padding w-full py-32 lg:py-40">
         <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-16">
           {/* Text */}
