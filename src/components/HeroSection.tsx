@@ -54,7 +54,7 @@ const HeroSection = () => {
                 href="https://dotsevenranch.com/collections/build-your-own-box"
                 className="inline-flex items-center justify-center gap-2 bg-barn-red text-primary-foreground px-8 py-4 rounded font-body text-base font-semibold uppercase tracking-wider hover:bg-barn-red-dark transition-all duration-300 hover:shadow-lg"
               >
-                Shop Our Beef
+                Shop Beef Boxes
                 <ArrowRight size={18} />
               </a>
               <a
