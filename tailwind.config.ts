@@ -73,8 +73,8 @@ export default {
         },
       },
       fontFamily: {
-        display: ['Playfair Display', 'Georgia', 'serif'],
-        body: ['Source Sans 3', '-apple-system', 'sans-serif'],
+        display: ['Oswald', 'sans-serif'],
+        body: ['Old Standard TT', 'Georgia', 'serif'],
       },
       borderRadius: {
         lg: "var(--radius)",
