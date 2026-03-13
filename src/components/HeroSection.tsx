@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import cowImage from "@/assets/dot-seven-cow.png";
+
 import heroSteak from "@/assets/hero-steak.jpg";
 
 const HeroSection = () => {
@@ -66,19 +66,6 @@ const HeroSection = () => {
             </motion.div>
           </div>
 
-          {/* Cow Image */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.5, duration: 0.8 }}
-            className="flex-1 flex justify-center"
-          >
-            <img
-              src={cowImage}
-              alt="Dot Seven Ranch cow"
-              className="w-full max-w-md lg:max-w-lg drop-shadow-2xl"
-            />
-          </motion.div>
         </div>
       </div>
 
