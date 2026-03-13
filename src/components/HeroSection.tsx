@@ -41,7 +41,7 @@ const HeroSection = () => {
               transition={{ delay: 0.6 }}
               className="font-body text-lg md:text-xl text-primary-foreground/80 mb-10 max-w-lg leading-relaxed"
             >
-              Premium, sustainably raised beef delivered directly from our family ranch to your door. Taste the difference heritage makes.
+              Premium, sustainably raised, Black Angus Beef delivered directly from our 4th-generation California ranch — to your freezer.
             </motion.p>
 
             <motion.div
