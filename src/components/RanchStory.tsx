@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import ranchImage from "@/assets/ranch-landscape.jpg";
+import familyPortrait from "@/assets/family-portrait.jpg";
+import grandparentsKids from "@/assets/grandparents-kids.jpg";
 
 const RanchStory = () => {
   return (
@@ -11,10 +12,17 @@ const RanchStory = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <div className="relative rounded-lg overflow-hidden">
-              <img src={ranchImage} alt="Dot Seven Ranch at sunset" className="w-full aspect-[4/3] object-cover" />
-              <div className="absolute bottom-4 left-4 bg-charcoal/80 backdrop-blur-sm rounded px-4 py-2">
-                <p className="font-body text-xs tracking-widest uppercase text-primary-foreground/80">Est. Four Generations Ago</p>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="relative rounded-lg overflow-hidden col-span-2">
+                <img src={familyPortrait} alt="The Dot Seven Ranch family in front of the barn" className="w-full aspect-[16/9] object-cover" />
+              </div>
+              <div className="relative rounded-lg overflow-hidden">
+                <img src={grandparentsKids} alt="Grandparents with grandchildren on the ranch" className="w-full aspect-[3/4] object-cover" />
+              </div>
+              <div className="flex items-center justify-center bg-charcoal rounded-lg p-6">
+                <p className="font-display text-lg text-primary-foreground text-center uppercase tracking-wider leading-relaxed">
+                  Four<br />Generations<br /><span className="text-barn-red">Strong</span>
+                </p>
               </div>
             </div>
           </motion.div>
