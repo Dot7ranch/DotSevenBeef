@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Menu, X, ShoppingCart } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import logoRed from "@/assets/logo-text-red.png";
 
 const navLinks = [
   { label: "Shop Beef", href: "https://dotsevenranch.com/collections/build-your-own-box" },

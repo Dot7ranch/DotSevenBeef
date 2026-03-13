@@ -1,74 +1,77 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Download } from "lucide-react";
-import heroImage from "@/assets/hero-beef.jpg";
+import { ArrowRight } from "lucide-react";
+import cowImage from "@/assets/dot-seven-cow.png";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0">
-        <img src={heroImage} alt="Premium ranch-raised beef steaks" className="w-full h-full object-cover" />
-        <a
-          href={heroImage}
-          download="dot-seven-ranch-hero.jpg"
-          className="absolute top-4 right-4 z-20 inline-flex items-center justify-center w-10 h-10 rounded-full bg-charcoal/60 text-primary-foreground hover:bg-charcoal/80 transition-colors"
-          title="Download image"
-        >
-          <Download size={18} />
-        </a>
-        <div className="absolute inset-0 bg-gradient-to-r from-charcoal/90 via-charcoal/70 to-charcoal/40" />
-      </div>
-
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-charcoal">
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto section-padding w-full py-32 lg:py-40">
-        <div className="max-w-2xl">
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="font-body text-sm tracking-[0.3em] uppercase text-barn-red font-semibold mb-4"
-          >
-            Four Generations of Ranching
-          </motion.p>
+        <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-16">
+          {/* Text */}
+          <div className="max-w-xl flex-1">
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="font-body text-sm tracking-[0.3em] uppercase text-barn-red font-semibold mb-4"
+            >
+              Four Generations of Ranching
+            </motion.p>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-            className="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-primary-foreground leading-[1.1] mb-6"
-          >
-            Ranch to Table.{" "}
-            <span className="italic text-barn-red">Unmatched</span> Quality.
-          </motion.h1>
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+              className="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-primary-foreground leading-[1.1] mb-6"
+            >
+              Ranch to Table.{" "}
+              <span className="italic text-barn-red">Unmatched</span> Quality.
+            </motion.h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6 }}
-            className="font-body text-lg md:text-xl text-primary-foreground/80 mb-10 max-w-lg leading-relaxed"
-          >
-            Premium, sustainably raised beef delivered directly from our family ranch to your door. Taste the difference heritage makes.
-          </motion.p>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 }}
+              className="font-body text-lg md:text-xl text-primary-foreground/80 mb-10 max-w-lg leading-relaxed"
+            >
+              Premium, sustainably raised beef delivered directly from our family ranch to your door. Taste the difference heritage makes.
+            </motion.p>
 
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.8 }}
+              className="flex flex-col sm:flex-row gap-4"
+            >
+              <a
+                href="https://dotsevenranch.com/collections/build-your-own-box"
+                className="inline-flex items-center justify-center gap-2 bg-barn-red text-primary-foreground px-8 py-4 rounded font-body text-base font-semibold uppercase tracking-wider hover:bg-barn-red-dark transition-all duration-300 hover:shadow-lg"
+              >
+                Shop Our Beef
+                <ArrowRight size={18} />
+              </a>
+              <a
+                href="https://dotsevenranch.com/collections/beef-box-specials"
+                className="inline-flex items-center justify-center gap-2 border-2 border-primary-foreground/30 text-primary-foreground px-8 py-4 rounded font-body text-base font-semibold uppercase tracking-wider hover:border-primary-foreground/60 transition-all duration-300"
+              >
+                View Beef Boxes
+              </a>
+            </motion.div>
+          </div>
+
+          {/* Cow Image */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8 }}
-            className="flex flex-col sm:flex-row gap-4"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.5, duration: 0.8 }}
+            className="flex-1 flex justify-center"
           >
-            <a
-              href="https://dotsevenranch.com/collections/build-your-own-box"
-              className="inline-flex items-center justify-center gap-2 bg-barn-red text-primary-foreground px-8 py-4 rounded font-body text-base font-semibold uppercase tracking-wider hover:bg-barn-red-dark transition-all duration-300 hover:shadow-lg"
-            >
-              Shop Our Beef
-              <ArrowRight size={18} />
-            </a>
-            <a
-              href="https://dotsevenranch.com/collections/beef-box-specials"
-              className="inline-flex items-center justify-center gap-2 border-2 border-primary-foreground/30 text-primary-foreground px-8 py-4 rounded font-body text-base font-semibold uppercase tracking-wider hover:border-primary-foreground/60 transition-all duration-300"
-            >
-              View Beef Boxes
-            </a>
+            <img
+              src={cowImage}
+              alt="Dot Seven Ranch cow"
+              className="w-full max-w-md lg:max-w-lg drop-shadow-2xl"
+            />
           </motion.div>
         </div>
       </div>
