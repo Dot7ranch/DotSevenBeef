@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Menu, X, ShoppingCart } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import logoRed from "@/assets/logo-text-red.png";
 
 const navLinks = [
   { label: "Shop Beef", href: "https://dotsevenranch.com/collections/build-your-own-box" },
@@ -17,10 +18,8 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-charcoal/95 backdrop-blur-md">
       <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
-        <a href="https://dotsevenranch.com" className="flex items-center gap-3">
-          <span className="font-display text-2xl font-bold tracking-wide text-primary-foreground">
-            DOT SEVEN <span className="text-barn-red">RANCH</span>
-          </span>
+        <a href="https://dotsevenranch.com" className="flex items-center">
+          <img src={logoRed} alt="Dot Seven Ranch" className="h-8 md:h-10 w-auto" />
         </a>
 
         {/* Desktop */}
