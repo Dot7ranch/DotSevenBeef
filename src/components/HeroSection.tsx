@@ -61,7 +61,7 @@ const HeroSection = () => {
                 href="https://dotsevenranch.com/collections/beef-box-specials"
                 className="inline-flex items-center justify-center gap-2 border-2 border-primary-foreground/30 text-primary-foreground px-8 py-4 rounded font-body text-base font-semibold uppercase tracking-wider hover:border-primary-foreground/60 transition-all duration-300"
               >
-                View Beef Boxes
+                Build Your Own Box
               </a>
             </motion.div>
           </div>
