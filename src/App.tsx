@@ -17,6 +17,7 @@ const AppContent = () => {
   return (
     <Routes>
       <Route path="/" element={<Index />} />
+      <Route path="/our-story" element={<OurStoryPage />} />
       <Route path="/collections/:handle" element={<CollectionPage />} />
       <Route path="/product/:handle" element={<ProductPage />} />
       <Route path="*" element={<NotFound />} />
