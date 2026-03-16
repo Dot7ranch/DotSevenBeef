@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
+import WhyBetter from "@/components/WhyBetter";
 import ValueProps from "@/components/ValueProps";
 import ShopCategories from "@/components/ShopCategories";
 import CTABanner from "@/components/CTABanner";
@@ -10,6 +11,7 @@ const Index = () => {
     <div className="min-h-screen">
       <Navbar />
       <HeroSection />
+      <WhyBetter />
       <ValueProps />
       <ShopCategories />
       <CTABanner />
