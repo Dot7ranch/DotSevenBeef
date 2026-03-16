@@ -1,7 +1,6 @@
 import AnnouncementBar from "@/components/AnnouncementBar";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
-import WhyBetter from "@/components/WhyBetter";
 import ValueProps from "@/components/ValueProps";
 import ShopCategories from "@/components/ShopCategories";
 import RanchToTable from "@/components/RanchToTable";
