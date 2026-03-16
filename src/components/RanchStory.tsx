@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
-import familyPortrait from "@/assets/family-portrait.jpg";
-import grandparentsKids from "@/assets/grandparents-kids.jpg";
+import familyPortrait2 from "@/assets/family-portrait-2.jpg";
+import coupleRanch from "@/assets/couple-ranch.jpg";
+import brandingIron from "@/assets/branding-iron.jpg";
+import ranchKid from "@/assets/ranch-kid.jpg";
 
 const RanchStory = () => {
   return (
@@ -14,15 +16,13 @@ const RanchStory = () => {
           >
             <div className="grid grid-cols-2 gap-4">
               <div className="relative rounded-lg overflow-hidden col-span-2">
-                <img src={familyPortrait} alt="The Dot Seven Ranch family in front of the barn" className="w-full aspect-[16/9] object-cover" />
+                <img src={familyPortrait2} alt="The Dot Seven Ranch family" className="w-full aspect-[16/9] object-cover" />
               </div>
               <div className="relative rounded-lg overflow-hidden">
-                <img src={grandparentsKids} alt="Grandparents with grandchildren on the ranch" className="w-full aspect-[3/4] object-cover" />
+                <img src={coupleRanch} alt="Ranch couple watching the work" className="w-full aspect-[3/4] object-cover" />
               </div>
-              <div className="flex items-center justify-center bg-charcoal rounded-lg p-6">
-                <p className="font-display text-lg text-primary-foreground text-center uppercase tracking-wider leading-relaxed">
-                  Four<br />Generations<br /><span className="text-barn-red">Strong</span>
-                </p>
+              <div className="relative rounded-lg overflow-hidden">
+                <img src={ranchKid} alt="Young rancher on the job" className="w-full aspect-[3/4] object-cover" />
               </div>
             </div>
           </motion.div>
@@ -62,6 +62,16 @@ const RanchStory = () => {
             </div>
           </motion.div>
         </div>
+
+        {/* Branding action photo */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-16 rounded-lg overflow-hidden max-w-2xl mx-auto"
+        >
+          <img src={brandingIron} alt="Branding day on the ranch" className="w-full aspect-[3/4] object-cover" />
+        </motion.div>
       </div>
     </section>
   );
