@@ -10,7 +10,7 @@ const props = [
 
 const ValueProps = () => {
   return (
-    <section className="bg-charcoal py-16 lg:py-20">
+    <section className="bg-muted py-16 lg:py-20">
       <div className="max-w-7xl mx-auto section-padding">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {props.map((item, i) => (
