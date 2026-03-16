@@ -4,22 +4,22 @@ import { Beef, Timer, Package } from "lucide-react";
 const features = [
   {
     icon: "🐄",
-    title: "Raised on Our Family Ranch",
-    description: "No feedlot sourcing. No commodity beef.",
+    title: "Raised on Our Family Ranch.",
+    description: "No commodity beef.",
   },
   {
     icon: "🥩",
-    title: "Premium Black Angus Genetics",
-    description: "Three generations of selective breeding.",
+    title: "Premium Black Angus Genetics.",
+    description: "Four generations of selective breeding.",
   },
   {
     icon: "⏳",
-    title: "Dry-Aged for Flavor",
+    title: "Dry-Aged for Flavor.",
     description: "Tender, steakhouse-quality beef.",
   },
   {
     icon: "📦",
-    title: "Ranch to Freezer Shipping",
+    title: "Ranch to Freezer Shipping.",
     description: "Frozen at peak freshness and delivered nationwide.",
   },
 ];
