@@ -12,7 +12,7 @@ const shopBeefLinks = [
 { label: "Ground Beef & Sausage", href: "/collections/ground-beef-sausage" },
 { label: "Roasts & More", href: "/collections/roasts-more" },
 { label: "Offal Cuts", href: "/collections/offal-cuts" },
-{ label: "Beef Shares", href: "/collections/beef-shares" }];
+];
 
 
 const navLinks = [

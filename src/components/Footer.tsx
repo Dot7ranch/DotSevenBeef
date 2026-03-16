@@ -24,7 +24,7 @@ const Footer = () => {
                 { label: "Signature Steaks", href: "https://dotsevenranch.com/collections/steaks" },
                 { label: "Ground Beef & Sausage", href: "https://dotsevenranch.com/collections/ground-beef-sausage" },
                 { label: "Roasts & More", href: "https://dotsevenranch.com/collections/roasts-more" },
-                { label: "Beef Shares", href: "https://dotsevenranch.com/collections/beef-shares" },
+                
                 { label: "Gift Cards", href: "https://dotsevenranch.com/products/dot-seven-ranch-gift-cards-1" },
               ].map((link) => (
                 <a key={link.label} href={link.href} className="font-body text-sm text-primary-foreground/60 hover:text-barn-red transition-colors">
