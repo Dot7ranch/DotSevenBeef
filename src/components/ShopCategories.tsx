@@ -23,9 +23,8 @@ const ShopCategories = () => {
           viewport={{ once: true }}
           className="text-center mb-14"
         >
-          <p className="font-body text-sm tracking-[0.3em] uppercase text-barn-red font-semibold mb-3">Shop Our Selection</p>
           <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground">
-            Premium Cuts, <span className="italic">Delivered</span>
+            Start With Our Most Popular Boxes
           </h2>
         </motion.div>
 
