@@ -16,7 +16,7 @@ const RanchStory = () => {
           >
             <div className="grid grid-cols-2 gap-4">
               <div className="relative rounded-lg overflow-hidden col-span-2">
-                <img src={familyPortrait2} alt="The Dot Seven Ranch family" className="w-full aspect-[4/3] object-cover object-top" />
+                <img src={familyPortrait2} alt="The Dot Seven Ranch family" className="w-full object-cover" />
               </div>
               <div className="relative rounded-lg overflow-hidden">
                 <img src={coupleRanch} alt="Ranch couple watching the work" className="w-full aspect-[3/4] object-cover" />
