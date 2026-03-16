@@ -10,7 +10,7 @@ const props = [
 
 const ValueProps = () => {
   return (
-    <section className="bg-charcoal py-16 lg:py-20">
+    <section className="bg-muted py-16 lg:py-20">
       <div className="max-w-7xl mx-auto section-padding">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {props.map((item, i) => (
@@ -25,8 +25,8 @@ const ValueProps = () => {
               <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-barn-red/20 mb-4">
                 <item.icon size={22} className="text-barn-red" />
               </div>
-              <h3 className="font-display text-lg font-semibold text-primary-foreground mb-2">{item.title}</h3>
-              <p className="font-body text-sm text-primary-foreground/60 leading-relaxed">{item.desc}</p>
+              <h3 className="font-display text-lg font-semibold text-foreground mb-2">{item.title}</h3>
+              <p className="font-body text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
             </motion.div>
           ))}
         </div>
