@@ -14,7 +14,7 @@ const CTABanner = () => {
             Ready to Taste the Difference?
           </h2>
           <p className="font-body text-lg text-primary-foreground/80 mb-8 max-w-xl mx-auto">
-            Order today and receive premium, ranch-raised beef delivered to your door. Beef boxes ship every Tuesday!
+            Order today and receive premium, ranch-raised beef delivered to your door. Beef boxes ship every Monday!
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
