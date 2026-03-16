@@ -24,12 +24,6 @@ const CTABanner = () => {
               Build Your Box
               <ArrowRight size={18} />
             </a>
-            <a
-              href="https://dotsevenranch.com/collections/beef-shares"
-              className="inline-flex items-center justify-center gap-2 border-2 border-primary-foreground/40 text-primary-foreground px-8 py-4 rounded font-body text-base font-semibold uppercase tracking-wider hover:border-primary-foreground/80 transition-colors"
-            >
-              Buy a Beef Share
-            </a>
           </div>
         </motion.div>
       </div>
