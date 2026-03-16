@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import ranchLandscape from "@/assets/ranch-landscape.jpg";
-import familyPortrait from "@/assets/family-portrait.jpg";
+import cattlePasture from "@/assets/cattle-pasture.jpg";
+import familyHorse from "@/assets/family-horse.jpg";
 
 const RanchToTable = () => {
   return (
@@ -12,7 +12,6 @@ const RanchToTable = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="font-display text-4xl md:text-5xl font-bold text-charcoal text-center mb-12">
-          
           From Our Ranch to Your Table
         </motion.h2>
 
@@ -22,12 +21,10 @@ const RanchToTable = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="rounded-lg overflow-hidden mb-10">
-          
           <img
-            src={ranchLandscape}
-            alt="Dot Seven Ranch landscape"
+            src={cattlePasture}
+            alt="Black Angus cattle grazing on Dot Seven Ranch pasture"
             className="w-full aspect-[16/9] object-cover" />
-          
         </motion.div>
 
         {/* Short Story */}
@@ -36,7 +33,6 @@ const RanchToTable = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="font-body text-lg text-muted-foreground leading-relaxed space-y-4 mb-10 max-w-3xl mx-auto text-center">
-          
           <p>
             Since the inception of this ranch, four generations back, the mission hasn't wavered. Our goal is to grow healthy and sustainable cattle that supply a great source of protein for a growing population.
           </p>
@@ -51,16 +47,14 @@ const RanchToTable = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="rounded-lg overflow-hidden">
-          
           <img
-            src={familyPortrait}
-            alt="The Dot Seven Ranch family"
+            src={familyHorse}
+            alt="The Dot Seven Ranch family with horse and cattle"
             className="w-full aspect-[16/9] object-cover" />
-          
         </motion.div>
       </div>
-    </section>);
-
+    </section>
+  );
 };
 
 export default RanchToTable;
