@@ -13,7 +13,6 @@ const Index = () => {
     <div className="min-h-screen">
       <AnnouncementBar />
       <HeroSection />
-      <WhyBetter />
       <ValueProps />
       <ShopCategories />
       <RanchToTable />
