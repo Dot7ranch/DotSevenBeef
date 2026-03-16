@@ -52,7 +52,7 @@ const RanchStory = () => {
               <div className="w-px bg-border" />
               <div>
                 <p className="font-display text-3xl font-bold text-barn-red">100%</p>
-                <p className="font-body text-sm text-muted-foreground">Pasture Raised</p>
+                <p className="font-body text-sm text-muted-foreground">Family Owned  </p>
               </div>
               <div className="w-px bg-border" />
               <div>
