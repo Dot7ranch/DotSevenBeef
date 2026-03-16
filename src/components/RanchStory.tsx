@@ -12,11 +12,11 @@ const RanchStory = () => {
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-          >
+            viewport={{ once: true }}>
+            
             <div className="grid grid-cols-2 gap-4">
               <div className="relative rounded-lg overflow-hidden col-span-2">
-                <img src={familyPortrait2} alt="The Dot Seven Ranch family" className="w-full object-cover" />
+                
               </div>
               <div className="relative rounded-lg overflow-hidden">
                 <img src={coupleRanch} alt="Ranch couple watching the work" className="w-full aspect-[3/4] object-cover" />
@@ -30,8 +30,8 @@ const RanchStory = () => {
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-          >
+            viewport={{ once: true }}>
+            
             <p className="font-body text-sm tracking-[0.3em] uppercase text-barn-red font-semibold mb-3">Our Story</p>
             <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-6 leading-tight">
               A Legacy of <span className="italic">Quality</span> & Stewardship
@@ -68,13 +68,13 @@ const RanchStory = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-16 rounded-lg overflow-hidden max-w-2xl mx-auto"
-        >
+          className="mt-16 rounded-lg overflow-hidden max-w-2xl mx-auto">
+          
           <img src={brandingIron} alt="Branding day on the ranch" className="w-full aspect-[3/4] object-cover" />
         </motion.div>
       </div>
-    </section>
-  );
+    </section>);
+
 };
 
 export default RanchStory;
