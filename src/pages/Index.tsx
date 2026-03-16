@@ -4,6 +4,7 @@ import WhyBetter from "@/components/WhyBetter";
 import ValueProps from "@/components/ValueProps";
 import ShopCategories from "@/components/ShopCategories";
 import RanchToTable from "@/components/RanchToTable";
+import Testimonials from "@/components/Testimonials";
 import CTABanner from "@/components/CTABanner";
 import Footer from "@/components/Footer";
 
@@ -16,6 +17,7 @@ const Index = () => {
       <ValueProps />
       <ShopCategories />
       <RanchToTable />
+      <Testimonials />
       <CTABanner />
       <Footer />
     </div>
