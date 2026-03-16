@@ -7,6 +7,7 @@ import { useCartSync } from "@/hooks/useCartSync";
 import Index from "./pages/Index";
 import OurStoryPage from "./pages/OurStoryPage";
 import HistoryPage from "./pages/HistoryPage";
+import RecipesPage from "./pages/RecipesPage";
 import CollectionPage from "./pages/CollectionPage";
 import ProductPage from "./pages/ProductPage";
 import NotFound from "./pages/NotFound";
@@ -20,6 +21,7 @@ const AppContent = () => {
       <Route path="/" element={<Index />} />
       <Route path="/our-story" element={<OurStoryPage />} />
       <Route path="/history" element={<HistoryPage />} />
+      <Route path="/recipes" element={<RecipesPage />} />
       <Route path="/collections/:handle" element={<CollectionPage />} />
       <Route path="/product/:handle" element={<ProductPage />} />
       <Route path="*" element={<NotFound />} />

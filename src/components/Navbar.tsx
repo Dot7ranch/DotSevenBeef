@@ -16,7 +16,7 @@ const shopBeefLinks = [
 
 
 const navLinks = [
-{ label: "Recipes", href: "https://dotsevenranch.com/blogs/dinner-on-the-dot", external: true },
+{ label: "Recipes", href: "/recipes" },
 { label: "Ranch Swag", href: "/collections/ranch-swag" },
 { label: "Our Story", href: "/our-story" },
 { label: "Contact", href: "https://dotsevenranch.com/pages/contact-the-team", external: true }];
