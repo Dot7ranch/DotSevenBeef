@@ -12,7 +12,7 @@ const HeroSection = () => {
         style={{ backgroundImage: `url(${heroSteak})` }} />
       
       <div className="absolute inset-0 bg-charcoal/70" />
-      <div className="relative z-10 max-w-7xl mx-auto section-padding w-full py-32 lg:py-40">
+      <div className="relative z-10 max-w-7xl mx-auto section-padding w-full lg:py-40 py-[80px]">
         <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-16">
           {/* Text */}
           <div className="max-w-xl flex-1">
