@@ -5,7 +5,7 @@ const features = [
   {
     icon: "🐄",
     title: "Raised on Our Family Ranch.",
-    description: "No commodity beef.",
+    description: "No commodity beef. We know exactly how each animal was raised.",
   },
   {
     icon: "🥩",
