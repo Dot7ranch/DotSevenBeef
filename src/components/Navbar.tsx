@@ -135,19 +135,24 @@ const Navbar = () => {
               href={link.href}
               className="font-body text-sm font-medium tracking-widest uppercase text-primary-foreground/80 hover:text-barn-red transition-colors py-3 border-b border-primary-foreground/10"
               onClick={() => setIsOpen(false)}>
-              
                     {link.label}
                   </a> :
-
+            <div key={link.label}>
             <Link
-              key={link.label}
               to={link.href}
-              className="font-body text-sm font-medium tracking-widest uppercase text-primary-foreground/80 hover:text-barn-red transition-colors py-3 border-b border-primary-foreground/10"
+              className="font-body text-sm font-medium tracking-widest uppercase text-primary-foreground/80 hover:text-barn-red transition-colors py-3 border-b border-primary-foreground/10 block"
               onClick={() => setIsOpen(false)}>
-              
                     {link.label}
                   </Link>
-
+            {link.label === "Our Story" && (
+              <Link
+                to="/history"
+                className="block font-body text-sm text-primary-foreground/70 hover:text-barn-red py-2 pl-4"
+                onClick={() => setIsOpen(false)}>
+                Ranch History
+              </Link>
+            )}
+            </div>
             )}
 
               <Link
