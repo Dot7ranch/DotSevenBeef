@@ -20,7 +20,7 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="font-body text-sm tracking-[0.3em] uppercase text-barn-red font-semibold mb-4"
+              className="font-body text-sm tracking-[0.3em] uppercase text-cream font-semibold mb-4"
             >
               Four Generations of Ranching
             </motion.p>
