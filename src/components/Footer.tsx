@@ -56,8 +56,8 @@ const Footer = () => {
           <div>
             <h4 className="font-body text-xs tracking-[0.2em] uppercase text-primary-foreground/40 font-semibold mb-4">Contact</h4>
             <div className="flex flex-col gap-3">
-              <a href="mailto:dotsevenranch@gmail.com" className="inline-flex items-center gap-2 font-body text-sm text-primary-foreground/60 hover:text-barn-red transition-colors">
-                <Mail size={14} /> dotsevenranch@gmail.com
+              <a href="mailto:support@dotsevenranch.com" className="inline-flex items-center gap-2 font-body text-sm text-primary-foreground/60 hover:text-barn-red transition-colors">
+                <Mail size={14} /> support@dotsevenranch.com
               </a>
               <div className="inline-flex items-start gap-2 font-body text-sm text-primary-foreground/60">
                 <MapPin size={14} className="mt-0.5 shrink-0" /> Local Pickup: Longhorn Feed & Supply
