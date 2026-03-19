@@ -48,9 +48,9 @@ const RanchToTable = () => {
           viewport={{ once: true }}
           className="rounded-lg overflow-hidden">
           <img
-            src={familyHorse}
+
             alt="The Dot Seven Ranch family with horse and cattle"
-            className="w-full aspect-[16/9] object-cover" />
+            className="w-full aspect-[16/9] object-cover" src="/lovable-uploads/21eac2bf-a30b-4456-ab42-3aebc68fac49.jpg" />
         </motion.div>
       </div>
     </section>);
