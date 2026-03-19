@@ -2,28 +2,30 @@ import { motion } from "framer-motion";
 import { Leaf, Truck, ShieldCheck, Heart } from "lucide-react";
 
 const props = [
-  { 
-    icon: Leaf, 
-    title: "A Legacy of Stewardship", 
-    desc: "We continuously improve and protect the land for future generations of both cattle and family." 
-  },
-  { 
-    icon: Heart, 
-    title: "Family Owned", 
-    desc: `Four generations of ranching heritage. We
-take pride in every cut we produce. We never cut corners.` 
-  },
-  { 
-    icon: ShieldCheck, 
-    title: "No Antibiotics or Added Hormones", 
-    desc: "Clean, natural beef — the way it was meant to be." 
-  },
-  { 
-    icon: Truck, 
-    title: "Shipped Fresh Weekly", 
-    desc: "Beef boxes ship every Tuesday. Local pickup available at Longhorn Feed & Supply." 
-  }
-];
+{
+  icon: Leaf,
+  title: "Sustainably Raised",
+  desc: `Pasture-raised with environmental
+stewardship at the core of everything we do.`
+},
+{
+  icon: ShieldCheck,
+  title: "No Antibiotics or Added Hormones",
+  desc: `Clean, natural beef — the way it was meant
+to be. Nothing artificial, ever.`
+},
+{
+  icon: Truck,
+  title: "Shipped Fresh Weekly",
+  desc: "Beef boxes ship every Tuesday. Local pickup available at Longhorn Feed & Supply."
+},
+{
+  icon: Heart,
+  title: "Family Owned",
+  desc: `Four generations of ranching heritage. We
+take pride in every cut we produce.`
+}];
+
 
 
 const ValueProps = () => {
@@ -41,7 +43,7 @@ const ValueProps = () => {
             className="text-center rounded-lg p-6 h-full" style={{ border: '4px solid hsl(40, 12%, 78%)' }}>
             
               <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-barn-red/20 mb-4">
-                <item.icon size={22} className="text-barn-red" />
+                <item.icon size={22} className="text-barn-red text-destructive-foreground" />
               </div>
               <h3 className="font-display text-lg font-semibold text-foreground mb-2">{item.title}</h3>
               <p className="font-body text-sm text-muted-foreground leading-relaxed whitespace-pre-line">{item.desc}</p>
