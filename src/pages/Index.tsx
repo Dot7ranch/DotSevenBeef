@@ -18,6 +18,7 @@ const Index = () => {
       <ValueProps />
       <ShopCategories />
       <RanchToTable />
+      <HowItWorks />
       <Testimonials />
       <CTABanner />
       <Footer />
