@@ -70,14 +70,6 @@ const Footer = () => {
           <p className="font-body text-xs text-primary-foreground/40">
             © {new Date().getFullYear()} Dot Seven Ranch. All rights reserved.
           </p>
-          <div className="flex gap-6">
-            <a href="https://dotsevenranch.com/pages/buying-shipping-beef-q-a" className="font-body text-xs text-primary-foreground/40 hover:text-barn-red transition-colors">
-              Shipping  
-            </a>
-            <a href="https://dotsevenranch.com/pages/contact-the-team" className="font-body text-xs text-primary-foreground/40 hover:text-barn-red transition-colors">
-              Contact Us
-            </a>
-          </div>
         </div>
       </div>
     </footer>);
