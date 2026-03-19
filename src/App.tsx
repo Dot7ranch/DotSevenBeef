@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import OurStoryPage from "./pages/OurStoryPage";
 import HistoryPage from "./pages/HistoryPage";
 import RecipesPage from "./pages/RecipesPage";
+import FAQPage from "./pages/FAQPage";
 import CollectionPage from "./pages/CollectionPage";
 import ProductPage from "./pages/ProductPage";
 import NotFound from "./pages/NotFound";
@@ -22,6 +23,7 @@ const AppContent = () => {
       <Route path="/our-story" element={<OurStoryPage />} />
       <Route path="/history" element={<HistoryPage />} />
       <Route path="/recipes" element={<RecipesPage />} />
+      <Route path="/faq" element={<FAQPage />} />
       <Route path="/collections/:handle" element={<CollectionPage />} />
       <Route path="/product/:handle" element={<ProductPage />} />
       <Route path="*" element={<NotFound />} />
