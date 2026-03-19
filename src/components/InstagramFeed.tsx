@@ -49,9 +49,7 @@ const InstagramFeed = () => {
             The Instagram profile link is shown as a fallback.
           */}
           <div className="w-full max-w-4xl text-center">
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-              {/* Elfsight / SnapWidget embed goes here. For now, showing a CTA fallback */}
-            </div>
+            <div className="elfsight-app-b6a779d4-9bf3-4879-8ffc-88e93db9d274" data-elfsight-app-lazy></div>
             <a
               href="https://www.instagram.com/dotsevenranch/"
               target="_blank"
