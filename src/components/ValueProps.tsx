@@ -4,7 +4,7 @@ import { Leaf, Truck, ShieldCheck, Heart } from "lucide-react";
 const props = [
   { 
     icon: Leaf, 
-    title: "Sustainably Raised", 
+    title: "A Legacy of Stewardship", 
     desc: `Pasture-raised with environmental
 stewardship at the core of everything we do.` 
   },
