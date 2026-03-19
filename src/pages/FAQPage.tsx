@@ -51,7 +51,7 @@ const beefRaised = [
   {
     question: "Is your beef grain or grass fed/finished?",
     answer:
-      "Here at The Dot Seven Ranch we believe in choices. We don't however believe in fear based marketing, which is why we are offering both options based on availability. Providing beef direct to the public can be up to a two year process for a grass fed animal. We do our best to project correct quantities but sometimes we may not guess correctly and could be out of one or the other.",
+      "Here at the Dot Seven Ranch we are laser-focused on raising high quality, delicious tasting beef that gives our customers the steakhouse experience right at home. Our cattle spend the majority of their life grazing the hills of Sanger, CA. The last 120 days these animals are transitioned slowly to a mixed ration developed by a cattle nutritionist that includes: alfalfa, wheat hay, corn silage, rolled corn, and molasses.",
   },
   {
     question:
