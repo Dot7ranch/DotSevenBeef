@@ -20,6 +20,7 @@ const navLinks = [
 { label: "Ranch Swag", href: "/collections/ranch-swag" },
 { label: "Our Story", href: "/our-story" },
 { label: "FAQ", href: "/faq" },
+{ label: "Return Your Box", href: "/return-your-box" },
 { label: "Contact", href: "https://dotsevenranch.com/pages/contact-the-team", external: true }];
 
 

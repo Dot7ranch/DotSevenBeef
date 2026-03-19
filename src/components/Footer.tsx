@@ -43,6 +43,7 @@ const Footer = () => {
               { label: "Meet the Ranchers", href: "https://dotsevenranch.com/pages/your-ranchers" },
               { label: "Beef FAQs", href: "https://dotsevenranch.com/pages/buying-shipping-beef-q-a" },
               { label: "Recipes", href: "https://dotsevenranch.com/blogs/dinner-on-the-dot" },
+              { label: "Return Your Box", href: "/return-your-box" },
               { label: "Event Schedule", href: "https://dotsevenranch.com/pages/event-schedule" }].
               map((link) =>
               <a key={link.label} href={link.href} className="font-body text-sm text-primary-foreground/60 hover:text-barn-red transition-colors">
