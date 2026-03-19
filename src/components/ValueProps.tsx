@@ -16,7 +16,7 @@ take pride in every cut we produce. We never cut corners.`
   { 
     icon: ShieldCheck, 
     title: "No Antibiotics or Added Hormones", 
-    desc: "Clean, natural beef — the way it was meant to be. Nothing artificial, ever." 
+    desc: "Clean, natural beef — the way it was meant to be." 
   },
   { 
     icon: Truck, 
