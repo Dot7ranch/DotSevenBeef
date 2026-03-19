@@ -22,9 +22,9 @@ const RanchToTable = () => {
           viewport={{ once: true }}
           className="rounded-lg overflow-hidden mb-10">
           <img
-            src={cattlePasture}
+
             alt="Black Angus cattle grazing on Dot Seven Ranch pasture"
-            className="w-full aspect-[16/9] object-cover" />
+            className="w-full aspect-[16/9] object-cover" src="/lovable-uploads/721313ac-4e66-4fbe-97cf-490a3d5ede7d.jpg" />
         </motion.div>
 
         {/* Short Story */}
@@ -53,8 +53,8 @@ const RanchToTable = () => {
             className="w-full aspect-[16/9] object-cover" />
         </motion.div>
       </div>
-    </section>
-  );
+    </section>);
+
 };
 
 export default RanchToTable;
