@@ -10,7 +10,7 @@ const steps = [
   {
     icon: Truck,
     title: "We Ship From Our Ranch or Deliver to Longhorn Feed For Local Pick Up",
-    description: "Your order ships frozen with dry ice.",
+    description: "Your order ships frozen with dry ice. Orders are packed and shipped/delivered to Longhorn each Monday afternoon.",
   },
   {
     icon: UtensilsCrossed,
