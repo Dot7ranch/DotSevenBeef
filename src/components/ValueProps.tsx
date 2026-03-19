@@ -9,21 +9,20 @@ const props = [
 stewardship at the core of everything we do.`
 },
 {
+  icon: Heart,
+  title: "Family Owned",
+  desc: `Four generations of ranching heritage. We
+take pride in every cut we produce. We never cut corners.`
+},
+{
   icon: ShieldCheck,
   title: "No Antibiotics or Added Hormones",
-  desc: `Clean, natural beef — the way it was meant
-to be. Nothing artificial, ever.`
+  desc: "Clean, natural beef — the way it was meant to be."
 },
 {
   icon: Truck,
   title: "Shipped Fresh Weekly",
   desc: "Beef boxes ship every Tuesday. Local pickup available at Longhorn Feed & Supply."
-},
-{
-  icon: Heart,
-  title: "Family Owned",
-  desc: `Four generations of ranching heritage. We
-take pride in every cut we produce.`
 }];
 
 
