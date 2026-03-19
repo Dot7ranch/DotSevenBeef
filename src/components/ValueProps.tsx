@@ -40,7 +40,7 @@ const ValueProps = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.1 }}
-            className="text-center">
+            className="text-center border border-border rounded-lg p-6">
             
               <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-barn-red/20 mb-4">
                 <item.icon size={22} className="text-barn-red" />
