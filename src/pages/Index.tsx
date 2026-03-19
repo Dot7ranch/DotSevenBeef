@@ -20,6 +20,7 @@ const Index = () => {
       <ShopCategories />
       <RanchToTable />
       <HowItWorks />
+      <InstagramFeed />
       <Testimonials />
       <CTABanner />
       <Footer />
