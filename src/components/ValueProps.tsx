@@ -43,7 +43,7 @@ const ValueProps = () => {
             className="text-center rounded-lg p-6 h-full" style={{ border: '4px solid hsl(40, 12%, 78%)' }}>
             
               <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-barn-red/20 mb-4">
-                <item.icon size={22} className="text-barn-red text-destructive-foreground" />
+                <item.icon size={22} className="text-barn-red text-red-800" />
               </div>
               <h3 className="font-display text-lg font-semibold text-foreground mb-2">{item.title}</h3>
               <p className="font-body text-sm text-muted-foreground leading-relaxed whitespace-pre-line">{item.desc}</p>
