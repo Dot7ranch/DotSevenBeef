@@ -11,7 +11,8 @@ stewardship at the core of everything we do.`
 {
   icon: ShieldCheck,
   title: "No Antibiotics or Added Hormones",
-  desc: "Clean, natural beef — the way it was meant to be. Nothing artificial, ever."
+  desc: `Clean, natural beef — the way it was meant
+to be. Nothing artificial, ever.`
 },
 {
   icon: Truck,
