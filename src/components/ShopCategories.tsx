@@ -21,7 +21,7 @@ const ShopCategories = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-14">
+          className="text-center mb-6">
           
           <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-foreground">
             Start With Our Most Popular Boxes
