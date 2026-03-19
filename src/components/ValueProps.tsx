@@ -8,6 +8,12 @@ const props = [
     desc: "We continuously improve and protect the land for future generations of both cattle and family." 
   },
   { 
+    icon: Heart, 
+    title: "Family Owned", 
+    desc: `Four generations of ranching heritage. We
+take pride in every cut we produce.` 
+  },
+  { 
     icon: ShieldCheck, 
     title: "No Antibiotics or Added Hormones", 
     desc: "Clean, natural beef — the way it was meant to be. Nothing artificial, ever." 
@@ -16,12 +22,6 @@ const props = [
     icon: Truck, 
     title: "Shipped Fresh Weekly", 
     desc: "Beef boxes ship every Tuesday. Local pickup available at Longhorn Feed & Supply." 
-  },
-  { 
-    icon: Heart, 
-    title: "Family Owned", 
-    desc: `Four generations of ranching heritage. We
-take pride in every cut we produce.` 
   }
 ];
 
