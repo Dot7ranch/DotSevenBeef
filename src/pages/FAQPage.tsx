@@ -38,7 +38,7 @@ const beefLogistics = [
   {
     question: "How do I handle the dry ice?",
     answer:
-      "There will be instructions on the bag. Please handle with caution. Dry ice can burn and therefore we recommend you use gloves to set it aside when unpacking your box into the freezer. Do not put the dry ice in your freezer!",
+      "There will be instructions on the box. Please handle with caution. Dry ice can burn and therefore we recommend you use gloves to set it aside when unpacking your box into the freezer. Do not put the dry ice in your freezer!",
   },
 ];
 
