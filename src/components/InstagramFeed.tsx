@@ -24,7 +24,7 @@ const InstagramFeed = () => {
           className="text-center mb-10"
         >
           <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Thousands of Meals Served From Our Ranch
+            Follow Us on Instagram
           </h2>
           <a
             href="https://www.instagram.com/dotsevenranch/"
