@@ -19,6 +19,7 @@ const navLinks = [
 { label: "Dinner on the Dot", href: "/recipes" },
 { label: "Ranch Swag", href: "/collections/ranch-swag" },
 { label: "Our Story", href: "/our-story" },
+{ label: "FAQ", href: "/faq" },
 { label: "Contact", href: "https://dotsevenranch.com/pages/contact-the-team", external: true }];
 
 
