@@ -11,7 +11,7 @@ const props = [
     icon: Heart, 
     title: "Family Owned", 
     desc: `Four generations of ranching heritage. We
-take pride in every cut we produce.` 
+take pride in every cut we produce. We never cut corners.` 
   },
   { 
     icon: ShieldCheck, 
