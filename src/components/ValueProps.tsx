@@ -5,8 +5,7 @@ const props = [
   { 
     icon: Leaf, 
     title: "A Legacy of Stewardship", 
-    desc: `Pasture-raised with environmental
-stewardship at the core of everything we do.` 
+    desc: "We continuously improve and protect the land for future generations of both cattle and family." 
   },
   { 
     icon: ShieldCheck, 
