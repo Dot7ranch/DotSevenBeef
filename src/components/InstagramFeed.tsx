@@ -4,9 +4,8 @@ import { useEffect } from "react";
 
 const InstagramFeed = () => {
   useEffect(() => {
-    // Load Instagram embed script
     const script = document.createElement("script");
-    script.src = "https://www.instagram.com/embed.js";
+    script.src = "https://static.elfsight.com/platform/platform.js";
     script.async = true;
     document.body.appendChild(script);
 
