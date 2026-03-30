@@ -43,6 +43,7 @@ export const useCartStore = create<CartStore>()(
       items: [],
       cartId: null,
       checkoutUrl: null,
+      note: '',
       isLoading: false,
       isSyncing: false,
 
