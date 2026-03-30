@@ -323,6 +323,15 @@ const CART_LINES_REMOVE_MUTATION = `
   }
 `;
 
+const CART_NOTE_UPDATE_MUTATION = `
+  mutation cartNoteUpdate($cartId: ID!, $note: String!) {
+    cartNoteUpdate(cartId: $cartId, note: $note) {
+      cart { id }
+      userErrors { field message }
+    }
+  }
+`;
+
 function formatCheckoutUrl(checkoutUrl: string): string {
   try {
     const url = new URL(checkoutUrl);
@@ -390,6 +399,18 @@ export async function removeLineFromShopifyCart(cartId: string, lineId: string):
   });
 
   const userErrors = data?.data?.cartLinesRemove?.userErrors || [];
+  if (isCartNotFoundError(userErrors)) return { success: false, cartNotFound: true };
+  if (userErrors.length > 0) return { success: false };
+  return { success: true };
+}
+
+export async function updateShopifyCartNote(cartId: string, note: string): Promise<{ success: boolean; cartNotFound?: boolean }> {
+  const data = await storefrontApiRequest(CART_NOTE_UPDATE_MUTATION, {
+    cartId,
+    note,
+  });
+
+  const userErrors = data?.data?.cartNoteUpdate?.userErrors || [];
   if (isCartNotFoundError(userErrors)) return { success: false, cartNotFound: true };
   if (userErrors.length > 0) return { success: false };
   return { success: true };

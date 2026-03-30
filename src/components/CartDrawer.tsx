@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { ShoppingCart, Minus, Plus, Trash2, ExternalLink, Loader2 } from "lucide-react";
@@ -6,11 +6,17 @@ import { useCartStore } from "@/stores/cartStore";
 
 export const CartDrawer = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { items, isLoading, isSyncing, updateQuantity, removeItem, getCheckoutUrl, syncCart } = useCartStore();
+  const { items, note, isLoading, isSyncing, updateQuantity, removeItem, updateNote, getCheckoutUrl, syncCart } = useCartStore();
+  const [localNote, setLocalNote] = useState(note);
   const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
   const totalPrice = items.reduce((sum, item) => sum + (parseFloat(item.price.amount) * item.quantity), 0);
 
+  useEffect(() => { setLocalNote(note); }, [note]);
   useEffect(() => { if (isOpen) syncCart(); }, [isOpen, syncCart]);
+
+  const handleNoteBlur = useCallback(() => {
+    if (localNote !== note) updateNote(localNote);
+  }, [localNote, note, updateNote]);
 
   const handleCheckout = () => {
     const checkoutUrl = getCheckoutUrl();
@@ -84,6 +90,18 @@ export const CartDrawer = () => {
                 </div>
               </div>
               <div className="flex-shrink-0 space-y-4 pt-4 border-t border-charcoal/10">
+                <div>
+                  <label className="font-body text-sm text-charcoal-light mb-1 block">Order Notes</label>
+                  <textarea
+                    value={localNote}
+                    onChange={(e) => setLocalNote(e.target.value)}
+                    onBlur={handleNoteBlur}
+                    placeholder="Special instructions, delivery notes, etc."
+                    className="w-full rounded border border-charcoal/20 bg-cream px-3 py-2 font-body text-sm text-charcoal placeholder:text-charcoal-light/60 focus:outline-none focus:ring-1 focus:ring-barn-red resize-none"
+                    rows={2}
+                    maxLength={500}
+                  />
+                </div>
                 <div className="flex justify-between items-center">
                   <span className="font-display text-lg uppercase tracking-wider">Total</span>
                   <span className="font-display text-xl font-bold text-barn-red">${totalPrice.toFixed(2)}</span>
