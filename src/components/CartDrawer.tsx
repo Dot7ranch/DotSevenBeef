@@ -90,6 +90,18 @@ export const CartDrawer = () => {
                 </div>
               </div>
               <div className="flex-shrink-0 space-y-4 pt-4 border-t border-charcoal/10">
+                <div>
+                  <label className="font-body text-sm text-charcoal-light mb-1 block">Order Notes</label>
+                  <textarea
+                    value={localNote}
+                    onChange={(e) => setLocalNote(e.target.value)}
+                    onBlur={handleNoteBlur}
+                    placeholder="Special instructions, delivery notes, etc."
+                    className="w-full rounded border border-charcoal/20 bg-cream px-3 py-2 font-body text-sm text-charcoal placeholder:text-charcoal-light/60 focus:outline-none focus:ring-1 focus:ring-barn-red resize-none"
+                    rows={2}
+                    maxLength={500}
+                  />
+                </div>
                 <div className="flex justify-between items-center">
                   <span className="font-display text-lg uppercase tracking-wider">Total</span>
                   <span className="font-display text-xl font-bold text-barn-red">${totalPrice.toFixed(2)}</span>
