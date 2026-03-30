@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { ShoppingCart, Minus, Plus, Trash2, ExternalLink, Loader2 } from "lucide-react";
@@ -6,11 +6,17 @@ import { useCartStore } from "@/stores/cartStore";
 
 export const CartDrawer = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { items, isLoading, isSyncing, updateQuantity, removeItem, getCheckoutUrl, syncCart } = useCartStore();
+  const { items, note, isLoading, isSyncing, updateQuantity, removeItem, updateNote, getCheckoutUrl, syncCart } = useCartStore();
+  const [localNote, setLocalNote] = useState(note);
   const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
   const totalPrice = items.reduce((sum, item) => sum + (parseFloat(item.price.amount) * item.quantity), 0);
 
+  useEffect(() => { setLocalNote(note); }, [note]);
   useEffect(() => { if (isOpen) syncCart(); }, [isOpen, syncCart]);
+
+  const handleNoteBlur = useCallback(() => {
+    if (localNote !== note) updateNote(localNote);
+  }, [localNote, note, updateNote]);
 
   const handleCheckout = () => {
     const checkoutUrl = getCheckoutUrl();
