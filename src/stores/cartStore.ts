@@ -136,8 +136,19 @@ export const useCartStore = create<CartStore>()(
         }
       },
 
-      clearCart: () => set({ items: [], cartId: null, checkoutUrl: null }),
+      clearCart: () => set({ items: [], cartId: null, checkoutUrl: null, note: '' }),
       getCheckoutUrl: () => get().checkoutUrl,
+
+      updateNote: async (note: string) => {
+        const { cartId } = get();
+        set({ note });
+        if (!cartId) return;
+        try {
+          await updateShopifyCartNote(cartId, note);
+        } catch (error) {
+          console.error('Failed to update note:', error);
+        }
+      },
 
       syncCart: async () => {
         const { cartId, isSyncing, clearCart } = get();
