@@ -323,6 +323,15 @@ const CART_LINES_REMOVE_MUTATION = `
   }
 `;
 
+const CART_NOTE_UPDATE_MUTATION = `
+  mutation cartNoteUpdate($cartId: ID!, $note: String!) {
+    cartNoteUpdate(cartId: $cartId, note: $note) {
+      cart { id }
+      userErrors { field message }
+    }
+  }
+`;
+
 function formatCheckoutUrl(checkoutUrl: string): string {
   try {
     const url = new URL(checkoutUrl);
