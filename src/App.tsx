@@ -12,6 +12,7 @@ import RecipesPage from "./pages/RecipesPage";
 import FAQPage from "./pages/FAQPage";
 import ReturnYourBoxPage from "./pages/ReturnYourBoxPage";
 import CollectionPage from "./pages/CollectionPage";
+import ShopAllPage from "./pages/ShopAllPage";
 import ProductPage from "./pages/ProductPage";
 import NotFound from "./pages/NotFound";
 
