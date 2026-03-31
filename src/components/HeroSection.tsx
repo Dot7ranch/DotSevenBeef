@@ -52,15 +52,15 @@ const HeroSection = () => {
               
               <a
                 href="https://dotsevenranch.com/collections/build-your-own-box"
-                className="inline-flex items-center justify-center gap-2 bg-barn-red text-primary-foreground rounded font-body text-base font-semibold uppercase tracking-wider hover:bg-barn-red-dark transition-all duration-300 hover:shadow-lg px-[20px] py-[16px] border-0">
+                className="inline-flex items-center justify-center gap-2 bg-barn-red text-primary-foreground rounded font-body text-base font-semibold uppercase tracking-wider hover:bg-barn-red-dark transition-all duration-300 hover:shadow-lg px-[20px] py-[16px] border-0 whitespace-nowrap">
                 SHOP CURATED BOXES
                 <ArrowRight size={18} />
               </a>
               <a
                 href="https://dotsevenranch.com/collections/beef-box-specials"
-                className="inline-flex items-center justify-center gap-2 border-2 border-primary-foreground/30 text-primary-foreground px-8 py-4 rounded font-body text-base font-semibold uppercase tracking-wider hover:border-primary-foreground/60 transition-all duration-300">
-                
-                Build Your Own Box
+                className="inline-flex items-center justify-center gap-2 bg-barn-red text-primary-foreground rounded font-body text-base font-semibold uppercase tracking-wider hover:bg-barn-red-dark transition-all duration-300 hover:shadow-lg px-[20px] py-[16px] border-0 whitespace-nowrap">
+                BUILD YOUR OWN BOX
+                <ArrowRight size={18} />
               </a>
             </motion.div>
           </div>
