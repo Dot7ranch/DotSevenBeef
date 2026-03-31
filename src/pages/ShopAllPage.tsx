@@ -1,43 +1,33 @@
 import { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Loader2 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ProductCard from "@/components/ProductCard";
-import { fetchCollectionByHandle, type ShopifyProduct } from "@/lib/shopify";
+import { fetchProducts, type ShopifyProduct } from "@/lib/shopify";
 
-const CollectionPage = () => {
-  const { handle } = useParams<{ handle: string }>();
+const ShopAllPage = () => {
   const [products, setProducts] = useState<ShopifyProduct[]>([]);
-  const [collectionTitle, setCollectionTitle] = useState("");
-  const [collectionDescription, setCollectionDescription] = useState("");
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (!handle) return;
-    setLoading(true);
-    fetchCollectionByHandle(handle, 250).then((collection) => {
-      if (collection) {
-        setCollectionTitle(collection.title);
-        setCollectionDescription(collection.description || "");
-        setProducts(collection.products.edges.map((e: { node: ShopifyProduct["node"] }) => ({ node: e.node })));
-      }
+    fetchProducts(250).then((data) => {
+      setProducts(data);
       setLoading(false);
     });
-  }, [handle]);
+  }, []);
 
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
       <div className="pt-24 pb-16">
         <div className="max-w-7xl mx-auto section-padding">
-          {/* Breadcrumb */}
           <div className="mb-8">
             <nav className="font-body text-sm text-charcoal-light">
               <Link to="/" className="hover:text-barn-red transition-colors">Home</Link>
               <span className="mx-2">/</span>
-              <span className="text-charcoal">{collectionTitle || "Collection"}</span>
+              <span className="text-charcoal">All Products</span>
             </nav>
           </div>
 
@@ -47,11 +37,11 @@ const CollectionPage = () => {
             className="mb-12"
           >
             <h1 className="font-display text-4xl md:text-5xl font-bold text-charcoal uppercase tracking-wider mb-3">
-              {collectionTitle}
+              All Products
             </h1>
-            {collectionDescription && (
-              <p className="font-body text-lg text-charcoal-light max-w-2xl">{collectionDescription}</p>
-            )}
+            <p className="font-body text-lg text-charcoal-light">
+              Browse our full selection of ranch-raised beef, curated boxes, and more.
+            </p>
           </motion.div>
 
           {loading ? (
@@ -60,14 +50,17 @@ const CollectionPage = () => {
             </div>
           ) : products.length === 0 ? (
             <div className="text-center py-20">
-              <p className="font-body text-lg text-charcoal-light">No products found in this collection.</p>
+              <p className="font-body text-lg text-charcoal-light">No products found.</p>
             </div>
           ) : (
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-              {products.map((product) => (
-                <ProductCard key={product.node.id} product={product} />
-              ))}
-            </div>
+            <>
+              <p className="font-body text-sm text-charcoal-light mb-6">{products.length} products</p>
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+                {products.map((product) => (
+                  <ProductCard key={product.node.id} product={product} />
+                ))}
+              </div>
+            </>
           )}
         </div>
       </div>
@@ -76,4 +69,4 @@ const CollectionPage = () => {
   );
 };
 
-export default CollectionPage;
+export default ShopAllPage;

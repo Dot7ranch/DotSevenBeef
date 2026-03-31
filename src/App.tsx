@@ -12,6 +12,7 @@ import RecipesPage from "./pages/RecipesPage";
 import FAQPage from "./pages/FAQPage";
 import ReturnYourBoxPage from "./pages/ReturnYourBoxPage";
 import CollectionPage from "./pages/CollectionPage";
+import ShopAllPage from "./pages/ShopAllPage";
 import ProductPage from "./pages/ProductPage";
 import NotFound from "./pages/NotFound";
 
@@ -28,6 +29,7 @@ const AppContent = () => {
       <Route path="/faq" element={<FAQPage />} />
       <Route path="/return-your-box" element={<ReturnYourBoxPage />} />
       <Route path="/collections/:handle" element={<CollectionPage />} />
+      <Route path="/shop-all" element={<ShopAllPage />} />
       <Route path="/product/:handle" element={<ProductPage />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
