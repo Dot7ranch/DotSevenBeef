@@ -24,7 +24,7 @@ const ShopCategories = () => {
           className="text-center mb-6">
           
           <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-foreground">
-            Start With Our Most Popular Boxes
+            Start With Our Most Popular Curated Boxes
           </h2>
         </motion.div>
 
