@@ -22,7 +22,7 @@ take pride in every cut we produce. We never cut corners.`
 {
   icon: Truck,
   title: "Shipped Fresh Weekly",
-  desc: "Beef boxes ship every Tuesday. Local pickup available at Longhorn Feed & Supply."
+  desc: "Beef boxes ship every Monday. Local pickup available at Longhorn Feed & Supply."
 }];
 
 
