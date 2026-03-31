@@ -50,7 +50,7 @@ const HistoryPage = () => {
               animate={{ opacity: 1, y: 0 }}
             >
               <img src={dotSevenCow} alt="Dot Seven brand" className="w-20 h-20 mx-auto mb-6 object-contain" />
-              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight">
+              <h1 className="font-display text-4xl font-bold text-white mb-4 leading-tight md:text-2xl">
                 History of the <span className="italic">Dot Seven</span> Ranch
               </h1>
               <p className="font-body text-lg text-white/70">Est. 1948 · Sanger, California</p>

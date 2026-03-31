@@ -20,7 +20,7 @@ const RecipesPage = () => {
             <p className="font-body text-sm tracking-[0.3em] uppercase text-barn-red font-semibold mb-3">
               Beef Recipes
             </p>
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight">
+            <h1 className="font-display text-4xl font-bold text-white mb-4 leading-tight md:text-2xl">
               Dinner on the Dot
             </h1>
             <p className="font-body text-lg text-white/60 max-w-xl mx-auto">
