@@ -57,7 +57,7 @@ const HeroSection = () => {
                 <ArrowRight size={18} />
               </a>
               <a
-                href="https://dotsevenranch.com/collections/beef-box-specials"
+                href="/collections/build-your-own-box"
                 className="inline-flex items-center justify-center gap-2 bg-barn-red text-primary-foreground rounded font-body text-base font-semibold uppercase tracking-wider hover:bg-barn-red-dark transition-all duration-300 hover:shadow-lg px-[20px] py-[16px] border-0 whitespace-nowrap">
                 BUILD YOUR OWN BOX
                 <ArrowRight size={18} />
