@@ -46,7 +46,7 @@ const CollectionPage = () => {
             animate={{ opacity: 1, y: 0 }}
             className="mb-12"
           >
-            <h1 className="font-display text-4xl md:text-5xl font-bold text-charcoal uppercase tracking-wider mb-3">
+            <h1 className="font-display text-4xl font-bold text-charcoal uppercase tracking-wider mb-3 md:text-2xl">
               {collectionTitle}
             </h1>
             {collectionDescription && (
