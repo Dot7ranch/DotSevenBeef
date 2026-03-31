@@ -17,7 +17,7 @@ const CollectionPage = () => {
   useEffect(() => {
     if (!handle) return;
     setLoading(true);
-    fetchCollectionByHandle(handle, 50).then((collection) => {
+    fetchCollectionByHandle(handle, 250).then((collection) => {
       if (collection) {
         setCollectionTitle(collection.title);
         setCollectionDescription(collection.description || "");
