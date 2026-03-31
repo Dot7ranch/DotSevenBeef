@@ -92,7 +92,7 @@ const FAQPage = () => {
       <Navbar />
       <main className="pt-28 pb-20 px-6">
         <div className="max-w-3xl mx-auto">
-          <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4 text-center">
+          <h1 className="font-display text-4xl font-bold text-foreground mb-4 text-center md:text-2xl">
             Buying & Shipping Beef Q&A
           </h1>
           <p className="text-muted-foreground text-center mb-12 font-body text-lg">

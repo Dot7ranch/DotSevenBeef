@@ -7,7 +7,7 @@ const ReturnYourBoxPage = () => {
       <Navbar />
       <main className="pt-28 pb-20 px-6">
         <div className="max-w-3xl mx-auto">
-          <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-12 text-center">
+          <h1 className="font-display text-4xl font-bold text-foreground mb-12 text-center md:text-2xl">
             Return Your Box
           </h1>
 
