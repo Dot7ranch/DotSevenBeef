@@ -253,7 +253,7 @@ const COLLECTION_BY_HANDLE_QUERY = `
   }
 `;
 
-export async function fetchProducts(first = 50, query?: string) {
+export async function fetchProducts(first = 250, query?: string) {
   const data = await storefrontApiRequest(PRODUCTS_QUERY, { first, query });
   return (data?.data?.products?.edges || []) as ShopifyProduct[];
 }
