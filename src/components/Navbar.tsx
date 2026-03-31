@@ -6,6 +6,7 @@ import { CartDrawer } from "@/components/CartDrawer";
 import logoRed from "@/assets/logo-text-red.png";
 
 const shopBeefLinks = [
+{ label: "Shop All Products", href: "/shop-all" },
 { label: "Beef Box Specials", href: "/collections/beef-box-specials" },
 { label: "Shop by the Cut", href: "/collections/build-your-own-box" },
 { label: "Signature Steaks", href: "/collections/steaks" },
