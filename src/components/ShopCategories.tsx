@@ -5,12 +5,14 @@ import beefBox from "@/assets/beef-box.jpg";
 import steakCut from "@/assets/steak-cut.jpg";
 import groundBeef from "@/assets/ground-beef.jpg";
 import roast from "@/assets/roast.jpg";
+import offalCuts from "@/assets/offal-cuts.jpg";
 
 const categories = [
 { title: "Beef Box Specials", desc: "Curated boxes of our best cuts — perfect for families.", image: beefBox, href: "/collections/beef-box-specials" },
 { title: "Signature Steaks", desc: "Ribeyes, sirloins & more.", image: steakCut, href: "/collections/steaks" },
 { title: "Ground Beef & Sausage", desc: "Everyday essentials.", image: groundBeef, href: "/collections/ground-beef-sausage" },
-{ title: "Roasts & More", desc: "Sunday dinner favorites.", image: roast, href: "/collections/roasts-more" }];
+{ title: "Roasts & More", desc: "Sunday dinner favorites.", image: roast, href: "/collections/roasts-more" },
+{ title: "Offal Cuts", desc: "Unique, nutrient-rich cuts.", image: offalCuts, href: "/collections/offal-cuts" }];
 
 
 const ShopCategories = () => {
