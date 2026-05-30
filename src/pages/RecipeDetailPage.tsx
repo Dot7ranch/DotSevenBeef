@@ -101,12 +101,12 @@ const RecipeDetailPage = () => {
 
         {/* Image */}
         {heroImage && (
-          <div className="bg-cream">
-            <div className="max-w-5xl mx-auto">
+          <div className="bg-cream py-6">
+            <div className="max-w-2xl mx-auto section-padding">
               <img
                 src={heroImage}
                 alt={recipe.title}
-                className="w-full aspect-[16/9] object-cover"
+                className="w-full aspect-[4/3] object-cover rounded-lg"
               />
             </div>
           </div>
