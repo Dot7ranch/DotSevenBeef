@@ -12,7 +12,7 @@ const RecipesPage = () => {
       <Navbar />
       <div className="pt-20">
         {/* Hero */}
-        <section className="py-16 lg:py-20 bg-charcoal text-center">
+        <section className="py-8 lg:py-10 bg-charcoal text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
