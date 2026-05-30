@@ -27,6 +27,7 @@ const AppContent = () => {
       <Route path="/our-story" element={<OurStoryPage />} />
       <Route path="/history" element={<HistoryPage />} />
       <Route path="/recipes" element={<RecipesPage />} />
+      <Route path="/recipes/:slug" element={<RecipeDetailPage />} />
       <Route path="/faq" element={<FAQPage />} />
       <Route path="/return-your-box" element={<ReturnYourBoxPage />} />
       <Route path="/collections/:handle" element={<CollectionPage />} />
