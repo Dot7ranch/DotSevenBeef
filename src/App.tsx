@@ -9,6 +9,7 @@ import Index from "./pages/Index";
 import OurStoryPage from "./pages/OurStoryPage";
 import HistoryPage from "./pages/HistoryPage";
 import RecipesPage from "./pages/RecipesPage";
+import RecipeDetailPage from "./pages/RecipeDetailPage";
 import FAQPage from "./pages/FAQPage";
 import ReturnYourBoxPage from "./pages/ReturnYourBoxPage";
 import CollectionPage from "./pages/CollectionPage";
@@ -26,6 +27,7 @@ const AppContent = () => {
       <Route path="/our-story" element={<OurStoryPage />} />
       <Route path="/history" element={<HistoryPage />} />
       <Route path="/recipes" element={<RecipesPage />} />
+      <Route path="/recipes/:slug" element={<RecipeDetailPage />} />
       <Route path="/faq" element={<FAQPage />} />
       <Route path="/return-your-box" element={<ReturnYourBoxPage />} />
       <Route path="/collections/:handle" element={<CollectionPage />} />

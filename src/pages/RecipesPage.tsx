@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { ExternalLink } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CTABanner from "@/components/CTABanner";
@@ -34,41 +35,42 @@ const RecipesPage = () => {
           <div className="max-w-7xl mx-auto section-padding">
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {recipes.map((recipe, index) => (
-                <motion.a
+                <motion.div
                   key={recipe.slug + index}
-                  href={recipe.externalUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
                   initial={{ opacity: 0, y: 24 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-40px" }}
                   transition={{ delay: (index % 3) * 0.08 }}
-                  className="group bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow"
                 >
-                  <div className="relative overflow-hidden">
-                    <img
-                      src={recipe.image}
-                      alt={recipe.title}
-                      className="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-500"
-                      loading="lazy"
-                    />
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors" />
-                  </div>
-                  <div className="p-5">
-                    <p className="font-body text-xs tracking-widest uppercase text-barn-red mb-2">
-                      {recipe.date}
-                    </p>
-                    <h3 className="font-display text-lg font-bold text-foreground mb-2 group-hover:text-barn-red transition-colors">
-                      {recipe.title}
-                    </h3>
-                    <p className="font-body text-sm text-muted-foreground leading-relaxed line-clamp-2">
-                      {recipe.description}
-                    </p>
-                    <span className="inline-flex items-center gap-1.5 mt-3 font-body text-xs font-semibold uppercase tracking-wider text-barn-red">
-                      View Recipe <ExternalLink size={12} />
-                    </span>
-                  </div>
-                </motion.a>
+                  <Link
+                    to={`/recipes/${recipe.slug}`}
+                    className="group block bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow h-full"
+                  >
+                    <div className="relative overflow-hidden">
+                      <img
+                        src={recipe.image}
+                        alt={recipe.title}
+                        className="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-500"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors" />
+                    </div>
+                    <div className="p-5">
+                      <p className="font-body text-xs tracking-widest uppercase text-barn-red mb-2">
+                        {recipe.date}
+                      </p>
+                      <h3 className="font-display text-lg font-bold text-foreground mb-2 group-hover:text-barn-red transition-colors">
+                        {recipe.title}
+                      </h3>
+                      <p className="font-body text-sm text-muted-foreground leading-relaxed line-clamp-2">
+                        {recipe.description}
+                      </p>
+                      <span className="inline-flex items-center gap-1.5 mt-3 font-body text-xs font-semibold uppercase tracking-wider text-barn-red">
+                        View Recipe <ArrowRight size={12} />
+                      </span>
+                    </div>
+                  </Link>
+                </motion.div>
               ))}
             </div>
           </div>
