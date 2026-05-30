@@ -3,7 +3,7 @@ import { ArrowRight } from "lucide-react";
 
 const CTABanner = () => {
   return (
-    <section className="bg-barn-red py-16 lg:py-20">
+    <section className="bg-barn-red py-10 lg:py-12">
       <div className="max-w-4xl mx-auto section-padding text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

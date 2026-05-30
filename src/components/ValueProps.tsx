@@ -29,7 +29,7 @@ take pride in every cut we produce. We never cut corners.`
 
 const ValueProps = () => {
   return (
-    <section className="bg-muted lg:py-20 border-0 py-[40px]">
+    <section className="bg-muted lg:py-10 border-0 py-6">
       <div className="max-w-7xl mx-auto section-padding">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {props.map((item, i) =>

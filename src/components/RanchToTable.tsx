@@ -4,14 +4,14 @@ import familyHorse from "@/assets/family-horse.jpg";
 
 const RanchToTable = () => {
   return (
-    <section className="lg:py-28 bg-cream py-[40px]">
+    <section className="lg:py-14 bg-cream py-8">
       <div className="max-w-4xl mx-auto px-6 lg:px-8">
         {/* Headline */}
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="font-display text-4xl md:text-5xl font-bold text-charcoal text-center mb-12">
+          className="font-display text-4xl md:text-5xl font-bold text-charcoal text-center mb-6">
           From Our Ranch to Your Table
         </motion.h2>
 
@@ -20,7 +20,7 @@ const RanchToTable = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="rounded-lg overflow-hidden mb-10">
+          className="rounded-lg overflow-hidden mb-6">
           <img
 
             alt="Black Angus cattle grazing on Dot Seven Ranch pasture"
@@ -32,7 +32,7 @@ const RanchToTable = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="font-body text-lg text-muted-foreground leading-relaxed space-y-4 mb-10 max-w-3xl mx-auto text-center">
+          className="font-body text-lg text-muted-foreground leading-relaxed space-y-4 mb-6 max-w-3xl mx-auto text-center">
           <p>
             Since the inception of this ranch, four generations back, the mission hasn't wavered. Our goal is to grow healthy and sustainable cattle that supply a great source of protein for a growing population.
           </p>

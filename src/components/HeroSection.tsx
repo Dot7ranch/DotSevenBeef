@@ -5,14 +5,14 @@ import heroSteak from "@/assets/hero-steak.jpg";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-charcoal">
+    <section className="relative min-h-[75vh] flex items-center justify-center overflow-hidden bg-charcoal">
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: `url(${heroSteak})` }} />
       
       <div className="absolute inset-0 bg-charcoal/70" />
-      <div className="relative z-10 max-w-7xl mx-auto section-padding w-full lg:py-40 py-[80px] opacity-100">
+      <div className="relative z-10 max-w-7xl mx-auto section-padding w-full lg:py-20 py-12 opacity-100">
         <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-16">
           {/* Text */}
           <div className="max-w-xl flex-1">

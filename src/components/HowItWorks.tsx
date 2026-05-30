@@ -21,13 +21,13 @@ const steps = [
 
 const HowItWorks = () => {
   return (
-    <section className="py-16 lg:py-24 bg-background">
+    <section className="py-8 lg:py-12 bg-background">
       <div className="max-w-5xl mx-auto px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-14"
+          className="text-center mb-8"
         >
           <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-3">
             How It Works
