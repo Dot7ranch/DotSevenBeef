@@ -100,3 +100,15 @@
     box-shadow: var(--shadow-elevated);
   }
 }
+
+@media print {
+  @page {
+    margin: 0.75in;
+    size: letter;
+  }
+  body {
+    background: white !important;
+    color: black !important;
+    font-size: 12px;
+  }
+}
