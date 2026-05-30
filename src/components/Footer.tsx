@@ -1,4 +1,5 @@
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, MapPin } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -71,6 +72,9 @@ const Footer = () => {
           <p className="font-body text-xs text-primary-foreground/40">
             © {new Date().getFullYear()} Dot Seven Ranch. All rights reserved.
           </p>
+          <Link to="/accessibility" className="font-body text-xs text-primary-foreground/40 hover:text-barn-red transition-colors">
+            Accessibility Statement
+          </Link>
         </div>
       </div>
     </footer>);

@@ -37,11 +37,14 @@ const Navbar = () => {
         {/* Desktop nav links */}
         <div className="hidden lg:flex items-center gap-7">
           <div className="relative group">
-            <button className="font-body text-sm font-medium tracking-wide uppercase text-white/80 hover:text-barn-red transition-colors duration-200 inline-flex items-center gap-1 whitespace-nowrap">
-              Shop Beef <ChevronDown size={14} />
+            <button
+              className="font-body text-sm font-medium tracking-wide uppercase text-white/80 hover:text-barn-red transition-colors duration-200 inline-flex items-center gap-1 whitespace-nowrap"
+              aria-haspopup="menu"
+            >
+              Shop Beef <ChevronDown size={14} aria-hidden="true" />
             </button>
             <div className="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-              <div className="bg-charcoal rounded-lg shadow-xl border border-white/10 py-2 min-w-[220px]">
+              <div role="menu" className="bg-charcoal rounded-lg shadow-xl border border-white/10 py-2 min-w-[220px]">
                 {shopBeefLinks.map((link) => (
                   <Link
                     key={link.label}
@@ -84,8 +87,14 @@ const Navbar = () => {
         {/* Mobile */}
         <div className="lg:hidden flex items-center gap-4">
           <CartDrawer />
-          <button onClick={() => setIsOpen(!isOpen)} className="text-white">
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="text-white"
+            aria-label={isOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isOpen}
+            aria-controls="mobile-menu"
+          >
+            {isOpen ? <X size={24} aria-hidden="true" /> : <Menu size={24} aria-hidden="true" />}
           </button>
         </div>
       </div>
@@ -97,7 +106,8 @@ const Navbar = () => {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            className="lg:hidden bg-charcoal overflow-hidden border-t border-white/10"
+            id="mobile-menu"
+          className="lg:hidden bg-charcoal overflow-hidden border-t border-white/10"
           >
             <div className="flex flex-col px-6 pb-6 gap-2">
               <button

@@ -44,15 +44,17 @@ const Testimonials = () => {
           <div className="hidden md:flex gap-2">
             <button
               onClick={() => api?.scrollPrev()}
+              aria-label="Previous testimonial"
               className="h-10 w-10 rounded-full border border-border flex items-center justify-center hover:bg-muted transition-colors disabled:opacity-30"
             >
-              <ChevronLeft size={20} />
+              <ChevronLeft size={20} aria-hidden="true" />
             </button>
             <button
               onClick={() => api?.scrollNext()}
+              aria-label="Next testimonial"
               className="h-10 w-10 rounded-full border border-border flex items-center justify-center hover:bg-muted transition-colors disabled:opacity-30"
             >
-              <ChevronRight size={20} />
+              <ChevronRight size={20} aria-hidden="true" />
             </button>
           </div>
         </motion.div>
@@ -62,6 +64,8 @@ const Testimonials = () => {
           plugins={[autoplayPlugin.current]}
           opts={{ align: "start", loop: true }}
           className="w-full"
+          aria-label="Customer testimonials"
+          aria-live="polite"
         >
           <CarouselContent className="-ml-5">
             {testimonials.map((t, i) => (
@@ -94,6 +98,8 @@ const Testimonials = () => {
             <button
               key={i}
               onClick={() => api?.scrollTo(i)}
+              aria-label={`Go to testimonial ${i + 1}`}
+              aria-current={i === current ? "true" : undefined}
               className={`h-2 rounded-full transition-all duration-300 ${
                 i === current ? "w-6 bg-barn-red" : "w-2 bg-border"
               }`}

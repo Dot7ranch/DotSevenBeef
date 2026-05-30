@@ -29,8 +29,11 @@ export const CartDrawer = () => {
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
       <SheetTrigger asChild>
-        <button className="relative inline-flex items-center justify-center text-primary-foreground/80 hover:text-barn-red transition-colors">
-          <ShoppingCart size={20} />
+        <button
+          className="relative inline-flex items-center justify-center text-primary-foreground/80 hover:text-barn-red transition-colors"
+          aria-label={`Shopping cart${totalItems > 0 ? `, ${totalItems} item${totalItems !== 1 ? 's' : ''}` : ', empty'}`}
+        >
+          <ShoppingCart size={20} aria-hidden="true" />
           {totalItems > 0 && (
             <span className="absolute -top-2 -right-2 h-5 w-5 rounded-full bg-barn-red text-primary-foreground text-xs flex items-center justify-center font-body font-semibold">
               {totalItems}
@@ -72,16 +75,16 @@ export const CartDrawer = () => {
                         <p className="font-body font-semibold text-barn-red">${parseFloat(item.price.amount).toFixed(2)}</p>
                       </div>
                       <div className="flex flex-col items-end gap-2 flex-shrink-0">
-                        <button onClick={() => removeItem(item.variantId)} className="text-charcoal-light hover:text-barn-red transition-colors">
-                          <Trash2 className="h-4 w-4" />
+                        <button aria-label={`Remove ${item.product.node.title}`} onClick={() => removeItem(item.variantId)} className="text-charcoal-light hover:text-barn-red transition-colors">
+                          <Trash2 className="h-4 w-4" aria-hidden="true" />
                         </button>
                         <div className="flex items-center gap-1">
-                          <button onClick={() => updateQuantity(item.variantId, item.quantity - 1)} className="w-6 h-6 rounded border border-charcoal/20 flex items-center justify-center hover:bg-charcoal/10">
-                            <Minus className="h-3 w-3" />
+                          <button aria-label={`Decrease quantity of ${item.product.node.title}`} onClick={() => updateQuantity(item.variantId, item.quantity - 1)} className="w-6 h-6 rounded border border-charcoal/20 flex items-center justify-center hover:bg-charcoal/10">
+                            <Minus className="h-3 w-3" aria-hidden="true" />
                           </button>
-                          <span className="w-8 text-center text-sm font-body">{item.quantity}</span>
-                          <button onClick={() => updateQuantity(item.variantId, item.quantity + 1)} className="w-6 h-6 rounded border border-charcoal/20 flex items-center justify-center hover:bg-charcoal/10">
-                            <Plus className="h-3 w-3" />
+                          <span className="w-8 text-center text-sm font-body" aria-label={`Quantity: ${item.quantity}`}>{item.quantity}</span>
+                          <button aria-label={`Increase quantity of ${item.product.node.title}`} onClick={() => updateQuantity(item.variantId, item.quantity + 1)} className="w-6 h-6 rounded border border-charcoal/20 flex items-center justify-center hover:bg-charcoal/10">
+                            <Plus className="h-3 w-3" aria-hidden="true" />
                           </button>
                         </div>
                       </div>

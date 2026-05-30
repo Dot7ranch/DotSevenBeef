@@ -16,13 +16,21 @@ import CollectionPage from "./pages/CollectionPage";
 import ShopAllPage from "./pages/ShopAllPage";
 import ProductPage from "./pages/ProductPage";
 import NotFound from "./pages/NotFound";
+import AccessibilityPage from "./pages/AccessibilityPage";
 
 const queryClient = new QueryClient();
 
 const AppContent = () => {
   useCartSync();
   return (
-    <Routes>
+    <>
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:bg-white focus:text-barn-red focus:px-4 focus:py-2 focus:rounded focus:font-semibold focus:shadow-lg"
+      >
+        Skip to main content
+      </a>
+      <Routes>
       <Route path="/" element={<Index />} />
       <Route path="/our-story" element={<OurStoryPage />} />
       <Route path="/history" element={<HistoryPage />} />
@@ -33,8 +41,10 @@ const AppContent = () => {
       <Route path="/collections/:handle" element={<CollectionPage />} />
       <Route path="/shop-all" element={<ShopAllPage />} />
       <Route path="/product/:handle" element={<ProductPage />} />
+      <Route path="/accessibility" element={<AccessibilityPage />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
+    </>
   );
 };
 
