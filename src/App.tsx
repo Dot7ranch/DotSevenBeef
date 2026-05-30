@@ -9,6 +9,7 @@ import Index from "./pages/Index";
 import OurStoryPage from "./pages/OurStoryPage";
 import HistoryPage from "./pages/HistoryPage";
 import RecipesPage from "./pages/RecipesPage";
+import RecipeDetailPage from "./pages/RecipeDetailPage";
 import FAQPage from "./pages/FAQPage";
 import ReturnYourBoxPage from "./pages/ReturnYourBoxPage";
 import CollectionPage from "./pages/CollectionPage";
