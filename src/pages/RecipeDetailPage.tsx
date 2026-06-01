@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowLeft, Clock, Users, ChefHat, ExternalLink, Printer, Minus, Plus } from "lucide-react";
+import { ArrowLeft, Clock, Users, ChefHat, ExternalLink, Printer, Minus, Plus, ShoppingCart } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CTABanner from "@/components/CTABanner";
@@ -318,6 +318,30 @@ const RecipeDetailPage = () => {
             )}
           </div>
         </section>
+
+        {/* Shop the cut CTA */}
+        {recipe.shopUrl && (
+          <div className="print:hidden bg-charcoal py-10">
+            <div className="max-w-3xl mx-auto section-padding text-center">
+              <p className="font-body text-sm tracking-[0.2em] uppercase text-barn-red font-semibold mb-2">
+                Ready to Cook This?
+              </p>
+              <h2 className="font-display text-2xl md:text-3xl font-bold text-white mb-4">
+                Get the Exact Cut for This Recipe
+              </h2>
+              <p className="font-body text-white/70 mb-6">
+                All our beef is grass-fed, grain-finished, and shipped fresh from our ranch every Monday.
+              </p>
+              <Link
+                to={recipe.shopUrl}
+                className="inline-flex items-center gap-2 bg-barn-red text-white px-8 py-4 rounded font-body text-base font-semibold uppercase tracking-wider hover:bg-barn-red-dark transition-colors"
+              >
+                <ShoppingCart size={18} />
+                {recipe.shopLabel}
+              </Link>
+            </div>
+          </div>
+        )}
 
         <div className="print:hidden">
           <CTABanner />

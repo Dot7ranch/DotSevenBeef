@@ -73,7 +73,14 @@ const ProductPage = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      <div className="pt-24 pb-16">
+      {/* Shipping banner */}
+      <div className="bg-barn-red text-white py-3 px-6 text-center">
+        <p className="font-display text-sm md:text-base font-bold uppercase tracking-wider">
+          Flat Rate Shipping — Up to 15 lbs of Beef for One Low Price. Load Up Your Box!
+        </p>
+      </div>
+
+      <div className="pt-8 pb-16">
         <div className="max-w-7xl mx-auto section-padding">
           {/* Breadcrumb */}
           <nav className="font-body text-sm text-charcoal-light mb-8">

@@ -5,6 +5,8 @@ export interface Recipe {
   image: string;
   slug: string;
   externalUrl: string;
+  shopUrl: string;
+  shopLabel: string;
 }
 
 export const recipes: Recipe[] = [
@@ -15,6 +17,8 @@ export const recipes: Recipe[] = [
     image: "https://dotsevenranch.com/cdn/shop/articles/20251015001601-069b1c3a-0a4c-4694-aa56-1b925c3f1aa3_600x.jpg?v=1760487641",
     slug: "aloha-burgers",
     externalUrl: "https://dotsevenranch.com/blogs/dinner-on-the-dot/aloha-burgers",
+    shopUrl: "/collections/ground-beef-sausage",
+    shopLabel: "Shop Ground Beef",
   },
   {
     title: "Green Sauce Enchiladas",
@@ -23,6 +27,8 @@ export const recipes: Recipe[] = [
     image: "https://dotsevenranch.com/cdn/shop/articles/20250828232628-img_9204_600x.jpg?v=1756426203",
     slug: "green-sauce-enchiladas",
     externalUrl: "https://dotsevenranch.com/blogs/dinner-on-the-dot/green-sauce-enchiladas",
+    shopUrl: "/collections/roasts-more",
+    shopLabel: "Shop Roasts & More",
   },
   {
     title: "Steak & Strawberry Salad",
@@ -31,6 +37,8 @@ export const recipes: Recipe[] = [
     image: "https://dotsevenranch.com/cdn/shop/articles/IMG_2621_c69827bc-2d23-4b2c-ba58-031d83a54aca_600x.jpg?v=1739497117",
     slug: "steak-strawberry-salad-1",
     externalUrl: "https://dotsevenranch.com/blogs/dinner-on-the-dot/steak-strawberry-salad-1",
+    shopUrl: "/collections/steaks",
+    shopLabel: "Shop Signature Steaks",
   },
   {
     title: "Korean Style Flanken Ribs",
@@ -39,6 +47,8 @@ export const recipes: Recipe[] = [
     image: "https://dotsevenranch.com/cdn/shop/articles/20240820190429-img_8959_600x.jpg?v=1724346498",
     slug: "korean-flanken-ribs",
     externalUrl: "https://dotsevenranch.com/blogs/dinner-on-the-dot/korean-flanken-ribs",
+    shopUrl: "/collections/roasts-more",
+    shopLabel: "Shop Roasts & More",
   },
   {
     title: "Egg Roll Bowls",
@@ -47,6 +57,8 @@ export const recipes: Recipe[] = [
     image: "https://dotsevenranch.com/cdn/shop/articles/20240717232401-img_9181_600x.jpg?v=1724111569",
     slug: "egg-roll-bowls",
     externalUrl: "https://dotsevenranch.com/blogs/dinner-on-the-dot/egg-roll-bowls",
+    shopUrl: "/collections/ground-beef-sausage",
+    shopLabel: "Shop Ground Beef",
   },
   {
     title: "Burger Tacos",
@@ -55,6 +67,8 @@ export const recipes: Recipe[] = [
     image: "https://dotsevenranch.com/cdn/shop/articles/20231102211405-img_0102_600x.jpg?v=1719366534",
     slug: "burger-tacos",
     externalUrl: "https://dotsevenranch.com/blogs/dinner-on-the-dot/burger-tacos",
+    shopUrl: "/collections/ground-beef-sausage",
+    shopLabel: "Shop Ground Beef",
   },
   {
     title: "Cheese Burger Salad",
@@ -63,6 +77,8 @@ export const recipes: Recipe[] = [
     image: "https://dotsevenranch.com/cdn/shop/articles/cheese-burger-salad-515580_600x.jpg?v=1719399866",
     slug: "cheese-burger-salad",
     externalUrl: "https://dotsevenranch.com/blogs/dinner-on-the-dot/cheese-burger-salad",
+    shopUrl: "/collections/ground-beef-sausage",
+    shopLabel: "Shop Ground Beef",
   },
   {
     title: "Elote Steak Tacos",
@@ -71,6 +87,8 @@ export const recipes: Recipe[] = [
     image: "https://dotsevenranch.com/cdn/shop/articles/20240502231451-img_7090_600x.jpg?v=1714774503",
     slug: "elote-steak-tacos",
     externalUrl: "https://dotsevenranch.com/blogs/dinner-on-the-dot/elote-steak-tacos",
+    shopUrl: "/collections/steaks",
+    shopLabel: "Shop Signature Steaks",
   },
   {
     title: "Sirloin Tip Steak & Mint Chimmichurri",
@@ -79,6 +97,8 @@ export const recipes: Recipe[] = [
     image: "https://dotsevenranch.com/cdn/shop/articles/sirloin-tip-steak-mint-chimmichurri-661598_600x.png?v=1706300538",
     slug: "sirloin-tip-steak-mint-chimmichurri",
     externalUrl: "https://dotsevenranch.com/blogs/dinner-on-the-dot/sirloin-tip-steak-mint-chimmichurri",
+    shopUrl: "/collections/steaks",
+    shopLabel: "Shop Signature Steaks",
   },
   {
     title: "Dot Seven French Dip",
@@ -87,6 +107,8 @@ export const recipes: Recipe[] = [
     image: "https://dotsevenranch.com/cdn/shop/articles/dot-seven-french-dip-668137_600x.png?v=1703157667",
     slug: "left-over-steak-french-dip",
     externalUrl: "https://dotsevenranch.com/blogs/dinner-on-the-dot/left-over-steak-french-dip",
+    shopUrl: "/collections/steaks",
+    shopLabel: "Shop Signature Steaks",
   },
   {
     title: "Birria Tacos",
@@ -95,6 +117,8 @@ export const recipes: Recipe[] = [
     image: "https://dotsevenranch.com/cdn/shop/articles/birria-tacos-789183_600x.jpg?v=1700257593",
     slug: "birria-tacos",
     externalUrl: "https://dotsevenranch.com/blogs/dinner-on-the-dot/birria-tacos",
+    shopUrl: "/collections/roasts-more",
+    shopLabel: "Shop Roasts & More",
   },
   {
     title: "Low Carb Pizza Bowls",
@@ -103,6 +127,8 @@ export const recipes: Recipe[] = [
     image: "https://dotsevenranch.com/cdn/shop/articles/20231019222949-img_0476_600x.jpg?v=1770338569",
     slug: "low-carb-pizza-bowls",
     externalUrl: "https://dotsevenranch.com/blogs/dinner-on-the-dot/low-carb-pizza-bowls",
+    shopUrl: "/collections/ground-beef-sausage",
+    shopLabel: "Shop Ground Beef",
   },
   {
     title: "Cashew & Beef Boats",
@@ -111,6 +137,8 @@ export const recipes: Recipe[] = [
     image: "https://dotsevenranch.com/cdn/shop/articles/20231005210737-cashew-20beef-20boats_600x.jpg?v=1701322150",
     slug: "cashew-beef-boats",
     externalUrl: "https://dotsevenranch.com/blogs/dinner-on-the-dot/cashew-beef-boats",
+    shopUrl: "/collections/ground-beef-sausage",
+    shopLabel: "Shop Ground Beef",
   },
   {
     title: "Steak & Bell Pepper Pineapple Boats",
@@ -119,6 +147,8 @@ export const recipes: Recipe[] = [
     image: "https://dotsevenranch.com/cdn/shop/articles/steak-bell-pepper-pineapple-boats-543929_600x.png?v=1695863854",
     slug: "steak-bell-pepper-pineapple-boats",
     externalUrl: "https://dotsevenranch.com/blogs/dinner-on-the-dot/steak-bell-pepper-pineapple-boats",
+    shopUrl: "/collections/steaks",
+    shopLabel: "Shop Signature Steaks",
   },
   {
     title: "Marinated Steak Kabobs",
@@ -127,6 +157,8 @@ export const recipes: Recipe[] = [
     image: "https://dotsevenranch.com/cdn/shop/articles/marinated-steak-kabobs-242692_600x.png?v=1695863856",
     slug: "marinated-steak-kabobs",
     externalUrl: "https://dotsevenranch.com/blogs/dinner-on-the-dot/marinated-steak-kabobs",
+    shopUrl: "/collections/steaks",
+    shopLabel: "Shop Signature Steaks",
   },
   {
     title: "Scrambled Egg Toast",
@@ -135,6 +167,8 @@ export const recipes: Recipe[] = [
     image: "https://dotsevenranch.com/cdn/shop/articles/scrambled-egg-toast-379590_600x.jpg?v=1695863857",
     slug: "scrambled-egg-toast",
     externalUrl: "https://dotsevenranch.com/blogs/dinner-on-the-dot/scrambled-egg-toast",
+    shopUrl: "/collections/ground-beef-sausage",
+    shopLabel: "Shop Ground Beef & Sausage",
   },
   {
     title: "Quick & Easy Chorizo Breakfast Burritos",
@@ -143,6 +177,8 @@ export const recipes: Recipe[] = [
     image: "https://dotsevenranch.com/cdn/shop/articles/quick-easy-chorizo-breakfast-burritos-245805_600x.jpg?v=1695863860",
     slug: "chorizo-breakfast-burritos-1",
     externalUrl: "https://dotsevenranch.com/blogs/dinner-on-the-dot/chorizo-breakfast-burritos-1",
+    shopUrl: "/collections/ground-beef-sausage",
+    shopLabel: "Shop Ground Beef & Sausage",
   },
   {
     title: "Sweet & Savory Beef Chorizo Breakfast Sliders",
@@ -151,6 +187,8 @@ export const recipes: Recipe[] = [
     image: "https://dotsevenranch.com/cdn/shop/articles/sweet-savory-beef-chorizo-breakfast-sliders-608732_600x.jpg?v=1695863861",
     slug: "sweet-savory-beef-chorizo-breakfast-sliders",
     externalUrl: "https://dotsevenranch.com/blogs/dinner-on-the-dot/sweet-savory-beef-chorizo-breakfast-sliders",
+    shopUrl: "/collections/ground-beef-sausage",
+    shopLabel: "Shop Ground Beef & Sausage",
   },
   {
     title: "Quesadilla Crunch",
@@ -159,6 +197,8 @@ export const recipes: Recipe[] = [
     image: "https://dotsevenranch.com/cdn/shop/articles/quesadilla-crunch-578229_600x.png?v=1695863868",
     slug: "quesadilla-crunch",
     externalUrl: "https://dotsevenranch.com/blogs/dinner-on-the-dot/quesadilla-crunch",
+    shopUrl: "/collections/ground-beef-sausage",
+    shopLabel: "Shop Ground Beef",
   },
   {
     title: "Dot Seven Ribeye",
@@ -167,6 +207,8 @@ export const recipes: Recipe[] = [
     image: "https://dotsevenranch.com/cdn/shop/articles/dot-seven-ribeye-261114_600x.png?v=1695863876",
     slug: "dot-seven-ribeye",
     externalUrl: "https://dotsevenranch.com/blogs/dinner-on-the-dot/dot-seven-ribeye",
+    shopUrl: "/collections/steaks",
+    shopLabel: "Shop Signature Steaks",
   },
   {
     title: "Cheese Burger Salad",
@@ -175,6 +217,8 @@ export const recipes: Recipe[] = [
     image: "https://dotsevenranch.com/cdn/shop/articles/cheese-burger-salad-378683_600x.jpg?v=1719068385",
     slug: "burger-salad",
     externalUrl: "https://dotsevenranch.com/blogs/dinner-on-the-dot/burger-salad",
+    shopUrl: "/collections/ground-beef-sausage",
+    shopLabel: "Shop Ground Beef",
   },
   {
     title: "Mississippi Pot Roast",
@@ -183,6 +227,8 @@ export const recipes: Recipe[] = [
     image: "https://dotsevenranch.com/cdn/shop/articles/mississippi-pot-roast-641629_600x.png?v=1695863880",
     slug: "mississippi-pot-roast",
     externalUrl: "https://dotsevenranch.com/blogs/dinner-on-the-dot/mississippi-pot-roast",
+    shopUrl: "/collections/roasts-more",
+    shopLabel: "Shop Roasts & More",
   },
   {
     title: "Shredded Beef Loaded Potato",
@@ -191,6 +237,8 @@ export const recipes: Recipe[] = [
     image: "https://dotsevenranch.com/cdn/shop/articles/shredded-beef-loaded-potato-173251_600x.png?v=1695863885",
     slug: "shredded-beef-loaded-potato",
     externalUrl: "https://dotsevenranch.com/blogs/dinner-on-the-dot/shredded-beef-loaded-potato",
+    shopUrl: "/collections/roasts-more",
+    shopLabel: "Shop Roasts & More",
   },
   {
     title: "Taco Stuffed Shells",
@@ -199,6 +247,8 @@ export const recipes: Recipe[] = [
     image: "https://dotsevenranch.com/cdn/shop/articles/taco-stuffed-shells-337942_600x.png?v=1695863888",
     slug: "taco-stuffed-shells",
     externalUrl: "https://dotsevenranch.com/blogs/dinner-on-the-dot/taco-stuffed-shells",
+    shopUrl: "/collections/ground-beef-sausage",
+    shopLabel: "Shop Ground Beef",
   },
   {
     title: "Ground Beef Nachos",
@@ -207,6 +257,8 @@ export const recipes: Recipe[] = [
     image: "https://dotsevenranch.com/cdn/shop/articles/ground-beef-nachos-360015_600x.png?v=1695863892",
     slug: "ground-beef-nachos",
     externalUrl: "https://dotsevenranch.com/blogs/dinner-on-the-dot/ground-beef-nachos",
+    shopUrl: "/collections/ground-beef-sausage",
+    shopLabel: "Shop Ground Beef",
   },
   {
     title: "Crispy Steak Fingers",
@@ -215,6 +267,8 @@ export const recipes: Recipe[] = [
     image: "https://dotsevenranch.com/cdn/shop/articles/crispy-steak-fingers-722239_600x.png?v=1695863896",
     slug: "crispy-steak-fingers",
     externalUrl: "https://dotsevenranch.com/blogs/dinner-on-the-dot/crispy-steak-fingers",
+    shopUrl: "/collections/steaks",
+    shopLabel: "Shop Signature Steaks",
   },
   {
     title: "Steak & Strawberry Salad",
@@ -223,6 +277,8 @@ export const recipes: Recipe[] = [
     image: "https://dotsevenranch.com/cdn/shop/articles/steak-strawberry-salad-253726_600x.png?v=1695863900",
     slug: "steak-strawberry-salad",
     externalUrl: "https://dotsevenranch.com/blogs/dinner-on-the-dot/steak-strawberry-salad",
+    shopUrl: "/collections/steaks",
+    shopLabel: "Shop Signature Steaks",
   },
   {
     title: "Beef Chorizo Cheese Dip",
@@ -231,6 +287,8 @@ export const recipes: Recipe[] = [
     image: "https://dotsevenranch.com/cdn/shop/articles/beef-chorizo-cheese-dip-806345_600x.png?v=1695863903",
     slug: "beef-chorizo-cheese-dip",
     externalUrl: "https://dotsevenranch.com/blogs/dinner-on-the-dot/beef-chorizo-cheese-dip",
+    shopUrl: "/collections/ground-beef-sausage",
+    shopLabel: "Shop Ground Beef & Sausage",
   },
   {
     title: "Jalapeno Cheddar Beef Sausage Pasta",
@@ -239,6 +297,8 @@ export const recipes: Recipe[] = [
     image: "https://dotsevenranch.com/cdn/shop/articles/jalapeno-cheddar-beef-sausage-pasta-579530_600x.png?v=1695863907",
     slug: "jalapeno-cheddar-beef-sausage-pasta",
     externalUrl: "https://dotsevenranch.com/blogs/dinner-on-the-dot/jalapeno-cheddar-beef-sausage-pasta",
+    shopUrl: "/collections/ground-beef-sausage",
+    shopLabel: "Shop Ground Beef & Sausage",
   },
   {
     title: "Teriyaki Beef & Fried Rice",
@@ -247,5 +307,7 @@ export const recipes: Recipe[] = [
     image: "https://dotsevenranch.com/cdn/shop/articles/teriyaki-beef-fried-rice-467459_600x.png?v=1695863911",
     slug: "fried-rice-teriyaki-skirt-steak",
     externalUrl: "https://dotsevenranch.com/blogs/dinner-on-the-dot/fried-rice-teriyaki-skirt-steak",
+    shopUrl: "/collections/steaks",
+    shopLabel: "Shop Signature Steaks",
   },
 ];
