@@ -64,7 +64,13 @@ const CollectionPage = () => {
             </div>
           ) : (
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-              {products.map((product) => (
+              {(handle === "steaks"
+                ? [...products].sort((a, b) =>
+                    parseFloat(b.node.priceRange?.minVariantPrice?.amount || "0") -
+                    parseFloat(a.node.priceRange?.minVariantPrice?.amount || "0")
+                  )
+                : products
+              ).map((product) => (
                 <ProductCard key={product.node.id} product={product} />
               ))}
             </div>

@@ -3,6 +3,7 @@ import { Menu, X, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { CartDrawer } from "@/components/CartDrawer";
+import SearchBar from "@/components/SearchBar";
 
 const shopBeefLinks = [
   { label: "Shop All Products", href: "/shop-all" },
@@ -23,12 +24,12 @@ const navLinks = [
   { label: "Contact", href: "https://dotsevenranch.com/pages/contact-the-team", external: true },
 ];
 
-const Navbar = () => {
+const Navbar = ({ fixed: isFixed = true }: { fixed?: boolean }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [shopOpen, setShopOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-charcoal shadow-lg">
+    <nav className={`${isFixed ? "fixed top-0 left-0 right-0 z-50" : "relative w-full"} bg-charcoal shadow-lg`}>
       <div className="max-w-7xl mx-auto flex items-center justify-between px-8 py-4">
         <Link to="/" className="flex items-center flex-shrink-0">
           <img alt="Dot Seven Ranch" className="h-8 md:h-10 w-auto" src="/lovable-uploads/7ae91d95-dfac-40ac-9c80-3e44e7d849a2.png" />
@@ -79,13 +80,15 @@ const Navbar = () => {
           )}
         </div>
 
-        {/* Desktop cart */}
-        <div className="hidden lg:flex items-center ml-8">
+        {/* Desktop search + cart */}
+        <div className="hidden lg:flex items-center gap-5 ml-8">
+          <SearchBar />
           <CartDrawer />
         </div>
 
         {/* Mobile */}
         <div className="lg:hidden flex items-center gap-4">
+          <SearchBar />
           <CartDrawer />
           <button
             onClick={() => setIsOpen(!isOpen)}

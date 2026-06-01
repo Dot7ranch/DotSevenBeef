@@ -13,8 +13,10 @@ import Footer from "@/components/Footer";
 const Index = () => {
   return (
     <div className="min-h-screen">
-      <AnnouncementBar />
-      <Navbar />
+      <header className="sticky top-0 z-50">
+        <AnnouncementBar />
+        <Navbar fixed={false} />
+      </header>
       <main id="main-content">
       <HeroSection />
       <ValueProps />
