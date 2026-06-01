@@ -74,7 +74,7 @@ const ProductPage = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
       {/* Shipping banner */}
-      <div className="bg-barn-red text-white py-3 px-6 text-center">
+      <div className="mt-16 bg-barn-red text-white py-3 px-6 text-center">
         <p className="font-display text-sm md:text-base font-bold uppercase tracking-wider">
           Flat Rate Shipping — Up to 15 lbs of Beef for One Low Price. Load Up Your Box!
         </p>
