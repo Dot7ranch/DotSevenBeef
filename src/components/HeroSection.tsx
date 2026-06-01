@@ -4,7 +4,7 @@ import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import heroSteak from "@/assets/hero-steak.jpg";
 
-const fathersDayBanner = "https://cdn.shopify.com/s/files/1/0584/0411/0525/files/fathers_day_banner.png?v=1780346150";
+const fathersDayBanner = "https://cdn.shopify.com/s/files/1/0584/0411/0525/files/Untitled_design_24.png?v=1780347788";
 
 const HeroSection = () => {
   const [current, setCurrent] = useState(0);
@@ -102,13 +102,19 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* Slide 2 — full clickable area */}
-      <Link
-        to="/collections/steaks"
-        className="absolute inset-0 z-10 transition-opacity duration-700"
+      {/* Slide 2 — button */}
+      <div
+        className="absolute inset-0 z-10 flex items-end justify-center pb-16 transition-opacity duration-700"
         style={{ opacity: current === 1 ? 1 : 0, pointerEvents: current === 1 ? "auto" : "none" }}
-        aria-label="Shop Signature Steaks — Father's Day promotion"
-      />
+      >
+        <Link
+          to="/collections/steaks"
+          className="inline-flex items-center justify-center gap-2 bg-barn-red text-white rounded font-body text-base font-semibold uppercase tracking-wider hover:bg-barn-red-dark transition-all duration-300 hover:shadow-lg px-8 py-4 whitespace-nowrap"
+        >
+          SHOP SIGNATURE STEAKS
+          <ArrowRight size={18} />
+        </Link>
+      </div>
 
       {/* Dot navigation */}
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-3">
