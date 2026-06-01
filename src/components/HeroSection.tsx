@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-
+import { Link } from "react-router-dom";
 import heroSteak from "@/assets/hero-steak.jpg";
 
 const HeroSection = () => {
@@ -52,18 +52,18 @@ const HeroSection = () => {
               transition={{ delay: 0.8 }}
               className="flex flex-col sm:flex-row gap-4">
               
-              <a
-                href="/collections/beef-box-specials"
+              <Link
+                to="/collections/beef-box-specials"
                 className="inline-flex items-center justify-center gap-2 bg-barn-red text-primary-foreground rounded font-body text-base font-semibold uppercase tracking-wider hover:bg-barn-red-dark transition-all duration-300 hover:shadow-lg px-[20px] py-[16px] border-0 whitespace-nowrap">
                 SHOP CURATED BOXES
                 <ArrowRight size={18} />
-              </a>
-              <a
-                href="/collections/build-your-own-box"
+              </Link>
+              <Link
+                to="/collections/build-your-own-box"
                 className="inline-flex items-center justify-center gap-2 bg-barn-red text-primary-foreground rounded font-body text-base font-semibold uppercase tracking-wider hover:bg-barn-red-dark transition-all duration-300 hover:shadow-lg px-[20px] py-[16px] border-0 whitespace-nowrap">
                 BUILD YOUR OWN BOX
                 <ArrowRight size={18} />
-              </a>
+              </Link>
             </motion.div>
           </div>
 
