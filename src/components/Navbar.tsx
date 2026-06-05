@@ -7,13 +7,14 @@ import SearchBar from "@/components/SearchBar";
 
 const shopBeefLinks = [
   { label: "Shop All Products", href: "/shop-all" },
+  { label: "¼ Beef Share", href: "/product/1-4-beef-share", featured: true },
   { label: "Beef Box Specials", href: "/collections/beef-box-specials" },
   { label: "Shop by the Cut", href: "/collections/build-your-own-box" },
   { label: "Signature Steaks", href: "/collections/steaks" },
   { label: "Ground Beef & Sausage", href: "/collections/ground-beef-sausage" },
   { label: "Roasts & More", href: "/collections/roasts-more" },
   { label: "Offal Cuts", href: "/collections/offal-cuts" },
-];
+] as { label: string; href: string; featured?: boolean }[];
 
 const navLinks = [
   { label: "Dinner on the Dot", href: "/recipes" },
@@ -46,15 +47,29 @@ const Navbar = ({ fixed: isFixed = true }: { fixed?: boolean }) => {
             </button>
             <div className="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
               <div role="menu" className="bg-charcoal rounded-lg shadow-xl border border-white/10 py-2 min-w-[220px]">
-                {shopBeefLinks.map((link) => (
-                  <Link
-                    key={link.label}
-                    to={link.href}
-                    className="block px-4 py-2 font-body text-sm text-white/80 hover:text-barn-red hover:bg-white/5 transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                ))}
+                {shopBeefLinks.map((link) =>
+                  link.featured ? (
+                    <div key={link.label}>
+                      <div className="px-4 pt-2 pb-1">
+                        <p className="font-body text-xs uppercase tracking-widest text-white/30">Buy in Bulk</p>
+                      </div>
+                      <Link
+                        to={link.href}
+                        className="block px-4 py-2 font-body text-sm font-semibold text-barn-red hover:bg-white/5 transition-colors border-b border-white/10 mb-1"
+                      >
+                        {link.label}
+                      </Link>
+                    </div>
+                  ) : (
+                    <Link
+                      key={link.label}
+                      to={link.href}
+                      className="block px-4 py-2 font-body text-sm text-white/80 hover:text-barn-red hover:bg-white/5 transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  )
+                )}
               </div>
             </div>
           </div>
@@ -122,16 +137,29 @@ const Navbar = ({ fixed: isFixed = true }: { fixed?: boolean }) => {
               <AnimatePresence>
                 {shopOpen && (
                   <motion.div initial={{ height: 0 }} animate={{ height: "auto" }} exit={{ height: 0 }} className="overflow-hidden pl-4">
-                    {shopBeefLinks.map((link) => (
-                      <Link
-                        key={link.label}
-                        to={link.href}
-                        className="block font-body text-sm text-white/70 hover:text-barn-red py-2"
-                        onClick={() => setIsOpen(false)}
-                      >
-                        {link.label}
-                      </Link>
-                    ))}
+                    {shopBeefLinks.map((link) =>
+                      link.featured ? (
+                        <div key={link.label}>
+                          <p className="font-body text-xs uppercase tracking-widest text-white/30 pt-2 pb-1">Buy in Bulk</p>
+                          <Link
+                            to={link.href}
+                            className="block font-body text-sm font-semibold text-barn-red py-2 border-b border-white/10 mb-1"
+                            onClick={() => setIsOpen(false)}
+                          >
+                            {link.label}
+                          </Link>
+                        </div>
+                      ) : (
+                        <Link
+                          key={link.label}
+                          to={link.href}
+                          className="block font-body text-sm text-white/70 hover:text-barn-red py-2"
+                          onClick={() => setIsOpen(false)}
+                        >
+                          {link.label}
+                        </Link>
+                      )
+                    )}
                   </motion.div>
                 )}
               </AnimatePresence>

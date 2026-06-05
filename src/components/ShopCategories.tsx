@@ -6,8 +6,10 @@ import steakCut from "@/assets/steak-cut.jpg";
 import groundBeef from "@/assets/ground-beef.jpg";
 import roast from "@/assets/roast.jpg";
 import offalCuts from "@/assets/offal-cuts.jpg";
+import cattlePasture from "@/assets/cattle-pasture.jpg";
 
 const categories = [
+{ title: "¼ Beef Share", desc: "Fill your freezer direct from our ranch — 150 lbs of custom-cut beef.", image: cattlePasture, href: "/product/1-4-beef-share" },
 { title: "Beef Box Specials", desc: "Curated boxes of our best cuts — perfect for families.", image: beefBox, href: "/collections/beef-box-specials" },
 { title: "Shop by the Cut", desc: "Build your own box with exactly the cuts you want.", image: roast, href: "/collections/build-your-own-box" },
 { title: "Signature Steaks", desc: "Ribeyes, sirloins & more — our best cuts.", image: steakCut, href: "/collections/steaks" },
@@ -25,11 +27,11 @@ const ShopCategories = () => {
           className="text-center mb-6">
 
           <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-foreground">
-            Start With Our Most Popular Curated Boxes
+            Shop Our Best Sellers
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {categories.map((cat, i) =>
           <motion.div
             key={cat.title}
