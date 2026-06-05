@@ -6,10 +6,10 @@ import steakCut from "@/assets/steak-cut.jpg";
 import groundBeef from "@/assets/ground-beef.jpg";
 import roast from "@/assets/roast.jpg";
 import offalCuts from "@/assets/offal-cuts.jpg";
-import cattlePasture from "@/assets/cattle-pasture.jpg";
+const BEEF_SHARE_IMAGE = "https://cdn.shopify.com/s/files/1/0584/0411/0525/files/OneFullBeefShare.png?v=1778879970";
 
 const categories = [
-{ title: "¼ Beef Share", desc: "Fill your freezer direct from our ranch — 150 lbs of custom-cut beef.", image: cattlePasture, href: "/product/1-4-beef-share" },
+{ title: "¼ Beef Share", desc: "Fill your freezer direct from our ranch — 150 lbs of custom-cut beef.", image: BEEF_SHARE_IMAGE, href: "/product/1-4-beef-share" },
 { title: "Beef Box Specials", desc: "Curated boxes of our best cuts — perfect for families.", image: beefBox, href: "/collections/beef-box-specials" },
 { title: "Shop by the Cut", desc: "Build your own box with exactly the cuts you want.", image: roast, href: "/collections/build-your-own-box" },
 { title: "Signature Steaks", desc: "Ribeyes, sirloins & more — our best cuts.", image: steakCut, href: "/collections/steaks" },

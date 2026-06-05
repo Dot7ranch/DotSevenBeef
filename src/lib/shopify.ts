@@ -131,7 +131,7 @@ const PRODUCTS_QUERY = `
 
 const PRODUCT_BY_HANDLE_QUERY = `
   query GetProductByHandle($handle: String!) {
-    productByHandle(handle: $handle) {
+    product(handle: $handle) {
       id
       title
       description
@@ -260,7 +260,7 @@ export async function fetchProducts(first = 250, query?: string) {
 
 export async function fetchProductByHandle(handle: string) {
   const data = await storefrontApiRequest(PRODUCT_BY_HANDLE_QUERY, { handle });
-  return data?.data?.productByHandle || null;
+  return data?.data?.product || null;
 }
 
 export async function fetchCollections(first = 20) {
