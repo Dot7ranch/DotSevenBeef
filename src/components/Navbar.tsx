@@ -33,7 +33,7 @@ const Navbar = ({ fixed: isFixed = true }: { fixed?: boolean }) => {
     <nav className={`${isFixed ? "fixed top-0 left-0 right-0 z-50" : "relative w-full"} bg-charcoal shadow-lg`}>
       <div className="max-w-7xl mx-auto flex items-center justify-between px-8 py-4">
         <Link to="/" className="flex items-center flex-shrink-0">
-          <img alt="Dot Seven Ranch" className="h-8 md:h-10 w-auto" src="/lovable-uploads/7ae91d95-dfac-40ac-9c80-3e44e7d849a2.png" />
+          <img alt="Dot Seven Ranch" className="h-8 md:h-10 w-auto" src="/uploads/7ae91d95-dfac-40ac-9c80-3e44e7d849a2.png" />
         </Link>
 
         {/* Desktop nav links */}

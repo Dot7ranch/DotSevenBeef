@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+﻿import { motion } from "framer-motion";
 import cattlePasture from "@/assets/cattle-pasture.jpg";
 import familyHorse from "@/assets/family-horse.jpg";
 
@@ -24,7 +24,7 @@ const RanchToTable = () => {
           <img
 
             alt="Black Angus cattle grazing on Dot Seven Ranch pasture"
-            className="w-full aspect-[16/9] object-cover" src="/lovable-uploads/721313ac-4e66-4fbe-97cf-490a3d5ede7d.jpg" />
+            className="w-full aspect-[16/9] object-cover" src="/uploads/721313ac-4e66-4fbe-97cf-490a3d5ede7d.jpg" />
         </motion.div>
 
         {/* Short Story */}
@@ -50,7 +50,7 @@ const RanchToTable = () => {
           <img
 
             alt="The Dot Seven Ranch family with horse and cattle"
-            className="w-full aspect-[16/9] object-cover" src="/lovable-uploads/21eac2bf-a30b-4456-ab42-3aebc68fac49.jpg" />
+            className="w-full aspect-[16/9] object-cover" src="/uploads/21eac2bf-a30b-4456-ab42-3aebc68fac49.jpg" />
         </motion.div>
       </div>
     </section>);
