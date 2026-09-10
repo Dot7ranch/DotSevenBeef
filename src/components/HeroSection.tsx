@@ -27,7 +27,7 @@ const HeroSection = () => {
       />
       {/* Slide 2 background — Ground Beef Stock-up Sale */}
       <div
-        className="absolute inset-0 bg-cover bg-center transition-opacity duration-1000"
+        className="absolute inset-0 bg-contain bg-no-repeat bg-center transition-opacity duration-1000"
         style={{ backgroundImage: `url(${groundBeefSaleBanner})`, opacity: current === 1 ? 1 : 0 }}
         aria-hidden="true"
       />
