@@ -4,7 +4,7 @@ import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import heroSteak from "@/assets/hero-steak.jpg";
 
-const fathersDayBanner = "https://cdn.shopify.com/s/files/1/0584/0411/0525/files/Untitled_design_24.png?v=1780347788";
+const groundBeefSaleBanner = "/uploads/ground-beef-stockup-sale.png";
 
 const HeroSection = () => {
   const [current, setCurrent] = useState(0);
@@ -25,10 +25,10 @@ const HeroSection = () => {
         style={{ backgroundImage: `url(${heroSteak})`, opacity: current === 0 ? 1 : 0 }}
         aria-hidden="true"
       />
-      {/* Slide 2 background */}
+      {/* Slide 2 background — Ground Beef Stock-up Sale */}
       <div
         className="absolute inset-0 bg-cover bg-center transition-opacity duration-1000"
-        style={{ backgroundImage: `url(${fathersDayBanner})`, opacity: current === 1 ? 1 : 0 }}
+        style={{ backgroundImage: `url(${groundBeefSaleBanner})`, opacity: current === 1 ? 1 : 0 }}
         aria-hidden="true"
       />
 
@@ -102,19 +102,13 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* Slide 2 — button */}
-      <div
-        className="absolute inset-0 z-10 flex items-end justify-center pb-16 transition-opacity duration-700"
+      {/* Slide 2 — whole banner links to the sale */}
+      <Link
+        to="/product/ground-beef-stock-up-special"
+        aria-label="Shop the Ground Beef Stock-up Sale"
+        className="absolute inset-0 z-10 transition-opacity duration-700"
         style={{ opacity: current === 1 ? 1 : 0, pointerEvents: current === 1 ? "auto" : "none" }}
-      >
-        <Link
-          to="/collections/steaks"
-          className="inline-flex items-center justify-center gap-2 bg-barn-red text-white rounded font-body text-base font-semibold uppercase tracking-wider hover:bg-barn-red-dark transition-all duration-300 hover:shadow-lg px-8 py-4 whitespace-nowrap"
-        >
-          SHOP SIGNATURE STEAKS
-          <ArrowRight size={18} />
-        </Link>
-      </div>
+      />
 
       {/* Dot navigation */}
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-3">
