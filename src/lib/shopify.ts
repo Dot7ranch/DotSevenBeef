@@ -1,10 +1,7 @@
 import { toast } from "sonner";
 import { getCartAttributes } from "@/lib/analytics";
 
-const SHOPIFY_API_VERSION = '2025-07';
-const SHOPIFY_STORE_PERMANENT_DOMAIN = 'dot-seven-ranch.myshopify.com';
-const SHOPIFY_STOREFRONT_URL = `https://${SHOPIFY_STORE_PERMANENT_DOMAIN}/api/${SHOPIFY_API_VERSION}/graphql.json`;
-const SHOPIFY_STOREFRONT_TOKEN = '038d99025c6c7417b20bd1d6a684d40a';
+import { SHOPIFY_STOREFRONT_URL, SHOPIFY_STOREFRONT_TOKEN } from "@/lib/shopifyConfig";
 
 export interface ShopifyProduct {
   node: {
