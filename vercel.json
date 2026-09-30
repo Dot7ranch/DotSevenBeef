@@ -1,5 +1,8 @@
 {
   "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+    { "source": "/product/:handle", "destination": "/api/share?path=/product/:handle" },
+    { "source": "/collections/:handle", "destination": "/api/share?path=/collections/:handle" },
+    { "source": "/recipes/:slug", "destination": "/api/share?path=/recipes/:slug" },
+    { "source": "/((?!api/).*)", "destination": "/index.html" }
   ]
 }
