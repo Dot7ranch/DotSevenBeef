@@ -7,6 +7,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { fetchProductByHandle } from "@/lib/shopify";
 import { useCartStore } from "@/stores/cartStore";
+import { trackViewContent } from "@/lib/analytics";
 
 const ProductPage = () => {
   const { handle } = useParams<{ handle: string }>();
@@ -27,6 +28,25 @@ const ProductPage = () => {
       setLoading(false);
     });
   }, [handle]);
+
+  useEffect(() => {
+    if (!product) return;
+    const defaultTitle = document.title;
+    document.title = `${product.title} | Dot Seven Ranch`;
+
+    const variant = product.variants?.edges?.[0]?.node;
+    if (variant) {
+      trackViewContent({
+        productId: product.id,
+        variantId: variant.id,
+        title: product.title,
+        price: parseFloat(variant.price.amount),
+        currency: variant.price.currencyCode,
+      });
+    }
+
+    return () => { document.title = defaultTitle; };
+  }, [product]);
 
   if (loading) {
     return (

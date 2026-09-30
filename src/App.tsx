@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useCartSync } from "@/hooks/useCartSync";
 import ScrollToTop from "@/components/ScrollToTop";
+import PageViewTracker from "@/components/PageViewTracker";
 import Index from "./pages/Index";
 import OurStoryPage from "./pages/OurStoryPage";
 import HistoryPage from "./pages/HistoryPage";
@@ -55,6 +56,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <ScrollToTop />
+        <PageViewTracker />
         <AppContent />
       </BrowserRouter>
     </TooltipProvider>

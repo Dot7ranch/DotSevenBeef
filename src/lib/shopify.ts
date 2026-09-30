@@ -1,4 +1,5 @@
 import { toast } from "sonner";
+import { getCartAttributes } from "@/lib/analytics";
 
 const SHOPIFY_API_VERSION = '2025-07';
 const SHOPIFY_STORE_PERMANENT_DOMAIN = 'dot-seven-ranch.myshopify.com';
@@ -348,7 +349,10 @@ function isCartNotFoundError(userErrors: Array<{ field: string[] | null; message
 
 export async function createShopifyCart(item: { variantId: string; quantity: number }): Promise<{ cartId: string; checkoutUrl: string; lineId: string } | null> {
   const data = await storefrontApiRequest(CART_CREATE_MUTATION, {
-    input: { lines: [{ quantity: item.quantity, merchandiseId: item.variantId }] },
+    input: {
+      lines: [{ quantity: item.quantity, merchandiseId: item.variantId }],
+      attributes: getCartAttributes(),
+    },
   });
 
   if (data?.data?.cartCreate?.userErrors?.length > 0) {

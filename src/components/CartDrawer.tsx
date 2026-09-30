@@ -3,6 +3,7 @@ import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTr
 import { Button } from "@/components/ui/button";
 import { ShoppingCart, Minus, Plus, Trash2, ExternalLink, Loader2 } from "lucide-react";
 import { useCartStore } from "@/stores/cartStore";
+import { trackInitiateCheckout } from "@/lib/analytics";
 
 export const CartDrawer = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,6 +22,11 @@ export const CartDrawer = () => {
   const handleCheckout = () => {
     const checkoutUrl = getCheckoutUrl();
     if (checkoutUrl) {
+      trackInitiateCheckout({
+        items: items.map(i => ({ productId: i.product.node.id, variantId: i.variantId, quantity: i.quantity })),
+        value: totalPrice,
+        currency: items[0]?.price.currencyCode ?? "USD",
+      });
       window.open(checkoutUrl, '_blank');
       setIsOpen(false);
     }
