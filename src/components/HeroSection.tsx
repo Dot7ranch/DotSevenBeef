@@ -1,55 +1,24 @@
-import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import heroSteak from "@/assets/hero-steak.jpg";
 
-const groundBeefSaleBanner = "/uploads/ground-beef-stockup-sale.png";
-
 const HeroSection = () => {
-  const [current, setCurrent] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % 2);
-    }, 8000);
-    return () => clearInterval(timer);
-  }, []);
-
   return (
     <section className="relative min-h-[75vh] flex items-center justify-center overflow-hidden bg-charcoal">
 
-      {/* Slide 1 background */}
       <div
-        className="absolute inset-0 bg-cover bg-center transition-opacity duration-1000"
-        style={{ backgroundImage: `url(${heroSteak})`, opacity: current === 0 ? 1 : 0 }}
-        aria-hidden="true"
-      />
-      {/* Slide 2 background — Ground Beef Stock-up Sale */}
-      <div
-        className="absolute inset-0 bg-contain bg-no-repeat bg-center transition-opacity duration-1000"
-        style={{ backgroundImage: `url(${groundBeefSaleBanner})`, opacity: current === 1 ? 1 : 0 }}
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: `url(${heroSteak})` }}
         aria-hidden="true"
       />
 
-      {/* Slide 1 overlay */}
       <div
-        className="absolute inset-0 bg-charcoal/70 transition-opacity duration-1000"
-        style={{ opacity: current === 0 ? 1 : 0 }}
-        aria-hidden="true"
-      />
-      {/* Slide 2 overlay — very light so image text stays readable */}
-      <div
-        className="absolute inset-0 bg-charcoal/10 transition-opacity duration-1000"
-        style={{ opacity: current === 1 ? 1 : 0 }}
+        className="absolute inset-0 bg-charcoal/70"
         aria-hidden="true"
       />
 
-      {/* Slide 1 content */}
-      <div
-        className="relative z-10 max-w-7xl mx-auto section-padding w-full lg:py-20 py-12 transition-opacity duration-700"
-        style={{ opacity: current === 0 ? 1 : 0, pointerEvents: current === 0 ? "auto" : "none" }}
-      >
+      <div className="relative z-10 max-w-7xl mx-auto section-padding w-full lg:py-20 py-12">
         <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-16">
           <div className="max-w-xl flex-1">
             <motion.p
@@ -102,27 +71,6 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* Slide 2 — whole banner links to the sale */}
-      <Link
-        to="/product/ground-beef-stock-up-special"
-        aria-label="Shop the Ground Beef Stock-up Sale"
-        className="absolute inset-0 z-10 transition-opacity duration-700"
-        style={{ opacity: current === 1 ? 1 : 0, pointerEvents: current === 1 ? "auto" : "none" }}
-      />
-
-      {/* Dot navigation */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-3">
-        {[0, 1].map((i) => (
-          <button
-            key={i}
-            onClick={() => setCurrent(i)}
-            aria-label={`Go to slide ${i + 1}`}
-            className={`h-2 rounded-full transition-all duration-300 ${
-              i === current ? "w-8 bg-white" : "w-2 bg-white/50"
-            }`}
-          />
-        ))}
-      </div>
     </section>
   );
 };
