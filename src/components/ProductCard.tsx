@@ -15,6 +15,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
   const selectedVariant = node.variants.edges[0]?.node;
   const image = node.images.edges[0]?.node;
   const price = parseFloat(node.priceRange.minVariantPrice.amount).toFixed(2);
+  const isSoldOut = node.variants.edges.every(({ node: variant }) => !variant.availableForSale);
 
   const handleAddToCart = async (e: React.MouseEvent) => {
     e.preventDefault();
@@ -34,12 +35,17 @@ const ProductCard = ({ product }: ProductCardProps) => {
   return (
     <Link to={`/product/${node.handle}`} className="group block">
       <div className="bg-cream-dark rounded-lg overflow-hidden hover-lift">
-        <div className="aspect-square overflow-hidden bg-charcoal/5">
+        <div className="relative aspect-square overflow-hidden bg-charcoal/5">
+          {isSoldOut && (
+            <span className="absolute top-2 left-2 z-10 bg-charcoal/90 text-primary-foreground px-2 py-1 rounded text-[10px] font-body font-semibold uppercase tracking-wider">
+              Sold out
+            </span>
+          )}
           {image ? (
             <img
               src={image.url}
               alt={image.altText || node.title}
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              className={`w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ${isSoldOut ? "opacity-60" : ""}`}
             />
           ) : (
             <div className="w-full h-full flex items-center justify-center text-charcoal-light font-body">
@@ -53,11 +59,17 @@ const ProductCard = ({ product }: ProductCardProps) => {
             <p className="font-body font-semibold text-barn-red text-lg">${price}</p>
             <button
               onClick={handleAddToCart}
-              disabled={isLoading || !selectedVariant?.availableForSale}
+              disabled={isSoldOut || isLoading || !selectedVariant?.availableForSale}
               className="inline-flex items-center gap-1 bg-charcoal text-primary-foreground px-3 py-1.5 rounded text-xs font-body font-semibold uppercase tracking-wider hover:bg-barn-red transition-colors disabled:opacity-50"
             >
-              {isLoading ? <Loader2 className="w-3 h-3 animate-spin" /> : <ShoppingCart className="w-3 h-3" />}
-              Add
+              {isSoldOut ? (
+                "Sold out"
+              ) : (
+                <>
+                  {isLoading ? <Loader2 className="w-3 h-3 animate-spin" /> : <ShoppingCart className="w-3 h-3" />}
+                  Add
+                </>
+              )}
             </button>
           </div>
         </div>

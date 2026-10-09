@@ -1,4 +1,5 @@
 import AnnouncementBar from "@/components/AnnouncementBar";
+import SaleBanner from "@/components/SaleBanner";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import ValueProps from "@/components/ValueProps";
@@ -15,6 +16,7 @@ const Index = () => {
     <div className="min-h-screen">
       <header className="sticky top-0 z-50">
         <AnnouncementBar />
+        <SaleBanner />
         <Navbar fixed={false} />
       </header>
       <main id="main-content">

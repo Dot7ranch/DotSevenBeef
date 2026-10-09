@@ -50,7 +50,7 @@ const CollectionPage = () => {
               {collectionTitle}
             </h1>
             {collectionDescription && (
-              <p className="font-body text-lg text-charcoal-light max-w-2xl">{collectionDescription}</p>
+              <p className="font-body text-lg text-charcoal-light">{collectionDescription}</p>
             )}
           </motion.div>
 

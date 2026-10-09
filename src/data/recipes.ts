@@ -211,16 +211,6 @@ export const recipes: Recipe[] = [
     shopLabel: "Shop Signature Steaks",
   },
   {
-    title: "Cheese Burger Salad",
-    date: "September 1, 2022",
-    description: "All your cheeseburger cravings in a fresh salad — light but satisfying.",
-    image: "https://cdn.shopify.com/s/files/1/0584/0411/0525/articles/cheese-burger-salad-378683_600x.jpg?v=1719068385",
-    slug: "burger-salad",
-    externalUrl: "https://dotsevenranch.com/blogs/dinner-on-the-dot/burger-salad",
-    shopUrl: "/collections/ground-beef-sausage",
-    shopLabel: "Shop Ground Beef",
-  },
-  {
     title: "Mississippi Pot Roast",
     date: "August 18, 2022",
     description: "The ultimate comfort food! Perfect for nachos or tacos this summer.",
