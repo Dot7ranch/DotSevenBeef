@@ -9,6 +9,11 @@ import {
   updateShopifyCartLine,
   removeLineFromShopifyCart,
   updateShopifyCartNote,
+  type CartCodes,
+  parseCartCodes,
+  updateShopifyDiscountCodes,
+  addShopifyGiftCardCode,
+  removeShopifyGiftCard,
 } from '@/lib/shopify';
 import { trackAddToCart } from '@/lib/analytics';
 
@@ -36,7 +41,13 @@ interface CartStore {
   clearCart: () => void;
   syncCart: () => Promise<void>;
   getCheckoutUrl: () => string | null;
+  codes: CartCodes;
+  applyCode: (code: string) => Promise<{ ok: boolean; message: string }>;
+  removeDiscountCode: (code: string) => Promise<void>;
+  removeGiftCard: (giftCardId: string) => Promise<void>;
 }
+
+const EMPTY_CODES: CartCodes = { discountCodes: [], giftCards: [], subtotal: null, total: null };
 
 export const useCartStore = create<CartStore>()(
   persist(
@@ -47,6 +58,7 @@ export const useCartStore = create<CartStore>()(
       note: '',
       isLoading: false,
       isSyncing: false,
+      codes: EMPTY_CODES,
 
       addItem: async (item) => {
         const { items, cartId, clearCart } = get();
@@ -151,7 +163,7 @@ export const useCartStore = create<CartStore>()(
         }
       },
 
-      clearCart: () => set({ items: [], cartId: null, checkoutUrl: null, note: '' }),
+      clearCart: () => set({ items: [], cartId: null, checkoutUrl: null, note: '', codes: EMPTY_CODES }),
       getCheckoutUrl: () => get().checkoutUrl,
 
       updateNote: async (note: string) => {
@@ -165,6 +177,79 @@ export const useCartStore = create<CartStore>()(
         }
       },
 
+      // One box for both: try the code as a discount first, then as a gift card
+      applyCode: async (rawCode) => {
+        const code = rawCode.trim();
+        const { cartId, codes, clearCart } = get();
+        if (!code) return { ok: false, message: 'Enter a code first.' };
+        if (!cartId) return { ok: false, message: 'Add something to your cart first.' };
+        const sameCode = (c: string) => c.toLowerCase() === code.toLowerCase();
+        if (codes.discountCodes.some(d => d.applicable && sameCode(d.code))) {
+          return { ok: false, message: 'That code is already applied.' };
+        }
+
+        set({ isLoading: true });
+        try {
+          const current = codes.discountCodes.filter(d => d.applicable).map(d => d.code);
+          const discount = await updateShopifyDiscountCodes(cartId, [...current, code]);
+          if (discount.cartNotFound) {
+            clearCart();
+            return { ok: false, message: 'Your cart expired. Please add your items again.' };
+          }
+          if (discount.codes?.discountCodes.some(d => d.applicable && sameCode(d.code))) {
+            set({ codes: discount.codes });
+            return { ok: true, message: `Discount code ${code.toUpperCase()} applied.` };
+          }
+          // Not a usable discount code: take it back off the cart before trying it as a gift card
+          if (discount.success) await updateShopifyDiscountCodes(cartId, current);
+
+          const previousIds = new Set(codes.giftCards.map(g => g.id));
+          const gift = await addShopifyGiftCardCode(cartId, code);
+          const newCard = gift.codes?.giftCards.find(g => !previousIds.has(g.id));
+          if (gift.codes) set({ codes: gift.codes });
+          if (newCard) {
+            return { ok: true, message: `Gift card ending in ${newCard.lastCharacters} applied.` };
+          }
+          return { ok: false, message: "We couldn't apply that code. Check the spelling, or make sure your cart meets the code's requirements." };
+        } catch (error) {
+          console.error('Failed to apply code:', error);
+          return { ok: false, message: 'Something went wrong. Please try again.' };
+        } finally {
+          set({ isLoading: false });
+        }
+      },
+
+      removeDiscountCode: async (code) => {
+        const { cartId, codes, clearCart } = get();
+        if (!cartId) return;
+        set({ isLoading: true });
+        try {
+          const remaining = codes.discountCodes.filter(d => d.applicable && d.code !== code).map(d => d.code);
+          const result = await updateShopifyDiscountCodes(cartId, remaining);
+          if (result.codes) set({ codes: result.codes });
+          else if (result.cartNotFound) clearCart();
+        } catch (error) {
+          console.error('Failed to remove discount code:', error);
+        } finally {
+          set({ isLoading: false });
+        }
+      },
+
+      removeGiftCard: async (giftCardId) => {
+        const { cartId, clearCart } = get();
+        if (!cartId) return;
+        set({ isLoading: true });
+        try {
+          const result = await removeShopifyGiftCard(cartId, giftCardId);
+          if (result.codes) set({ codes: result.codes });
+          else if (result.cartNotFound) clearCart();
+        } catch (error) {
+          console.error('Failed to remove gift card:', error);
+        } finally {
+          set({ isLoading: false });
+        }
+      },
+
       syncCart: async () => {
         const { cartId, isSyncing, clearCart } = get();
         if (!cartId || isSyncing) return;
@@ -175,6 +260,7 @@ export const useCartStore = create<CartStore>()(
           if (!data) return;
           const cart = data?.data?.cart;
           if (!cart || cart.totalQuantity === 0) clearCart();
+          else set({ codes: parseCartCodes(cart) });
         } catch (error) {
           console.error('Failed to sync cart:', error);
         } finally {

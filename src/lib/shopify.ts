@@ -275,9 +275,42 @@ export async function fetchCollectionByHandle(handle: string, first = 50) {
 }
 
 // Cart mutations
+const CART_CODES_FIELDS = `
+  cost { subtotalAmount { amount currencyCode } totalAmount { amount currencyCode } }
+  discountCodes { code applicable }
+  appliedGiftCards { id lastCharacters balance { amount currencyCode } }
+`;
+
 export const CART_QUERY = `
   query cart($id: ID!) {
-    cart(id: $id) { id totalQuantity }
+    cart(id: $id) { id totalQuantity ${CART_CODES_FIELDS} }
+  }
+`;
+
+const CART_DISCOUNT_CODES_UPDATE_MUTATION = `
+  mutation cartDiscountCodesUpdate($cartId: ID!, $discountCodes: [String!]!) {
+    cartDiscountCodesUpdate(cartId: $cartId, discountCodes: $discountCodes) {
+      cart { id ${CART_CODES_FIELDS} }
+      userErrors { field message }
+    }
+  }
+`;
+
+const CART_GIFT_CARD_CODES_UPDATE_MUTATION = `
+  mutation cartGiftCardCodesUpdate($cartId: ID!, $giftCardCodes: [String!]!) {
+    cartGiftCardCodesUpdate(cartId: $cartId, giftCardCodes: $giftCardCodes) {
+      cart { id ${CART_CODES_FIELDS} }
+      userErrors { field message }
+    }
+  }
+`;
+
+const CART_GIFT_CARD_CODES_REMOVE_MUTATION = `
+  mutation cartGiftCardCodesRemove($cartId: ID!, $appliedGiftCardIds: [ID!]!) {
+    cartGiftCardCodesRemove(cartId: $cartId, appliedGiftCardIds: $appliedGiftCardIds) {
+      cart { id ${CART_CODES_FIELDS} }
+      userErrors { field message }
+    }
   }
 `;
 
@@ -418,4 +451,48 @@ export async function updateShopifyCartNote(cartId: string, note: string): Promi
   if (isCartNotFoundError(userErrors)) return { success: false, cartNotFound: true };
   if (userErrors.length > 0) return { success: false };
   return { success: true };
+}
+
+// Discount codes and gift cards
+export interface CartCodes {
+  discountCodes: Array<{ code: string; applicable: boolean }>;
+  giftCards: Array<{ id: string; lastCharacters: string; balance: { amount: string; currencyCode: string } }>;
+  subtotal: { amount: string; currencyCode: string } | null;
+  total: { amount: string; currencyCode: string } | null;
+}
+
+export function parseCartCodes(cart: {
+  cost?: { subtotalAmount?: CartCodes['subtotal']; totalAmount?: CartCodes['total'] };
+  discountCodes?: CartCodes['discountCodes'];
+  appliedGiftCards?: CartCodes['giftCards'];
+}): CartCodes {
+  return {
+    discountCodes: cart.discountCodes || [],
+    giftCards: cart.appliedGiftCards || [],
+    subtotal: cart.cost?.subtotalAmount || null,
+    total: cart.cost?.totalAmount || null,
+  };
+}
+
+type CodesResult = { success: boolean; cartNotFound?: boolean; codes?: CartCodes };
+
+async function runCodesMutation(mutation: string, key: string, variables: Record<string, unknown>): Promise<CodesResult> {
+  const data = await storefrontApiRequest(mutation, variables);
+  const payload = data?.data?.[key];
+  const userErrors = payload?.userErrors || [];
+  if (isCartNotFoundError(userErrors)) return { success: false, cartNotFound: true };
+  if (!payload?.cart) return { success: false };
+  return { success: true, codes: parseCartCodes(payload.cart) };
+}
+
+export function updateShopifyDiscountCodes(cartId: string, discountCodes: string[]): Promise<CodesResult> {
+  return runCodesMutation(CART_DISCOUNT_CODES_UPDATE_MUTATION, 'cartDiscountCodesUpdate', { cartId, discountCodes });
+}
+
+export function addShopifyGiftCardCode(cartId: string, code: string): Promise<CodesResult> {
+  return runCodesMutation(CART_GIFT_CARD_CODES_UPDATE_MUTATION, 'cartGiftCardCodesUpdate', { cartId, giftCardCodes: [code] });
+}
+
+export function removeShopifyGiftCard(cartId: string, giftCardId: string): Promise<CodesResult> {
+  return runCodesMutation(CART_GIFT_CARD_CODES_REMOVE_MUTATION, 'cartGiftCardCodesRemove', { cartId, appliedGiftCardIds: [giftCardId] });
 }

@@ -1,19 +1,32 @@
 import { useState, useEffect, useCallback } from "react";
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import { ShoppingCart, Minus, Plus, Trash2, ExternalLink, Loader2 } from "lucide-react";
+import { ShoppingCart, Minus, Plus, Trash2, ExternalLink, Loader2, Tag, Gift, X } from "lucide-react";
 import { useCartStore } from "@/stores/cartStore";
 import { trackInitiateCheckout } from "@/lib/analytics";
 
 export const CartDrawer = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { items, note, isLoading, isSyncing, updateQuantity, removeItem, updateNote, getCheckoutUrl, syncCart } = useCartStore();
+  const { items, note, codes, isLoading, isSyncing, updateQuantity, removeItem, updateNote, getCheckoutUrl, syncCart, applyCode, removeDiscountCode, removeGiftCard } = useCartStore();
   const [localNote, setLocalNote] = useState(note);
   const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
   const totalPrice = items.reduce((sum, item) => sum + (parseFloat(item.price.amount) * item.quantity), 0);
+  const [codeInput, setCodeInput] = useState("");
+  const [codeMessage, setCodeMessage] = useState<{ ok: boolean; text: string } | null>(null);
+  const appliedDiscounts = codes.discountCodes.filter(d => d.applicable);
+  const hasDiscount = appliedDiscounts.length > 0 && codes.total !== null;
+  const displayTotal = hasDiscount ? parseFloat(codes.total!.amount) : totalPrice;
 
   useEffect(() => { setLocalNote(note); }, [note]);
-  useEffect(() => { if (isOpen) syncCart(); }, [isOpen, syncCart]);
+  // Re-sync on item changes too, so the discounted total stays current
+  useEffect(() => { if (isOpen) syncCart(); }, [isOpen, items, syncCart]);
+
+  const handleApplyCode = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const result = await applyCode(codeInput);
+    setCodeMessage({ ok: result.ok, text: result.message });
+    if (result.ok) setCodeInput("");
+  };
 
   const handleNoteBlur = useCallback(() => {
     if (localNote !== note) updateNote(localNote);
@@ -111,10 +124,65 @@ export const CartDrawer = () => {
                     maxLength={500}
                   />
                 </div>
+                <div className="rounded-lg border-2 border-dashed border-barn-red/40 bg-cream-dark p-3">
+                  <label htmlFor="cart-code" className="flex items-center gap-2 font-display text-sm uppercase tracking-wider text-charcoal mb-2">
+                    <Tag className="h-4 w-4 text-barn-red" aria-hidden="true" />
+                    Discount Code or Gift Card
+                  </label>
+                  <form onSubmit={handleApplyCode} className="flex gap-2">
+                    <input
+                      id="cart-code"
+                      value={codeInput}
+                      onChange={(e) => { setCodeInput(e.target.value); setCodeMessage(null); }}
+                      placeholder="Enter code"
+                      autoComplete="off"
+                      autoCapitalize="characters"
+                      className="flex-1 min-w-0 rounded border border-charcoal/20 bg-cream px-3 py-2 font-body text-sm uppercase text-charcoal placeholder:normal-case placeholder:text-charcoal-light/60 focus:outline-none focus:ring-1 focus:ring-barn-red"
+                    />
+                    <button
+                      type="submit"
+                      disabled={!codeInput.trim() || isLoading}
+                      className="rounded bg-charcoal px-4 py-2 font-body text-sm font-semibold uppercase tracking-wider text-cream hover:bg-barn-red transition-colors disabled:opacity-50"
+                    >
+                      Apply
+                    </button>
+                  </form>
+                  {codeMessage && (
+                    <p role="status" className={`mt-2 font-body text-xs ${codeMessage.ok ? "text-green-700" : "text-barn-red"}`}>{codeMessage.text}</p>
+                  )}
+                  {(appliedDiscounts.length > 0 || codes.giftCards.length > 0) && (
+                    <ul className="mt-2 space-y-1">
+                      {appliedDiscounts.map(d => (
+                        <li key={d.code} className="flex items-center justify-between rounded bg-cream px-2 py-1 font-body text-xs">
+                          <span className="flex items-center gap-1"><Tag className="h-3 w-3 text-barn-red" aria-hidden="true" />{d.code.toUpperCase()} applied</span>
+                          <button aria-label={`Remove code ${d.code}`} onClick={() => removeDiscountCode(d.code)} className="text-charcoal-light hover:text-barn-red"><X className="h-3 w-3" aria-hidden="true" /></button>
+                        </li>
+                      ))}
+                      {codes.giftCards.map(g => (
+                        <li key={g.id} className="flex items-center justify-between rounded bg-cream px-2 py-1 font-body text-xs">
+                          <span className="flex items-center gap-1"><Gift className="h-3 w-3 text-barn-red" aria-hidden="true" />Gift card ending in {g.lastCharacters} (${parseFloat(g.balance.amount).toFixed(2)} balance)</span>
+                          <button aria-label={`Remove gift card ending in ${g.lastCharacters}`} onClick={() => removeGiftCard(g.id)} className="text-charcoal-light hover:text-barn-red"><X className="h-3 w-3" aria-hidden="true" /></button>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                  <p className="mt-2 font-body text-xs text-charcoal-light">
+                    Paying with Shop Pay, Apple Pay, PayPal, or card? Add your code here and it carries through to checkout.
+                  </p>
+                </div>
+                {hasDiscount && (
+                  <div className="flex justify-between items-center font-body text-sm text-charcoal-light">
+                    <span>Subtotal</span>
+                    <span className="line-through">${totalPrice.toFixed(2)}</span>
+                  </div>
+                )}
                 <div className="flex justify-between items-center">
                   <span className="font-display text-lg uppercase tracking-wider">Total</span>
-                  <span className="font-display text-xl font-bold text-barn-red">${totalPrice.toFixed(2)}</span>
+                  <span className="font-display text-xl font-bold text-barn-red">${displayTotal.toFixed(2)}</span>
                 </div>
+                {codes.giftCards.length > 0 && (
+                  <p className="-mt-3 font-body text-xs text-charcoal-light text-right">Gift card balance comes off at checkout.</p>
+                )}
                 <button
                   onClick={handleCheckout}
                   disabled={items.length === 0 || isLoading || isSyncing}
