@@ -21,12 +21,12 @@ const Footer = () => {
             <h4 className="font-body text-xs tracking-[0.2em] uppercase text-primary-foreground/40 font-semibold mb-4">Shop</h4>
             <div className="flex flex-col gap-2">
               {[
-              { label: "Beef Box Specials", href: "https://dotsevenranch.com/collections/beef-box-specials" },
-              { label: "Signature Steaks", href: "https://dotsevenranch.com/collections/steaks" },
-              { label: "Ground Beef & Sausage", href: "https://dotsevenranch.com/collections/ground-beef-sausage" },
-              { label: "Roasts & More", href: "https://dotsevenranch.com/collections/roasts-more" },
+              { label: "Beef Box Specials", href: "/collections/beef-box-specials" },
+              { label: "Signature Steaks", href: "/collections/steaks" },
+              { label: "Ground Beef & Sausage", href: "/collections/ground-beef-sausage" },
+              { label: "Roasts & More", href: "/collections/roasts-more" },
 
-              { label: "Gift Cards", href: "https://dotsevenranch.com/products/dot-seven-ranch-gift-cards-1" }].
+              { label: "Gift Cards", href: "/product/dot-seven-ranch-gift-cards-1" }].
               map((link) =>
               <a key={link.label} href={link.href} className="font-body text-sm text-primary-foreground/60 hover:text-barn-red transition-colors">
                   {link.label}
@@ -40,12 +40,11 @@ const Footer = () => {
             <h4 className="font-body text-xs tracking-[0.2em] uppercase text-primary-foreground/40 font-semibold mb-4">Learn</h4>
             <div className="flex flex-col gap-2">
               {[
-              { label: "Our History", href: "https://dotsevenranch.com/pages/history-of-the-dot-seven-ranch" },
-              { label: "Meet the Ranchers", href: "https://dotsevenranch.com/pages/your-ranchers" },
-              { label: "Beef FAQs", href: "https://dotsevenranch.com/pages/buying-shipping-beef-q-a" },
-              { label: "Recipes", href: "https://dotsevenranch.com/blogs/dinner-on-the-dot" },
-              { label: "Return Your Box", href: "/return-your-box" },
-              { label: "Event Schedule", href: "https://dotsevenranch.com/pages/event-schedule" }].
+              { label: "Our History", href: "/history" },
+              { label: "Meet the Ranchers", href: "/our-story" },
+              { label: "Beef FAQs", href: "/faq" },
+              { label: "Recipes", href: "/recipes" },
+              { label: "Return Your Box", href: "/return-your-box" }].
               map((link) =>
               <a key={link.label} href={link.href} className="font-body text-sm text-primary-foreground/60 hover:text-barn-red transition-colors">
                   {link.label}

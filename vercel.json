@@ -1,5 +1,21 @@
 {
+  "cleanUrls": true,
+  "redirects": [
+    { "source": "/products/:handle", "destination": "/product/:handle", "permanent": true },
+    { "source": "/collections/:collection/products/:handle", "destination": "/product/:handle", "permanent": true },
+    { "source": "/collections/all", "destination": "/shop-all", "permanent": true },
+    { "source": "/collections", "destination": "/shop-all", "permanent": true },
+    { "source": "/blogs/dinner-on-the-dot", "destination": "/recipes", "permanent": true },
+    { "source": "/blogs/dinner-on-the-dot/:slug", "destination": "/recipes/:slug", "permanent": true },
+    { "source": "/pages/history-of-the-dot-seven-ranch", "destination": "/history", "permanent": true },
+    { "source": "/pages/your-ranchers", "destination": "/our-story", "permanent": true },
+    { "source": "/pages/buying-shipping-beef-q-a", "destination": "/faq", "permanent": true },
+    { "source": "/pages/contact-the-team", "destination": "/faq", "permanent": true },
+    { "source": "/pages/event-schedule", "destination": "/our-story", "permanent": true }
+  ],
   "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+    { "source": "/product/:handle", "destination": "/app-shell.html" },
+    { "source": "/collections/:handle", "destination": "/app-shell.html" },
+    { "source": "/recipes/:slug", "destination": "/app-shell.html" }
   ]
 }

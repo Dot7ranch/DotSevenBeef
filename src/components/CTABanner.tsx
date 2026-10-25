@@ -18,7 +18,7 @@ const CTABanner = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="https://dotsevenranch.com/collections/build-your-own-box"
+              href="/collections/build-your-own-box"
               className="inline-flex items-center justify-center gap-2 bg-primary-foreground text-barn-red px-8 py-4 rounded font-body text-base font-semibold uppercase tracking-wider hover:bg-cream transition-colors"
             >
               Build Your Box

@@ -7,6 +7,8 @@ import Footer from "@/components/Footer";
 import CTABanner from "@/components/CTABanner";
 import { recipes } from "@/data/recipes";
 import recipesFull from "@/data/recipes-full.json";
+import Seo from "@/components/Seo";
+import { breadcrumbs, recipe as recipeLd, summarize } from "@/lib/structuredData";
 
 const fullData: Record<string, {
   name: string;
@@ -77,6 +79,7 @@ const RecipeDetailPage = () => {
   if (!recipe) {
     return (
       <div className="min-h-screen">
+        <Seo title="Recipe Not Found" description="We couldn't find that recipe." path={`/recipes/${slug}`} noindex />
         <Navbar />
         <div className="pt-32 pb-24 text-center section-padding">
           <h1 className="font-display text-4xl font-bold text-foreground mb-4">Recipe not found</h1>
@@ -94,8 +97,35 @@ const RecipeDetailPage = () => {
   const prep = formatDuration(full?.prepTime || "");
   const cook = formatDuration(full?.cookTime || "");
 
+  const description = full?.description || recipe.description;
+
   return (
     <div className="min-h-screen">
+      <Seo
+        title={`${recipe.title} Recipe`}
+        description={summarize(description)}
+        path={`/recipes/${slug}`}
+        image={heroImage}
+        type="article"
+        jsonLd={[
+          recipeLd({
+            slug,
+            title: recipe.title,
+            date: recipe.date,
+            description,
+            image: heroImage,
+            prepTime: full?.prepTime,
+            cookTime: full?.cookTime,
+            servings: full?.servings,
+            ingredients: full?.ingredients,
+            instructions: full?.instructions,
+          }),
+          breadcrumbs([
+            { name: "Recipes", path: "/recipes" },
+            { name: recipe.title, path: `/recipes/${slug}` },
+          ]),
+        ]}
+      />
       {/* Hidden when printing */}
       <div className="print:hidden">
         <Navbar />

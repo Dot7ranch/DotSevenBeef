@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -21,7 +22,7 @@ import AccessibilityPage from "./pages/AccessibilityPage";
 
 const queryClient = new QueryClient();
 
-const AppContent = () => {
+export const AppContent = () => {
   useCartSync();
   return (
     <>
@@ -49,18 +50,24 @@ const AppContent = () => {
   );
 };
 
-const App = () => (
+export const AppProviders = ({ children }: { children: ReactNode }) => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
-        <ScrollToTop />
-        <PageViewTracker />
-        <AppContent />
-      </BrowserRouter>
+      {children}
     </TooltipProvider>
   </QueryClientProvider>
+);
+
+const App = () => (
+  <AppProviders>
+    <BrowserRouter>
+      <ScrollToTop />
+      <PageViewTracker />
+      <AppContent />
+    </BrowserRouter>
+  </AppProviders>
 );
 
 export default App;

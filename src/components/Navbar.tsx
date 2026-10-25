@@ -22,7 +22,7 @@ const navLinks = [
   { label: "Our Story", href: "/our-story" },
   { label: "FAQ", href: "/faq" },
   { label: "Return Your Box", href: "/return-your-box" },
-  { label: "Contact", href: "https://dotsevenranch.com/pages/contact-the-team", external: true },
+  { label: "Contact", href: "mailto:support@dotsevenranch.com", external: true },
 ];
 
 const Navbar = ({ fixed: isFixed = true }: { fixed?: boolean }) => {

@@ -6,17 +6,24 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ProductCard from "@/components/ProductCard";
 import { fetchCollectionByHandle, type ShopifyProduct } from "@/lib/shopify";
+import { getPrerenderData } from "@/lib/prerenderData";
+import Seo from "@/components/Seo";
+import { breadcrumbs, itemList, summarize } from "@/lib/structuredData";
 
 const CollectionPage = () => {
   const { handle } = useParams<{ handle: string }>();
-  const [products, setProducts] = useState<ShopifyProduct[]>([]);
-  const [collectionTitle, setCollectionTitle] = useState("");
-  const [collectionDescription, setCollectionDescription] = useState("");
-  const [loading, setLoading] = useState(true);
+  const seeded = getPrerenderData().collection;
+  const seededCollection = seeded?.handle === handle ? seeded : null;
+  const [products, setProducts] = useState<ShopifyProduct[]>(
+    seededCollection ? seededCollection.products.edges.map((e) => ({ node: e.node })) : []
+  );
+  const [collectionTitle, setCollectionTitle] = useState(seededCollection?.title || "");
+  const [collectionDescription, setCollectionDescription] = useState(seededCollection?.description || "");
+  const [loading, setLoading] = useState(!seededCollection);
 
   useEffect(() => {
     if (!handle) return;
-    setLoading(true);
+    if (!seededCollection) setLoading(true);
     fetchCollectionByHandle(handle, 250).then((collection) => {
       if (collection) {
         setCollectionTitle(collection.title);
@@ -27,8 +34,27 @@ const CollectionPage = () => {
     });
   }, [handle]);
 
+  const path = `/collections/${handle}`;
+
   return (
     <div className="min-h-screen bg-background">
+      {collectionTitle ? (
+        <Seo
+          title={collectionTitle}
+          description={
+            collectionDescription
+              ? summarize(collectionDescription)
+              : `Shop ${collectionTitle} from Dot Seven Ranch. Grain-finished Angus beef from our family ranch in Sanger, California, shipped frozen to your door.`
+          }
+          path={path}
+          jsonLd={[
+            itemList(collectionTitle, products.map((p) => p.node)),
+            breadcrumbs([{ name: collectionTitle, path }]),
+          ]}
+        />
+      ) : (
+        !loading && <Seo title="Collection Not Found" description="We couldn't find that collection." path={path} noindex />
+      )}
       <Navbar />
       <div className="pt-24 pb-16">
         <div className="max-w-7xl mx-auto section-padding">

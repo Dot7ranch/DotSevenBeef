@@ -1,9 +1,15 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Seo from "@/components/Seo";
 
 const AccessibilityPage = () => {
   return (
     <div className="min-h-screen">
+      <Seo
+        title="Accessibility Statement"
+        description="How Dot Seven Ranch works to keep dotsevenranch.com usable for everyone, and how to reach us if part of the site doesn't work for you."
+        path="/accessibility"
+      />
       <Navbar />
       <main id="main-content" className="pt-20">
         <section className="py-12 lg:py-16 bg-cream">

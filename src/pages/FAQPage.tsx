@@ -7,6 +7,8 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import shippingZones from "@/assets/shipping-zones.png";
+import Seo from "@/components/Seo";
+import { breadcrumbs, faqPage } from "@/lib/structuredData";
 
 const beefLogistics = [
   {
@@ -89,6 +91,12 @@ const beefRaised = [
 const FAQPage = () => {
   return (
     <div className="min-h-screen bg-background">
+      <Seo
+        title="Beef Shipping & Ranch FAQ"
+        description="When Dot Seven beef ships, how fast it arrives, local pickup in Clovis, and how we raise our Angus cattle. Answers to the questions customers ask us most."
+        path="/faq"
+        jsonLd={[faqPage([...beefLogistics, ...beefRaised]), breadcrumbs([{ name: "FAQ", path: "/faq" }])]}
+      />
       <Navbar />
       <main className="pt-28 pb-20 px-6">
         <div className="max-w-3xl mx-auto">
@@ -109,7 +117,7 @@ const FAQPage = () => {
                 <AccordionTrigger className="font-body text-base text-left text-foreground hover:text-barn-red hover:no-underline">
                   {faq.question}
                 </AccordionTrigger>
-                <AccordionContent className="font-body text-muted-foreground whitespace-pre-line">
+                <AccordionContent forceMount className="font-body text-muted-foreground whitespace-pre-line">
                   {faq.answer}
                   {faq.hasImage && (
                     <img
@@ -133,7 +141,7 @@ const FAQPage = () => {
                 <AccordionTrigger className="font-body text-base text-left text-foreground hover:text-barn-red hover:no-underline">
                   {faq.question}
                 </AccordionTrigger>
-                <AccordionContent className="font-body text-muted-foreground">
+                <AccordionContent forceMount className="font-body text-muted-foreground">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>

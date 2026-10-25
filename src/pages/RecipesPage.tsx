@@ -5,10 +5,29 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CTABanner from "@/components/CTABanner";
 import { recipes } from "@/data/recipes";
+import Seo from "@/components/Seo";
+import { breadcrumbs, SITE_URL } from "@/lib/structuredData";
 
 const RecipesPage = () => {
   return (
     <div className="min-h-screen">
+      <Seo
+        title="Dinner on the Dot Beef Recipes"
+        description="Beef recipes from our family kitchen, from Korean flanken ribs to Mississippi pot roast. Each one is written for Dot Seven steaks, roasts and ground beef."
+        path="/recipes"
+        jsonLd={[
+          breadcrumbs([{ name: "Recipes", path: "/recipes" }]),
+          {
+            "@type": "ItemList",
+            name: "Dinner on the Dot Recipes",
+            itemListElement: recipes.map((r, i) => ({
+              "@type": "ListItem",
+              position: i + 1,
+              url: `${SITE_URL}/recipes/${r.slug}`,
+            })),
+          },
+        ]}
+      />
       <Navbar />
       <div className="pt-20">
         {/* Hero */}

@@ -10,10 +10,18 @@ import InstagramFeed from "@/components/InstagramFeed";
 import Testimonials from "@/components/Testimonials";
 import CTABanner from "@/components/CTABanner";
 import Footer from "@/components/Footer";
+import Seo from "@/components/Seo";
+import { organization, website } from "@/lib/structuredData";
 
 const Index = () => {
   return (
     <div className="min-h-screen">
+      <Seo
+        title="Dot Seven Ranch | Premium Ranch-Raised Beef Delivered"
+        description="Four generations of premium, sustainably raised beef delivered from our family ranch to your table. Shop steaks, beef boxes, and more."
+        path="/"
+        jsonLd={[organization(), website()]}
+      />
       <header className="sticky top-0 z-50">
         <AnnouncementBar />
         <SaleBanner />

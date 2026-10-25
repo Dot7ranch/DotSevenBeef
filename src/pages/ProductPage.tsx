@@ -8,11 +8,16 @@ import Footer from "@/components/Footer";
 import { fetchProductByHandle } from "@/lib/shopify";
 import { useCartStore } from "@/stores/cartStore";
 import { trackViewContent } from "@/lib/analytics";
+import { getPrerenderData } from "@/lib/prerenderData";
+import Seo from "@/components/Seo";
+import { breadcrumbs, product as productLd, summarize } from "@/lib/structuredData";
 
 const ProductPage = () => {
   const { handle } = useParams<{ handle: string }>();
-  const [product, setProduct] = useState<any>(null);
-  const [loading, setLoading] = useState(true);
+  const seeded = getPrerenderData().product;
+  const seededProduct = seeded?.handle === handle ? seeded : null;
+  const [product, setProduct] = useState<any>(seededProduct);
+  const [loading, setLoading] = useState(!seededProduct);
   const [selectedVariantIdx, setSelectedVariantIdx] = useState(0);
   const [selectedImage, setSelectedImage] = useState(0);
   const [quantity, setQuantity] = useState(1);
@@ -22,7 +27,12 @@ const ProductPage = () => {
 
   useEffect(() => {
     if (!handle) return;
-    setLoading(true);
+    if (seededProduct) {
+      setProduct(seededProduct);
+      setLoading(false);
+    } else {
+      setLoading(true);
+    }
     fetchProductByHandle(handle).then((p) => {
       setProduct(p);
       setLoading(false);
@@ -31,9 +41,6 @@ const ProductPage = () => {
 
   useEffect(() => {
     if (!product) return;
-    const defaultTitle = document.title;
-    document.title = `${product.title} | Dot Seven Ranch`;
-
     const variant = product.variants?.edges?.[0]?.node;
     if (variant) {
       trackViewContent({
@@ -44,8 +51,6 @@ const ProductPage = () => {
         currency: variant.price.currencyCode,
       });
     }
-
-    return () => { document.title = defaultTitle; };
   }, [product]);
 
   if (loading) {
@@ -62,6 +67,7 @@ const ProductPage = () => {
   if (!product) {
     return (
       <div className="min-h-screen bg-background">
+        <Seo title="Product Not Found" description="We couldn't find that product." path={`/product/${handle}`} noindex />
         <Navbar />
         <div className="text-center pt-32 pb-20">
           <h1 className="font-display text-3xl text-charcoal">Product not found</h1>
@@ -92,6 +98,18 @@ const ProductPage = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Seo
+        title={product.title}
+        description={
+          product.description
+            ? summarize(product.description)
+            : `Shop ${product.title} from Dot Seven Ranch, grain-finished Angus beef raised in Sanger, California and shipped frozen to your door.`
+        }
+        path={`/product/${product.handle}`}
+        image={images[0]?.node.url}
+        type="product"
+        jsonLd={[productLd(product), breadcrumbs([{ name: product.title, path: `/product/${product.handle}` }])]}
+      />
       <Navbar />
       {/* Shipping banner */}
       <div className="mt-16 bg-barn-red text-white py-3 px-6 text-center">

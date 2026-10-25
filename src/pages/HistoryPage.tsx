@@ -4,6 +4,8 @@ import { ArrowLeft } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CTABanner from "@/components/CTABanner";
+import Seo from "@/components/Seo";
+import { breadcrumbs } from "@/lib/structuredData";
 import dotSevenCow from "@/assets/dot-seven-cow.png";
 import ranchLandscape from "@/assets/ranch-landscape.jpg";
 import brandingIron from "@/assets/branding-iron.jpg";
@@ -33,6 +35,13 @@ const historyBlocks = [
 const HistoryPage = () => {
   return (
     <div className="min-h-screen">
+      <Seo
+        title="Our History Since 1948"
+        description="Jay and Betty Robinson started the .7 brand in 1948. Read how four generations built Dot Seven Ranch in the hills east of Sanger, California."
+        path="/history"
+        type="article"
+        jsonLd={breadcrumbs([{ name: "Our History", path: "/history" }])}
+      />
       <Navbar />
       <div className="pt-20">
         {/* Hero */}

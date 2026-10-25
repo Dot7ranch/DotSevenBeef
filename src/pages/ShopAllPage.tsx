@@ -6,10 +6,14 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ProductCard from "@/components/ProductCard";
 import { fetchProducts, type ShopifyProduct } from "@/lib/shopify";
+import { getPrerenderData } from "@/lib/prerenderData";
+import Seo from "@/components/Seo";
+import { breadcrumbs, itemList } from "@/lib/structuredData";
 
 const ShopAllPage = () => {
-  const [products, setProducts] = useState<ShopifyProduct[]>([]);
-  const [loading, setLoading] = useState(true);
+  const seeded = getPrerenderData().products;
+  const [products, setProducts] = useState<ShopifyProduct[]>(seeded || []);
+  const [loading, setLoading] = useState(!seeded);
 
   useEffect(() => {
     fetchProducts(250).then((data) => {
@@ -20,6 +24,15 @@ const ShopAllPage = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Seo
+        title="Shop All Ranch-Raised Beef"
+        description="Shop every cut from Dot Seven Ranch: steaks, roasts, ground beef, sausage, beef boxes and beef shares. Grain-finished Angus beef shipped frozen to your door."
+        path="/shop-all"
+        jsonLd={[
+          itemList("All Products", products.map((p) => p.node)),
+          breadcrumbs([{ name: "All Products", path: "/shop-all" }]),
+        ]}
+      />
       <Navbar />
       <div className="pt-24 pb-16">
         <div className="max-w-7xl mx-auto section-padding">

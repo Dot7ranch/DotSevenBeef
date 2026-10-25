@@ -1,9 +1,17 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Seo from "@/components/Seo";
+import { breadcrumbs } from "@/lib/structuredData";
 
 const ReturnYourBoxPage = () => {
   return (
     <div className="min-h-screen bg-background">
+      <Seo
+        title="Return Your Beef Box"
+        description="Send your insulated Dot Seven shipping box back through USPS or UPS and we'll email you a code for a free pound of ground beef on your next order."
+        path="/return-your-box"
+        jsonLd={breadcrumbs([{ name: "Return Your Box", path: "/return-your-box" }])}
+      />
       <Navbar />
       <main className="pt-28 pb-20 px-6">
         <div className="max-w-3xl mx-auto">
