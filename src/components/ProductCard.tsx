@@ -3,6 +3,7 @@ import { ShoppingCart, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 import { type ShopifyProduct } from "@/lib/shopify";
 import { useCartStore } from "@/stores/cartStore";
+import StarRating, { parseRating } from "@/components/StarRating";
 
 interface ProductCardProps {
   product: ShopifyProduct;
@@ -16,6 +17,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
   const image = node.images.edges[0]?.node;
   const price = parseFloat(node.priceRange.minVariantPrice.amount).toFixed(2);
   const isSoldOut = node.variants.edges.every(({ node: variant }) => !variant.availableForSale);
+  const rating = parseRating(node);
 
   const handleAddToCart = async (e: React.MouseEvent) => {
     e.preventDefault();
@@ -55,6 +57,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
         </div>
         <div className="p-4">
           <h3 className="font-display text-sm uppercase tracking-wider text-charcoal truncate">{node.title}</h3>
+          {rating ? <StarRating rating={rating} className="mt-1 h-4" /> : <div className="mt-1 h-4" aria-hidden="true" />}
           <div className="flex items-center justify-between mt-2">
             <p className="font-body font-semibold text-barn-red text-lg">${price}</p>
             <button

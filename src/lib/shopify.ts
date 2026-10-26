@@ -13,6 +13,9 @@ export interface ShopifyProduct {
     description: string;
     handle: string;
     productType: string;
+    // Judge.me syncs these Shopify standard metafields; null when a product has no reviews.
+    rating?: { value: string } | null;
+    ratingCount?: { value: string } | null;
     priceRange: {
       minVariantPrice: {
         amount: string;
@@ -89,6 +92,8 @@ const PRODUCTS_QUERY = `
           description
           handle
           productType
+          rating: metafield(namespace: "reviews", key: "rating") { value }
+          ratingCount: metafield(namespace: "reviews", key: "rating_count") { value }
           priceRange {
             minVariantPrice {
               amount
@@ -139,6 +144,8 @@ const PRODUCT_BY_HANDLE_QUERY = `
       descriptionHtml
       handle
       productType
+      rating: metafield(namespace: "reviews", key: "rating") { value }
+      ratingCount: metafield(namespace: "reviews", key: "rating_count") { value }
       priceRange {
         minVariantPrice {
           amount
@@ -212,6 +219,8 @@ const COLLECTION_BY_HANDLE_QUERY = `
             description
             handle
             productType
+            rating: metafield(namespace: "reviews", key: "rating") { value }
+            ratingCount: metafield(namespace: "reviews", key: "rating_count") { value }
             priceRange {
               minVariantPrice {
                 amount

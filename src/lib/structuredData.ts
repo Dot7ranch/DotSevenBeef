@@ -96,7 +96,7 @@ interface ProductLike {
   };
 }
 
-export const product = (p: ProductLike): JsonLd => {
+export const product = (p: ProductLike, rating?: { value: number; count: number } | null): JsonLd => {
   const url = absolute(`/product/${p.handle}`);
   const offers = (p.variants?.edges || []).map(({ node }) => ({
     "@type": "Offer",
@@ -116,6 +116,15 @@ export const product = (p: ProductLike): JsonLd => {
     image: (p.images?.edges || []).map((e) => e.node.url),
     ...(p.productType && { category: p.productType }),
     brand: { "@type": "Brand", name: SITE_NAME },
+    ...(rating && {
+      aggregateRating: {
+        "@type": "AggregateRating",
+        ratingValue: rating.value.toFixed(1),
+        reviewCount: rating.count,
+        bestRating: 5,
+        worstRating: 1,
+      },
+    }),
     offers: offers.length === 1 ? offers[0] : offers,
   };
 };

@@ -10,6 +10,7 @@ import { useCartStore } from "@/stores/cartStore";
 import { trackViewContent } from "@/lib/analytics";
 import { getPrerenderData } from "@/lib/prerenderData";
 import Seo from "@/components/Seo";
+import StarRating, { parseRating } from "@/components/StarRating";
 import { breadcrumbs, product as productLd, summarize } from "@/lib/structuredData";
 
 const ProductPage = () => {
@@ -82,6 +83,7 @@ const ProductPage = () => {
   const variants = product.variants?.edges || [];
   const selectedVariant = variants[selectedVariantIdx]?.node;
   const hasMultipleVariants = variants.length > 1 && !(variants.length === 1 && variants[0].node.title === "Default Title");
+  const rating = parseRating(product);
 
   const handleAddToCart = async () => {
     if (!selectedVariant) return;
@@ -108,7 +110,7 @@ const ProductPage = () => {
         path={`/product/${product.handle}`}
         image={images[0]?.node.url}
         type="product"
-        jsonLd={[productLd(product), breadcrumbs([{ name: product.title, path: `/product/${product.handle}` }])]}
+        jsonLd={[productLd(product, rating), breadcrumbs([{ name: product.title, path: `/product/${product.handle}` }])]}
       />
       <Navbar />
       {/* Shipping banner */}
@@ -163,6 +165,8 @@ const ProductPage = () => {
               <h1 className="font-display text-3xl md:text-4xl font-bold text-charcoal uppercase tracking-wider mb-4">
                 {product.title}
               </h1>
+
+              {rating && <StarRating rating={rating} size="md" className="-mt-2 mb-4" />}
 
               <p className="font-display text-2xl text-barn-red font-bold mb-6">
                 ${selectedVariant ? parseFloat(selectedVariant.price.amount).toFixed(2) : parseFloat(product.priceRange.minVariantPrice.amount).toFixed(2)}
