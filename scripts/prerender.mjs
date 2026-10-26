@@ -8,7 +8,7 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const dist = path.join(root, "dist");
 const server = await import(pathToFileURL(path.join(root, "dist-server", "entry-server.js")).href);
-const { render, recipes, SITE_URL } = server;
+const { render, recipes, guides, SITE_URL } = server;
 
 const template = fs.readFileSync(path.join(dist, "index.html"), "utf8");
 if (!template.includes("<!--seo:start-->") || !template.includes('<div id="root"></div>')) {
@@ -99,6 +99,8 @@ const routes = [
   { url: "/history" },
   { url: "/recipes" },
   { url: "/faq" },
+  { url: "/guides" },
+  ...guides.map((g) => ({ url: `/guides/${g.slug}` })),
   { url: "/return-your-box" },
   { url: "/shop-all", data: products.length ? { products } : {} },
   { url: "/accessibility" },
@@ -165,6 +167,9 @@ Key facts:
 - [Ranch history since 1948](${SITE_URL}/history)
 - [Return your box](${SITE_URL}/return-your-box): Send the insulated box back for a free pound of ground beef
 - [Recipes](${SITE_URL}/recipes)
+
+## Guides
+${guides.map((g) => `- [${g.title}](${SITE_URL}/guides/${g.slug}): ${g.description}`).join("\n")}
 ${collections.length ? `\n## Collections\n${collections.map((c) => `- [${c.title}](${SITE_URL}/collections/${c.handle})`).join("\n")}\n` : ""}${products.length ? `\n## Products\n${products.map((p) => `- [${p.node.title}](${SITE_URL}/product/${p.node.handle}): from ${price(p.node)}`).join("\n")}\n` : ""}
 ## Recipes
 ${recipes.map((r) => `- [${r.title}](${SITE_URL}/recipes/${r.slug})`).join("\n")}

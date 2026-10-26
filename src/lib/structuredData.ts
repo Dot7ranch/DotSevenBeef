@@ -74,7 +74,19 @@ export const breadcrumbs = (items: { name: string; path: string }[]): JsonLd => 
   })),
 });
 
-export const faqPage = (faqs: { question: string; answer: string }[]): JsonLd => ({
+export const article = (a: { path: string; headline: string; description: string; datePublished: string }): JsonLd => ({
+  "@type": "Article",
+  headline: a.headline,
+  description: a.description,
+  url: absolute(a.path),
+  mainEntityOfPage: absolute(a.path),
+  datePublished: a.datePublished,
+  author: { "@id": ORG_ID },
+  publisher: { "@id": ORG_ID },
+  image: DEFAULT_IMAGE,
+});
+
+export const faqPage =(faqs: { question: string; answer: string }[]): JsonLd => ({
   "@type": "FAQPage",
   mainEntity: faqs.map((faq) => ({
     "@type": "Question",

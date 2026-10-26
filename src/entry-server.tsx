@@ -8,6 +8,7 @@ import type { PrerenderData } from "@/lib/prerenderData";
 export { fetchProducts, fetchProductByHandle, fetchCollections, fetchCollectionByHandle } from "@/lib/shopify";
 export { fetchProductReviews, fetchFeaturedReviews } from "@/lib/judgeme";
 export { recipes } from "@/data/recipes";
+export { guides } from "@/data/guides";
 export { SITE_URL } from "@/lib/structuredData";
 
 export function render(url: string, data: PrerenderData = {}) {

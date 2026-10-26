@@ -13,6 +13,8 @@ import HistoryPage from "./pages/HistoryPage";
 import RecipesPage from "./pages/RecipesPage";
 import RecipeDetailPage from "./pages/RecipeDetailPage";
 import FAQPage from "./pages/FAQPage";
+import GuidesPage from "./pages/GuidesPage";
+import GuidePage from "./pages/GuidePage";
 import ReturnYourBoxPage from "./pages/ReturnYourBoxPage";
 import CollectionPage from "./pages/CollectionPage";
 import ShopAllPage from "./pages/ShopAllPage";
@@ -39,6 +41,8 @@ export const AppContent = () => {
       <Route path="/recipes" element={<RecipesPage />} />
       <Route path="/recipes/:slug" element={<RecipeDetailPage />} />
       <Route path="/faq" element={<FAQPage />} />
+      <Route path="/guides" element={<GuidesPage />} />
+      <Route path="/guides/:slug" element={<GuidePage />} />
       <Route path="/return-your-box" element={<ReturnYourBoxPage />} />
       <Route path="/collections/:handle" element={<CollectionPage />} />
       <Route path="/shop-all" element={<ShopAllPage />} />

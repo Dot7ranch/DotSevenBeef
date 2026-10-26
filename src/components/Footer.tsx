@@ -43,6 +43,7 @@ const Footer = () => {
               { label: "Our History", href: "/history" },
               { label: "Meet the Ranchers", href: "/our-story" },
               { label: "Beef FAQs", href: "/faq" },
+              { label: "Beef Guides", href: "/guides" },
               { label: "Recipes", href: "/recipes" },
               { label: "Return Your Box", href: "/return-your-box" }].
               map((link) =>
