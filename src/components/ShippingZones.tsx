@@ -32,7 +32,7 @@ const ShippingZones = () => {
           transition={{ delay: 0.2 }}
           className="max-w-4xl mx-auto"
         >
-          <img
+          <img loading="lazy" decoding="async"
             src={shippingMap}
             alt="Dot Seven Ranch shipping zones map - Zone 1: $19, Zone 2: $39, Zone 3: $55, Zone 4: $69"
             className="w-full h-auto rounded-lg shadow-lg"

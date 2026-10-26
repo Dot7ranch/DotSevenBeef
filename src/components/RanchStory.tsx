@@ -19,10 +19,10 @@ const RanchStory = () => {
                 <img src={familyPortrait2} alt="Robinson family portrait" className="w-full object-cover" />
               </div>
               <div className="relative rounded-lg overflow-hidden">
-                <img src={coupleRanch} alt="Ranch couple watching the work" className="w-full aspect-[3/4] object-cover" />
+                <img loading="lazy" decoding="async" src={coupleRanch} alt="Ranch couple watching the work" className="w-full aspect-[3/4] object-cover" />
               </div>
               <div className="relative rounded-lg overflow-hidden">
-                <img src={ranchKid} alt="Young rancher on the job" className="w-full aspect-[3/4] object-cover" />
+                <img loading="lazy" decoding="async" src={ranchKid} alt="Young rancher on the job" className="w-full aspect-[3/4] object-cover" />
               </div>
             </div>
           </motion.div>
@@ -70,7 +70,7 @@ const RanchStory = () => {
           viewport={{ once: true }}
           className="mt-16 rounded-lg overflow-hidden max-w-2xl mx-auto">
           
-          <img src={brandingIron} alt="Branding day on the ranch" className="w-full aspect-[3/4] object-cover" />
+          <img loading="lazy" decoding="async" src={brandingIron} alt="Branding day on the ranch" className="w-full aspect-[3/4] object-cover" />
         </motion.div>
       </div>
     </section>);

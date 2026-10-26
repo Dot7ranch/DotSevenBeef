@@ -21,7 +21,7 @@ const RanchToTable = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="rounded-lg overflow-hidden mb-6">
-          <img
+          <img loading="lazy" decoding="async"
 
             alt="Black Angus cattle grazing on Dot Seven Ranch pasture"
             className="w-full aspect-[16/9] object-cover" src="/uploads/721313ac-4e66-4fbe-97cf-490a3d5ede7d.jpg" />
@@ -47,7 +47,7 @@ const RanchToTable = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="rounded-lg overflow-hidden">
-          <img
+          <img loading="lazy" decoding="async"
 
             alt="The Dot Seven Ranch family with horse and cattle"
             className="w-full aspect-[16/9] object-cover" src="/uploads/21eac2bf-a30b-4456-ab42-3aebc68fac49.jpg" />

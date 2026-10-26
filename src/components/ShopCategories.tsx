@@ -42,7 +42,7 @@ const ShopCategories = () => {
 
               <Link to={cat.href} className="group block rounded-lg overflow-hidden">
                 <div className="relative aspect-[4/3] overflow-hidden">
-                  <img
+                  <img loading="lazy" decoding="async"
                   src={cat.image}
                   alt={cat.title}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />

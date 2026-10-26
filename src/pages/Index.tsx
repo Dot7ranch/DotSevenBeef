@@ -12,6 +12,7 @@ import CTABanner from "@/components/CTABanner";
 import Footer from "@/components/Footer";
 import Seo from "@/components/Seo";
 import { organization, website } from "@/lib/structuredData";
+import heroSteak from "@/assets/hero-steak.jpg";
 
 const Index = () => {
   return (
@@ -21,6 +22,7 @@ const Index = () => {
         description="Four generations of premium, sustainably raised beef delivered from our family ranch to your table. Shop steaks, beef boxes, and more."
         path="/"
         jsonLd={[organization(), website()]}
+        preloadImage={heroSteak}
       />
       <header className="sticky top-0 z-50">
         <AnnouncementBar />

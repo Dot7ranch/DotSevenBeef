@@ -120,7 +120,7 @@ const FAQPage = () => {
                 <AccordionContent forceMount className="font-body text-muted-foreground whitespace-pre-line">
                   {faq.answer}
                   {faq.hasImage && (
-                    <img
+                    <img loading="lazy" decoding="async"
                       src={shippingZones}
                       alt="Dot Seven Ranch shipping zones map"
                       className="mt-4 rounded-lg w-full max-w-lg"

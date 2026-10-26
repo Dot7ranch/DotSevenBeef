@@ -92,7 +92,7 @@ const SearchBar = () => {
                     className="flex items-center gap-3 px-4 py-3 hover:bg-white/5 transition-colors border-b border-white/5 last:border-0"
                   >
                     {product.node.images.edges[0]?.node && (
-                      <img
+                      <img loading="lazy" decoding="async"
                         src={product.node.images.edges[0].node.url}
                         alt={product.node.images.edges[0].node.altText || product.node.title}
                         className="w-10 h-10 object-cover rounded flex-shrink-0"

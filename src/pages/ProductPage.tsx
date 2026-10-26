@@ -140,7 +140,7 @@ const ProductPage = () => {
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
               <div className="aspect-square rounded-lg overflow-hidden bg-cream-dark mb-4">
                 {images[selectedImage] ? (
-                  <img
+                  <img fetchPriority="high"
                     src={images[selectedImage].node.url}
                     alt={images[selectedImage].node.altText || product.title}
                     className="w-full h-full object-cover"
@@ -159,7 +159,7 @@ const ProductPage = () => {
                         idx === selectedImage ? "border-barn-red" : "border-transparent"
                       }`}
                     >
-                      <img src={img.node.url} alt="" className="w-full h-full object-cover" />
+                      <img loading="lazy" decoding="async" src={img.node.url} alt="" className="w-full h-full object-cover" />
                     </button>
                   ))}
                 </div>

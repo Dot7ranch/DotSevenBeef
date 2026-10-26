@@ -97,7 +97,7 @@ const HistoryPage = () => {
                       viewport={{ once: true }}
                       className="mt-10 rounded-lg overflow-hidden"
                     >
-                      <img src={brandingIron} alt="Branding day on the ranch" className="w-full aspect-[16/9] object-cover" />
+                      <img loading="lazy" decoding="async" src={brandingIron} alt="Branding day on the ranch" className="w-full aspect-[16/9] object-cover" />
                     </motion.div>
                   )}
                   {index === 3 && (
@@ -107,7 +107,7 @@ const HistoryPage = () => {
                       viewport={{ once: true }}
                       className="mt-10 rounded-lg overflow-hidden"
                     >
-                      <img src={familyPortrait2} alt="Robinson family" className="w-full object-cover" />
+                      <img loading="lazy" decoding="async" src={familyPortrait2} alt="Robinson family" className="w-full object-cover" />
                     </motion.div>
                   )}
                 </motion.div>

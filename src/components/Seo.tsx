@@ -9,6 +9,8 @@ export interface SeoProps {
   type?: "website" | "product" | "article";
   noindex?: boolean;
   jsonLd?: JsonLd | JsonLd[];
+  /** Above-the-fold image (e.g. a CSS background) the browser should start fetching immediately. */
+  preloadImage?: string;
 }
 
 // Filled while rendering on the server so the prerender script can write the page's <head>.
@@ -19,8 +21,22 @@ const fullTitle = (title: string) => (title.includes(SITE_NAME) ? title : `${tit
 const escapeAttr = (value: string) =>
   value.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
+// Link previews (Facebook, iMessage, WhatsApp) want a ~1.91:1 image under ~300KB. Shopify's CDN
+// resizes on the fly, so full-size product photos are cropped to 1200x630 for sharing.
+const SHARE_WIDTH = 1200;
+const SHARE_HEIGHT = 630;
+function shareImage(image: string) {
+  if (!image.startsWith("https://cdn.shopify.com/")) return { src: image, sized: false };
+  const src = new URL(image);
+  src.searchParams.set("width", String(SHARE_WIDTH));
+  src.searchParams.set("height", String(SHARE_HEIGHT));
+  src.searchParams.set("crop", "center");
+  return { src: src.toString(), sized: true };
+}
+
 function headEntries({ title, description, path, image = DEFAULT_IMAGE, type = "website", noindex = false }: SeoProps) {
   const url = `${SITE_URL}${path === "/" ? "" : path}`;
+  const share = shareImage(image);
   return {
     title: fullTitle(title),
     url,
@@ -32,12 +48,19 @@ function headEntries({ title, description, path, image = DEFAULT_IMAGE, type = "
       ["property", "og:description", description],
       ["property", "og:type", type],
       ["property", "og:url", url],
-      ["property", "og:image", image],
+      ["property", "og:image", share.src],
+      ...(share.sized
+        ? ([
+            ["property", "og:image:width", String(SHARE_WIDTH)],
+            ["property", "og:image:height", String(SHARE_HEIGHT)],
+          ] as const)
+        : []),
+      ["property", "og:image:alt", fullTitle(title)],
       ["name", "twitter:card", "summary_large_image"],
       ["name", "twitter:site", "@dotsevenranch"],
       ["name", "twitter:title", fullTitle(title)],
       ["name", "twitter:description", description],
-      ["name", "twitter:image", image],
+      ["name", "twitter:image", share.src],
     ] as const,
   };
 }
@@ -49,6 +72,9 @@ export function renderHeadTags(seo: SeoProps) {
     `<title>${escapeAttr(title)}</title>`,
     `<link rel="canonical" href="${escapeAttr(url)}" />`,
     ...meta.map(([attr, key, content]) => `<meta ${attr}="${key}" content="${escapeAttr(content)}" />`),
+    ...(seo.preloadImage
+      ? [`<link rel="preload" as="image" href="${escapeAttr(seo.preloadImage)}" fetchpriority="high" />`]
+      : []),
   ].join("\n    ");
 }
 
