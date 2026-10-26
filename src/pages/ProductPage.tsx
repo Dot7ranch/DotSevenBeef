@@ -11,13 +11,17 @@ import { trackViewContent } from "@/lib/analytics";
 import { getPrerenderData } from "@/lib/prerenderData";
 import Seo from "@/components/Seo";
 import StarRating, { parseRating } from "@/components/StarRating";
+import ProductReviews, { INITIAL_REVIEWS_SHOWN } from "@/components/ProductReviews";
+import { fetchProductReviews, type Review } from "@/lib/judgeme";
 import { breadcrumbs, product as productLd, summarize } from "@/lib/structuredData";
 
 const ProductPage = () => {
   const { handle } = useParams<{ handle: string }>();
-  const seeded = getPrerenderData().product;
-  const seededProduct = seeded?.handle === handle ? seeded : null;
+  const prerendered = getPrerenderData();
+  const seededProduct = prerendered.product?.handle === handle ? prerendered.product : null;
+  const seededReviews = seededProduct ? prerendered.reviews || [] : [];
   const [product, setProduct] = useState<any>(seededProduct);
+  const [reviews, setReviews] = useState<Review[]>(seededReviews);
   const [loading, setLoading] = useState(!seededProduct);
   const [selectedVariantIdx, setSelectedVariantIdx] = useState(0);
   const [selectedImage, setSelectedImage] = useState(0);
@@ -34,6 +38,8 @@ const ProductPage = () => {
     } else {
       setLoading(true);
     }
+    setReviews(seededReviews);
+    fetchProductReviews(handle).then(setReviews).catch(() => {});
     fetchProductByHandle(handle).then((p) => {
       setProduct(p);
       setLoading(false);
@@ -110,7 +116,7 @@ const ProductPage = () => {
         path={`/product/${product.handle}`}
         image={images[0]?.node.url}
         type="product"
-        jsonLd={[productLd(product, rating), breadcrumbs([{ name: product.title, path: `/product/${product.handle}` }])]}
+        jsonLd={[productLd(product, rating, reviews.slice(0, INITIAL_REVIEWS_SHOWN)), breadcrumbs([{ name: product.title, path: `/product/${product.handle}` }])]}
       />
       <Navbar />
       {/* Shipping banner */}
@@ -259,6 +265,8 @@ const ProductPage = () => {
               ) : null}
             </motion.div>
           </div>
+
+          <ProductReviews reviews={reviews} rating={rating} />
         </div>
       </div>
       <Footer />

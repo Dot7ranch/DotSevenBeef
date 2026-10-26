@@ -96,7 +96,19 @@ interface ProductLike {
   };
 }
 
-export const product = (p: ProductLike, rating?: { value: number; count: number } | null): JsonLd => {
+interface ReviewLike {
+  author: string;
+  rating: number;
+  date: string;
+  title: string;
+  body: string;
+}
+
+export const product = (
+  p: ProductLike,
+  rating?: { value: number; count: number } | null,
+  reviews: ReviewLike[] = [],
+): JsonLd => {
   const url = absolute(`/product/${p.handle}`);
   const offers = (p.variants?.edges || []).map(({ node }) => ({
     "@type": "Offer",
@@ -124,6 +136,16 @@ export const product = (p: ProductLike, rating?: { value: number; count: number 
         bestRating: 5,
         worstRating: 1,
       },
+    }),
+    ...(reviews.length && {
+      review: reviews.map((r) => ({
+        "@type": "Review",
+        author: { "@type": "Person", name: r.author },
+        ...(r.date && { datePublished: r.date.slice(0, 10) }),
+        ...(r.title && { name: r.title }),
+        ...(r.body && { reviewBody: r.body }),
+        reviewRating: { "@type": "Rating", ratingValue: r.rating, bestRating: 5, worstRating: 1 },
+      })),
     }),
     offers: offers.length === 1 ? offers[0] : offers,
   };

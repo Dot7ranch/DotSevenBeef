@@ -54,6 +54,21 @@ try {
   console.warn(`[prerender] Shopify fetch failed, skipping product and collection pages: ${err.message}`);
 }
 
+// Judge.me review text for products that have reviews. A failure just leaves that page's reviews
+// to load in the browser.
+const reviewsByHandle = {};
+await mapLimit(
+  productDetails.filter((p) => Number(p.ratingCount?.value) > 0),
+  4,
+  async (p) => {
+    try {
+      reviewsByHandle[p.handle] = await server.fetchProductReviews(p.handle);
+    } catch (err) {
+      console.warn(`[prerender] Judge.me reviews failed for ${p.handle}: ${err.message}`);
+    }
+  },
+);
+
 const routes = [
   { url: "/" },
   { url: "/our-story" },
@@ -65,7 +80,10 @@ const routes = [
   { url: "/accessibility" },
   ...recipes.map((r) => ({ url: `/recipes/${r.slug}` })),
   ...collections.map((c) => ({ url: `/collections/${c.handle}`, data: { collection: c } })),
-  ...productDetails.map((p) => ({ url: `/product/${p.handle}`, data: { product: p } })),
+  ...productDetails.map((p) => ({
+    url: `/product/${p.handle}`,
+    data: { product: p, reviews: reviewsByHandle[p.handle] || [] },
+  })),
 ];
 
 function buildPage(url, data = {}) {

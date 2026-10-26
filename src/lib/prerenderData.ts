@@ -1,4 +1,5 @@
 import type { ShopifyProduct } from "@/lib/shopify";
+import type { Review } from "@/lib/judgeme";
 
 /**
  * Shopify data baked into a prerendered page at build time. The server render reads it from
@@ -8,6 +9,7 @@ import type { ShopifyProduct } from "@/lib/shopify";
 export interface PrerenderData {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   product?: any;
+  reviews?: Review[];
   collection?: { handle: string; title: string; description: string; products: { edges: { node: ShopifyProduct["node"] }[] } };
   products?: ShopifyProduct[];
 }
