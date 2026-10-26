@@ -48,15 +48,44 @@ export function parseReviewWidget(html: string): Review[] {
     .filter((r) => r.rating > 0 && (r.body || r.title));
 }
 
+export interface FeaturedReview extends Review {
+  product: string;
+}
+
+/** Parses Judge.me's featured carousel widget: the reviews chosen in the carousel settings in Judge.me. */
+export function parseFeaturedCarousel(html: string): FeaturedReview[] {
+  return html
+    // Product reviews use class 'jdgm-carousel-item ', store reviews 'jdgm-carousel-item jdgm--shop-review'.
+    .split(/<div class='jdgm-carousel-item(?:\s[^']*)?' /)
+    .slice(1)
+    .map((chunk) => {
+      const date = attr(chunk, "data-time").match(/^(\d+)\/(\d+)\/(\d{4})$/);
+      return {
+        id: attr(chunk, "data-review-id"),
+        author: toText(inner(chunk, "jdgm-carousel-item__reviewer-name jdgm-ellipsis", "div")) || "Customer",
+        rating: Number(chunk.match(/aria-label='(\d) stars?'/)?.[1]) || 0,
+        date: date ? `${date[3]}-${date[1].padStart(2, "0")}-${date[2].padStart(2, "0")}` : "",
+        title: toText(inner(chunk, "jdgm-carousel-item__review-title", "div")),
+        body: toText(inner(chunk, "jdgm-carousel-item__review-body", "div")),
+        verified: false,
+        product: decodeEntities(attr(chunk, "alt")),
+      };
+    })
+    .filter((r) => r.rating > 0 && (r.body || r.title));
+}
+
+async function fetchWidget(widget: string, params: Record<string, string> = {}) {
+  const query = new URLSearchParams({ api_token: JUDGEME_PUBLIC_TOKEN, shop_domain: SHOP_DOMAIN, ...params });
+  const response = await fetch(`https://judge.me/api/v1/widgets/${widget}?${query}`);
+  return response.ok ? response.json() : null;
+}
+
 export async function fetchProductReviews(handle: string): Promise<Review[]> {
-  const params = new URLSearchParams({
-    api_token: JUDGEME_PUBLIC_TOKEN,
-    shop_domain: SHOP_DOMAIN,
-    handle,
-    per_page: "50",
-  });
-  const response = await fetch(`https://judge.me/api/v1/widgets/product_review?${params}`);
-  if (!response.ok) return [];
-  const data = await response.json();
+  const data = await fetchWidget("product_review", { handle, per_page: "50" });
   return data?.widget ? parseReviewWidget(data.widget) : [];
+}
+
+export async function fetchFeaturedReviews(): Promise<FeaturedReview[]> {
+  const data = await fetchWidget("featured_carousel");
+  return data?.featured_carousel ? parseFeaturedCarousel(data.featured_carousel) : [];
 }

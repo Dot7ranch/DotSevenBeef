@@ -3,20 +3,53 @@ import { Star, ChevronLeft, ChevronRight } from "lucide-react";
 import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import { useState, useEffect, useRef } from "react";
+import { fetchFeaturedReviews } from "@/lib/judgeme";
+import { getPrerenderData } from "@/lib/prerenderData";
 
-const testimonials = [
+interface Testimonial {
+  id: string;
+  quote: string;
+  author: string;
+  rating: number;
+  product?: string;
+}
+
+// Shown only if Judge.me can't be reached.
+const fallbackTestimonials: Testimonial[] = [
   { quote: "Love the beef. Nothing beats it when it comes to flavor. I need to order more!", author: "Victor A." },
   { quote: "Wow! What an awesome ribeye! It was soooo good. We completed the meal with scalloped potatoes and brussel sprouts. Yum!", author: "Andrea C." },
   { quote: "We had our top sirloin steaks last night and they were fantastic... super delicious!", author: "Scott & Maggie T." },
   { quote: "What a difference between the beef we usually buy at a grocery store and this delicious cut from a local rancher. So fresh, so tender, so flavorful!", author: "Heidi H." },
   { quote: "We love Dot Seven Beef as every cut has soooo much flavor and just melts in your mouth!", author: "Josh L." },
   { quote: "Picked up some of your broth & bouillon & it was so delicious! I made soup with it. Can't wait to buy more!", author: "Sarah S." },
-];
+].map((t) => ({ ...t, id: t.author, rating: 5 }));
+
+const fromJudgeMe = (reviews: Awaited<ReturnType<typeof fetchFeaturedReviews>>): Testimonial[] =>
+  reviews.map((r) => ({
+    id: r.id,
+    quote: r.body || r.title,
+    author: r.author,
+    rating: r.rating,
+    product: r.product,
+  }));
 
 const Testimonials = () => {
+  const seeded = getPrerenderData().featuredReviews;
+  const [testimonials, setTestimonials] = useState<Testimonial[]>(
+    seeded?.length ? fromJudgeMe(seeded) : fallbackTestimonials
+  );
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
   const autoplayPlugin = useRef(Autoplay({ delay: 10000, stopOnInteraction: false }));
+
+  // Judge.me's featured carousel is the source of truth; refresh it on every visit.
+  useEffect(() => {
+    fetchFeaturedReviews()
+      .then((reviews) => {
+        if (reviews.length) setTestimonials(fromJudgeMe(reviews));
+      })
+      .catch(() => {});
+  }, []);
 
   useEffect(() => {
     if (!api) return;
@@ -69,7 +102,7 @@ const Testimonials = () => {
         >
           <CarouselContent className="-ml-5">
             {testimonials.map((t, i) => (
-              <CarouselItem key={t.author} className="pl-5 basis-[85%] md:basis-[45%] lg:basis-[33%]">
+              <CarouselItem key={t.id} className="pl-5 basis-[85%] md:basis-[45%] lg:basis-[33%]">
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -77,15 +110,21 @@ const Testimonials = () => {
                   transition={{ delay: i * 0.06 }}
                   className="bg-card rounded-lg p-6 border border-border hover-lift h-full"
                 >
-                  <div className="flex gap-0.5 mb-4">
+                  <div className="flex gap-0.5 mb-4" role="img" aria-label={`${t.rating} out of 5 stars`}>
                     {[...Array(5)].map((_, j) => (
-                      <Star key={j} size={14} className="fill-warm-gold text-warm-gold" />
+                      <Star
+                        key={j}
+                        size={14}
+                        aria-hidden="true"
+                        className={j < t.rating ? "fill-warm-gold text-warm-gold" : "text-border"}
+                      />
                     ))}
                   </div>
-                  <p className="font-body text-base text-foreground leading-relaxed mb-4 italic">
+                  <p className="font-body text-base text-foreground leading-relaxed mb-4 italic line-clamp-6">
                     "{t.quote}"
                   </p>
                   <p className="font-body text-sm font-semibold text-muted-foreground">— {t.author}</p>
+                  {t.product && <p className="font-body text-xs text-muted-foreground mt-1">{t.product}</p>}
                 </motion.div>
               </CarouselItem>
             ))}

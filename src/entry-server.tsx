@@ -6,7 +6,7 @@ import { ssrSeo, renderHeadTags } from "@/components/Seo";
 import type { PrerenderData } from "@/lib/prerenderData";
 
 export { fetchProducts, fetchProductByHandle, fetchCollections, fetchCollectionByHandle } from "@/lib/shopify";
-export { fetchProductReviews } from "@/lib/judgeme";
+export { fetchProductReviews, fetchFeaturedReviews } from "@/lib/judgeme";
 export { recipes } from "@/data/recipes";
 export { SITE_URL } from "@/lib/structuredData";
 

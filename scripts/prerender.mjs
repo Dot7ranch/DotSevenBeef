@@ -34,20 +34,35 @@ async function mapLimit(items, limit, fn) {
   return results;
 }
 
+// Retries transient failures (Shopify occasionally returns a 502) so one blip doesn't drop every
+// product page from this build and its sitemap.
+async function withRetry(fn, attempts = 4) {
+  for (let i = 1; ; i++) {
+    try {
+      return await fn();
+    } catch (err) {
+      if (i >= attempts) throw err;
+      await new Promise((resolve) => setTimeout(resolve, 1000 * 2 ** i));
+    }
+  }
+}
+
 // Shopify data. If the Storefront API is unreachable, the static pages still prerender and
 // product/collection URLs fall back to the SPA shell instead of failing the deploy.
 let products = [];
 let productDetails = [];
 let collections = [];
 try {
-  products = await server.fetchProducts(250);
-  productDetails = (await mapLimit(products, 6, (p) => server.fetchProductByHandle(p.node.handle))).filter(Boolean);
-  const list = await server.fetchCollections(250);
+  products = await withRetry(() => server.fetchProducts(250));
+  productDetails = (
+    await mapLimit(products, 6, (p) => withRetry(() => server.fetchProductByHandle(p.node.handle)))
+  ).filter(Boolean);
+  const list = await withRetry(() => server.fetchCollections(250));
   collections = (
     await mapLimit(
       list.filter((c) => !SKIP_COLLECTIONS.has(c.node.handle)),
       6,
-      (c) => server.fetchCollectionByHandle(c.node.handle, 250),
+      (c) => withRetry(() => server.fetchCollectionByHandle(c.node.handle, 250)),
     )
   ).filter((c) => c && c.products.edges.length > 0);
 } catch (err) {
@@ -69,9 +84,18 @@ await mapLimit(
   },
 );
 
+// Judge.me featured carousel for the testimonials section (homepage and Our Story).
+let featuredReviews = [];
+try {
+  featuredReviews = await server.fetchFeaturedReviews();
+} catch (err) {
+  console.warn(`[prerender] Judge.me featured reviews failed: ${err.message}`);
+}
+const testimonialData = featuredReviews.length ? { featuredReviews } : {};
+
 const routes = [
-  { url: "/" },
-  { url: "/our-story" },
+  { url: "/", data: testimonialData },
+  { url: "/our-story", data: testimonialData },
   { url: "/history" },
   { url: "/recipes" },
   { url: "/faq" },
