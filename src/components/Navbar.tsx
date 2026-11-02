@@ -7,6 +7,7 @@ import SearchBar from "@/components/SearchBar";
 
 const shopBeefLinks = [
   { label: "Shop All Products", href: "/shop-all" },
+  { label: "Holiday Boxes", href: "/collections/holiday-beef-boxes-1", featured: true },
   { label: "¼ Beef Share", href: "/product/1-4-beef-share", featured: true },
   { label: "Beef Box Specials", href: "/collections/beef-box-specials" },
   { label: "Shop by the Cut", href: "/collections/build-your-own-box" },
