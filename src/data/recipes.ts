@@ -3,6 +3,7 @@ export interface Recipe {
   date: string;
   description: string;
   image: string;
+  imageAlt?: string;
   slug: string;
   externalUrl: string;
   shopUrl: string;
@@ -10,6 +11,17 @@ export interface Recipe {
 }
 
 export const recipes: Recipe[] = [
+  {
+    title: "Beef Sausage Potato Soup in a Pumpkin",
+    date: "November 5, 2026",
+    description: "Hearty beef sausage and potato soup served right out of a roasted pumpkin. The ultimate fall showstopper!",
+    image: "https://cdn.shopify.com/s/files/1/0584/0411/0525/files/IMG_9223.jpg?v=1793917671",
+    imageAlt: "Beef sausage potato soup served in a roasted pumpkin, topped with pumpkin seeds",
+    slug: "beef-sausage-potato-soup-in-a-pumpkin",
+    externalUrl: "",
+    shopUrl: "/collections/ground-beef-sausage",
+    shopLabel: "Shop Ground Beef & Sausage",
+  },
   {
     title: "Aloha Burgers",
     date: "October 14, 2025",

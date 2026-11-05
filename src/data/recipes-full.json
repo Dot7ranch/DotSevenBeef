@@ -1,4 +1,50 @@
 {
+  "beef-sausage-potato-soup-in-a-pumpkin": {
+    "name": "Beef Sausage Potato Soup in a Pumpkin",
+    "description": "Fall comfort food at its finest! Hearty beef sausage, tender Yukon Gold potatoes and a creamy, cheesy broth, all served right out of a roasted pumpkin. Scrape a little sweet pumpkin into every bowl for a showstopper dinner the whole family will love.",
+    "image": "https://cdn.shopify.com/s/files/1/0584/0411/0525/files/IMG_9223.jpg?v=1793917671",
+    "prepTime": "PT30M",
+    "cookTime": "PT1H15M",
+    "servings": "8",
+    "ingredients": [
+      "1 medium pumpkin (about 6–8 lb, must fit in your oven)",
+      "6 tablespoons cream cheese, softened (for lining the pumpkin)",
+      "1–2 pounds beef sausage, casings removed",
+      "1 large white onion, diced",
+      "5 garlic cloves, minced",
+      "1 teaspoon smoked paprika",
+      "1 teaspoon red pepper flakes",
+      "1 teaspoon Italian seasoning",
+      "2 pounds Yukon Gold potatoes (about 5 medium), diced into 1-inch pieces",
+      "7 cups chicken broth",
+      "2 tablespoons butter",
+      "3 tablespoons all-purpose flour",
+      "2 cups milk (whole is best)",
+      "6 tablespoons cream cheese, softened and cut into small cubes (for the soup)",
+      "0.8 teaspoon salt",
+      "3 cups spinach or chopped kale (optional)"
+    ],
+    "instructions": [
+      "Prep the pumpkin: Heat the oven to 350°F. Set out all the cream cheese to soften. Cut a lid off the pumpkin and scoop out the seeds and stringy bits.",
+      "Spread 6 tablespoons of the softened cream cheese all over the inside of the pumpkin and the underside of the lid. Put the lid back on and set the pumpkin on a sheet pan.",
+      "Roast the pumpkin: Bake until the flesh is tender when poked with a fork, about 60 minutes, but keep an eye on it.",
+      "Brown the sausage and aromatics: In a large heavy pot over medium heat, cook the beef sausage, breaking it up, along with the onion, garlic, smoked paprika and red pepper flakes until the sausage is cooked through and the onion is soft, 6–8 minutes.",
+      "Simmer the potatoes: Stir in the Italian seasoning, potatoes and chicken broth. Bring to a boil, then lower to a steady simmer and cook until the potatoes are fork-tender, 12–15 minutes. Yukons soften faster, so start checking at 12 minutes.",
+      "Start the cream sauce: While the potatoes cook, melt the butter in a small saucepan over medium heat. Whisk in the flour and cook for 1 minute, whisking constantly.",
+      "Whisk in the milk and cream cheese: Slowly pour in the milk, a little at a time, whisking the whole time so no lumps form. Add the remaining 6 tablespoons cream cheese and the salt. Keep whisking until the cream cheese melts and the sauce is thick like gravy, about 4–5 minutes.",
+      "Finish the soup: Stir the cream sauce into the soup along with the spinach or kale, if using. For an extra-creamy soup, mash a few potato pieces against the side of the pot. Cook just until the greens wilt. Taste and add more salt if needed.",
+      "Fill and serve: Carefully ladle the soup into the roasted pumpkin, keeping it on the sheet pan. As you serve, scrape the soft pumpkin from the sides into each bowl."
+    ],
+    "notes": "Make the soup while the pumpkin roasts so everything is ready at the same time.",
+    "slug": "beef-sausage-potato-soup-in-a-pumpkin",
+    "bodyHtml": "",
+    "ingredientLinks": {
+      "beef sausage": {
+        "url": "/product/mild-italian-sausage",
+        "label": "Dot Seven Sweet Italian Sausage Links"
+      }
+    }
+  },
   "aloha-burgers": {
     "name": "Aloha Burgers",
     "description": "Our Aloha Burger is your ticket to flavor paradise! This juicy, Hawaiian-inspired patty is topped with sweet grilled pineapple, melted cheese, and a zesty sauce that brings the islands to your plate.",

@@ -68,7 +68,7 @@ const RecipesPage = () => {
                     <div className="relative overflow-hidden">
                       <img
                         src={recipe.image}
-                        alt={recipe.title}
+                        alt={recipe.imageAlt || recipe.title}
                         className="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-500"
                         loading="lazy"
                         decoding="async"

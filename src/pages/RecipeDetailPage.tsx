@@ -22,7 +22,27 @@ const fullData: Record<string, {
   notes: string;
   bodyHtml: string;
   slug: string;
+  ingredientLinks?: Record<string, { url: string; label: string }>;
 }> = recipesFull as any;
+
+// Wraps the first matching phrase (e.g. "beef sausage") in a link to the featured product.
+function linkIngredient(text: string, links?: Record<string, { url: string; label: string }>) {
+  if (!links) return text;
+  for (const [phrase, { url, label }] of Object.entries(links)) {
+    const i = text.indexOf(phrase);
+    if (i === -1) continue;
+    return (
+      <>
+        {text.slice(0, i)}
+        <Link to={url} title={label} className="text-barn-red font-semibold underline underline-offset-2 hover:text-barn-red-dark">
+          {phrase}
+        </Link>
+        {text.slice(i + phrase.length)}
+      </>
+    );
+  }
+  return text;
+}
 
 function formatDuration(iso: string) {
   if (!iso) return "";
@@ -203,7 +223,7 @@ const RecipeDetailPage = () => {
             <div className="max-w-2xl mx-auto section-padding">
               <img
                 src={heroImage}
-                alt={recipe.title}
+                alt={recipe.imageAlt || recipe.title}
                 className="w-full aspect-[4/3] object-cover rounded-lg"
               />
             </div>
@@ -230,7 +250,7 @@ const RecipeDetailPage = () => {
             {heroImage && (
               <img
                 src={heroImage}
-                alt={recipe.title}
+                alt={recipe.imageAlt || recipe.title}
                 style={{ maxHeight: '160px', width: 'auto', objectFit: 'cover', borderRadius: '6px', margin: '0 auto 20px', display: 'block' }}
               />
             )}
@@ -300,7 +320,7 @@ const RecipeDetailPage = () => {
                     {full.ingredients.map((ing, i) => (
                       <li key={i} className="font-body text-foreground/90 flex gap-3">
                         <span className="text-barn-red mt-1.5 flex-shrink-0">▪</span>
-                        <span>{scaleIngredient(ing, ratio)}</span>
+                        <span>{linkIngredient(scaleIngredient(ing, ratio), full.ingredientLinks)}</span>
                       </li>
                     ))}
                   </ul>
