@@ -380,7 +380,7 @@ const RecipeDetailPage = () => {
                 Get the Exact Cut for This Recipe
               </h2>
               <p className="font-body text-white/70 mb-6">
-                All our beef is grass-fed, grain-finished, and shipped fresh from our ranch every Monday.
+                All our beef is grain-finished and shipped fresh from our ranch every Monday.
               </p>
               <Link
                 to={recipe.shopUrl}
