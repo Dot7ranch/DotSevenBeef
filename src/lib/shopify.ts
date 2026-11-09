@@ -54,6 +54,19 @@ export interface ShopifyProduct {
   };
 }
 
+// Cuts with multiple sizes open on the Signature size. Falls back to the first
+// in-stock size when Signature is sold out, then to the first size.
+export function getDefaultVariantIndex(
+  variants: Array<{ node: { title: string; availableForSale: boolean } }>,
+): number {
+  const signatureIdx = variants.findIndex(
+    ({ node }) => node.availableForSale && /signature/i.test(node.title),
+  );
+  if (signatureIdx >= 0) return signatureIdx;
+  const availableIdx = variants.findIndex(({ node }) => node.availableForSale);
+  return availableIdx >= 0 ? availableIdx : 0;
+}
+
 export async function storefrontApiRequest(query: string, variables: Record<string, unknown> = {}) {
   const response = await fetch(SHOPIFY_STOREFRONT_URL, {
     method: 'POST',

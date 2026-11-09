@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { ShoppingCart, Loader2 } from "lucide-react";
 import { toast } from "sonner";
-import { type ShopifyProduct } from "@/lib/shopify";
+import { type ShopifyProduct, getDefaultVariantIndex } from "@/lib/shopify";
 import { useCartStore } from "@/stores/cartStore";
 import StarRating, { parseRating } from "@/components/StarRating";
 
@@ -13,9 +13,9 @@ const ProductCard = ({ product }: ProductCardProps) => {
   const { node } = product;
   const addItem = useCartStore(state => state.addItem);
   const isLoading = useCartStore(state => state.isLoading);
-  const selectedVariant = node.variants.edges[0]?.node;
+  const selectedVariant = node.variants.edges[getDefaultVariantIndex(node.variants.edges)]?.node;
   const image = node.images.edges[0]?.node;
-  const price = parseFloat(node.priceRange.minVariantPrice.amount).toFixed(2);
+  const price = parseFloat((selectedVariant?.price ?? node.priceRange.minVariantPrice).amount).toFixed(2);
   const isSoldOut = node.variants.edges.every(({ node: variant }) => !variant.availableForSale);
   const rating = parseRating(node);
 

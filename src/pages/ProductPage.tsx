@@ -5,7 +5,7 @@ import { Loader2, ShoppingCart, Minus, Plus } from "lucide-react";
 import { toast } from "sonner";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { fetchProductByHandle } from "@/lib/shopify";
+import { fetchProductByHandle, getDefaultVariantIndex } from "@/lib/shopify";
 import { useCartStore } from "@/stores/cartStore";
 import { trackViewContent } from "@/lib/analytics";
 import { getPrerenderData } from "@/lib/prerenderData";
@@ -23,7 +23,9 @@ const ProductPage = () => {
   const [product, setProduct] = useState<any>(seededProduct);
   const [reviews, setReviews] = useState<Review[]>(seededReviews);
   const [loading, setLoading] = useState(!seededProduct);
-  const [selectedVariantIdx, setSelectedVariantIdx] = useState(0);
+  const [selectedVariantIdx, setSelectedVariantIdx] = useState(() =>
+    seededProduct ? getDefaultVariantIndex(seededProduct.variants?.edges || []) : 0,
+  );
   const [selectedImage, setSelectedImage] = useState(0);
   const [quantity, setQuantity] = useState(1);
 
@@ -48,7 +50,9 @@ const ProductPage = () => {
 
   useEffect(() => {
     if (!product) return;
-    const variant = product.variants?.edges?.[0]?.node;
+    const defaultIdx = getDefaultVariantIndex(product.variants?.edges || []);
+    setSelectedVariantIdx(defaultIdx);
+    const variant = product.variants?.edges?.[defaultIdx]?.node;
     if (variant) {
       trackViewContent({
         productId: product.id,
