@@ -2,6 +2,7 @@ import AnnouncementBar from "@/components/AnnouncementBar";
 import SaleBanner from "@/components/SaleBanner";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
+import HolidayBanner from "@/components/HolidayBanner";
 import ValueProps from "@/components/ValueProps";
 import ShopCategories from "@/components/ShopCategories";
 import RanchToTable from "@/components/RanchToTable";
@@ -30,6 +31,7 @@ const Index = () => {
         <Navbar fixed={false} />
       </header>
       <main id="main-content">
+      <HolidayBanner />
       <HeroSection />
       <ValueProps />
       <ShopCategories />
