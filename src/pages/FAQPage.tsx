@@ -111,6 +111,11 @@ const FAQPage = () => {
           <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-6">
             Beef Logistics
           </h2>
+          <img
+            src={shippingZones}
+            alt="Dot Seven Ranch shipping zones map - Zone 1: $19, Zone 2: $39, Zone 3: $55, Zone 4: $69"
+            className="mx-auto mb-8 rounded-lg shadow-lg w-full max-w-2xl h-auto"
+          />
           <Accordion type="single" collapsible className="w-full mb-12">
             {beefLogistics.map((faq, i) => (
               <AccordionItem key={i} value={`logistics-${i}`} className="border-border">
@@ -119,13 +124,6 @@ const FAQPage = () => {
                 </AccordionTrigger>
                 <AccordionContent forceMount className="font-body text-muted-foreground whitespace-pre-line">
                   {faq.answer}
-                  {faq.hasImage && (
-                    <img loading="lazy" decoding="async"
-                      src={shippingZones}
-                      alt="Dot Seven Ranch shipping zones map"
-                      className="mt-4 rounded-lg w-full max-w-lg"
-                    />
-                  )}
                 </AccordionContent>
               </AccordionItem>
             ))}
