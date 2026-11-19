@@ -22,6 +22,11 @@ const beefLogistics = [
       "Because we use dry ice to keep your beef frozen, beef boxes will ship once a week. You may order any day of the week but we will ship either Monday or Tuesday for Wednesday or Thursday (at the latest) delivery. Cutoff to guarantee your beef will arrive on time will be every Sunday evening at 11:59pm PST. If you order after that but before we pickup dry ice, we will make every effort to get your order out the door, however we cannot guarantee it.",
   },
   {
+    question: "What are your holiday shipping deadlines?",
+    answer:
+      "Thanksgiving: order by Sunday, November 22 at 11:59pm PST. Those orders ship Monday, November 23.\nChristmas: order by Sunday, December 20 at 11:59pm PST. Those orders ship Monday, December 21, our last shipment before Christmas.\nRanch Thank-You Week orders (November 23–30) ship Monday, November 30.",
+  },
+  {
     question: "How long will it take for my beef to arrive at my doorstep?",
     answer:
       "The time zone you are in will determine how fast you receive your order. We are located in California so most of the western states will receive their order the following day and the rest of the country will receive theirs 1–2 days. Rest assured there will be enough dry ice in your box to keep everything perfectly frozen for 48 hours or more.",
