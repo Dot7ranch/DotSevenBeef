@@ -24,7 +24,7 @@ export const guides: Guide[] = [
       {
         question: "How many pounds is a quarter beef?",
         answer:
-          "At Dot Seven Ranch, a quarter beef share is 150 pounds of beef: about 50 pounds of steaks and roasts and 100 pounds of ground beef, stew meat, kabob meat and short ribs.",
+          "At Dot Seven Ranch, a quarter beef share is 150 pounds of beef: about 50 pounds of steaks and roasts and 100 pounds of ground beef, carne asada and short ribs.",
       },
       {
         question: "What size freezer do I need for a quarter beef?",
@@ -48,10 +48,13 @@ export const guides: Guide[] = [
         <P>About 50 pounds of steaks and roasts:</P>
         <UL
           items={[
-            "8 bone-in ribeye steaks",
-            "8 New York strip steaks",
-            "8 filet mignons",
+            "6 bone-in ribeye steaks",
+            "6 New York strip steaks",
+            "4 filet mignons",
             "8 top sirloin steaks",
+            "2 skirt steaks",
+            "1 flank steak",
+            "4 flat iron steaks",
             "2 chuck roasts",
             "1 brisket (2 to 3 pounds)",
           ]}
@@ -59,9 +62,8 @@ export const guides: Guide[] = [
         <P>Plus 100 pounds of everyday cuts:</P>
         <UL
           items={[
-            "70 pounds of ground beef",
-            "10 pounds of stew meat",
-            "10 pounds of kabob meat",
+            "80 pounds of ground beef",
+            "10 pounds of carne asada",
             "10 pounds of short ribs",
           ]}
         />
