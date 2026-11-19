@@ -24,7 +24,7 @@ const beefLogistics = [
   {
     question: "What are your holiday shipping deadlines?",
     answer:
-      "Thanksgiving: order by Sunday, November 22 at 11:59pm PST. Those orders ship Monday, November 23.\nChristmas: order by Sunday, December 20 at 11:59pm PST. Those orders ship Monday, December 21, our last shipment before Christmas.\nRanch Thank-You Week orders (November 23–30) ship Monday, November 30.",
+      "Thanksgiving: order by Sunday, November 22 at 11:59pm PST. Those orders ship Monday, November 23.\nChristmas: order by Sunday, December 20 at 11:59pm PST. Those orders ship Monday, December 21, our last shipment before Christmas.\nGift the Brand orders (November 23–30) ship Monday, November 30.",
   },
   {
     question: "How long will it take for my beef to arrive at my doorstep?",

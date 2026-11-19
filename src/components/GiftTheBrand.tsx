@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Gift } from "lucide-react";
 
-// Ranch Thank-You Week (Mon 11/23 – Mon 11/30, 11:59pm Pacific).
+// Gift the Brand (Mon 11/23 – Mon 11/30, 11:59pm Pacific).
 // Free beef is added by hand at packing based on the order subtotal; no code or cart item needed.
 // Shows as a "starts Monday" preview before the week, then hides itself after Cyber Monday.
 const WEEK_START = new Date("2026-11-23T08:00:00Z");
@@ -22,22 +22,22 @@ const tiers = [
   },
 ];
 
-const ThankYouWeek = () => {
+const GiftTheBrand = () => {
   const now = Date.now();
   if (now > WEEK_END.getTime()) return null;
   const started = now >= WEEK_START.getTime();
 
   return (
-    <section id="thank-you-week" className="bg-cream py-10 lg:py-14 scroll-mt-40">
+    <section id="gift-the-brand" className="bg-cream py-10 lg:py-14 scroll-mt-40">
       <div className="max-w-5xl mx-auto px-4 text-center">
         <p className="font-body text-sm uppercase tracking-widest text-barn-red font-semibold mb-2">
           {started ? "On now through Monday, Nov 30" : "Starts Monday, Nov 23 · Runs through Monday, Nov 30"}
         </p>
         <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-3">
-          Ranch Thank-You Week
+          Gift the Brand
         </h2>
         <p className="font-body text-muted-foreground text-lg max-w-2xl mx-auto mb-8">
-          One deal all week, no codes. Spend more and we'll tuck free beef into your box as a thank-you for supporting our family ranch.
+          Give Dot Seven this holiday, and we'll add free beef to your box. One deal all week, no codes needed.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-8">
@@ -60,11 +60,11 @@ const ThankYouWeek = () => {
         </Link>
 
         <p className="font-body text-sm text-muted-foreground mt-6 max-w-2xl mx-auto">
-          Gifts are added to your box when we pack it, based on your order subtotal before shipping and tax. Good online and at our market booth while supplies last. Thank-You Week orders ship Monday, Nov 30.
+          Gifts are added to your box when we pack it, based on your order subtotal before shipping and tax. Good online and at our market booth while supplies last. Gift the Brand orders ship Monday, Nov 30.
         </p>
       </div>
     </section>
   );
 };
 
-export default ThankYouWeek;
+export default GiftTheBrand;

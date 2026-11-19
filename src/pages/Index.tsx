@@ -3,7 +3,7 @@ import SaleBanner from "@/components/SaleBanner";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import HolidayBanner from "@/components/HolidayBanner";
-import ThankYouWeek from "@/components/ThankYouWeek";
+import GiftTheBrand from "@/components/GiftTheBrand";
 import ValueProps from "@/components/ValueProps";
 import ShopCategories from "@/components/ShopCategories";
 import RanchToTable from "@/components/RanchToTable";
@@ -33,7 +33,7 @@ const Index = () => {
       </header>
       <main id="main-content">
       <HolidayBanner />
-      <ThankYouWeek />
+      <GiftTheBrand />
       <HeroSection />
       <ValueProps />
       <ShopCategories />
